@@ -1,0 +1,362 @@
+.grecaptcha-badge {
+    display: none;
+}
+
+
+
+
+
+.app-header {
+ 
+    background: -webkit-gradient(linear, left top, right bottom, from(#D4E6F1), to(#D4E6F1));
+    background: linear-gradient(to bottom right, #A9CCE3,#AED6F1);
+
+    /* background: linear-gradient(-45deg, #5499C7, #7FB3D5, #A9CCE3, #D4E6F1);
+    background-size: 400% 400%; */
+    /* animation: gradient 15s ease infinite; */
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+
+     background:linear-gradient(to right top, #EAF2F8 0%, #EAF2F8 100%);
+
+     background-image: linear-gradient(0deg, #EAF2F8, #EAF2F8 50%, transparent 50%);
+
+     background-color: #EAF2F8;
+
+    
+  
+}
+
+
+
+.navbar-nav .nav-link{
+    /* font-size: 28px; */
+    font-weight: bold;
+    padding-top    : 5px;
+    padding-bottom : 5px;
+
+  
+
+}
+
+
+.sidebar .nav-link.active {
+       
+
+        color: #154360;
+    
+        background: linear-gradient(to bottom right, #D4E6F1,#D6EAF8);
+        padding-top    : 5px;
+        padding-bottom : 5px;
+
+  
+
+
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.sidebar .nav-link.active .nav-icon {
+      
+         color: #154360;
+ 
+         padding-top    : 5px;
+         padding-bottom : 5px;
+
+}
+
+
+.app-body .sidebar {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 200px;
+    flex: 0 0 200px;
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1;
+    background:linear-gradient(to bottom right, #EAF2F8 , #EAF2F8 );
+    color:#154360; 
+
+    background: linear-gradient(to bottom right, #D4E6F1,#D6EAF8);
+
+    /* background: linear-gradient(-45deg, #5499C7, #7FB3D5, #A9CCE3, #D4E6F1);
+    background-size: 400% 400%; */
+    /* animation: gradient 15s ease infinite; */
+
+   
+}
+
+.breadcrumb {
+ 
+    background-color: #fff;
+    color: #21618C;
+    padding: 0px;
+    padding-top: 2px;
+    padding-left: 2rem !important;
+}
+
+.navbar-toggler .icon-user {
+    color: #21618C;
+    font-size: 24px;
+}
+
+/* .navbar-toggler .badge {
+     font-size: 12px; 
+} */
+
+.sidebar .nav-link  {
+   
+    
+    color: #21618C;
+    text-decoration: none;
+    background: transparent;
+    
+    padding-top    : 5px;
+    padding-bottom : 5px;
+
+  
+ 
+
+    
+}
+
+
+.sidebar .nav-dropdown.open .nav-link {
+    color:#1B4F72;
+    border-left: 0;
+    background: #D4E6F1;
+
+}
+
+
+
+
+.sidebar .nav-link:hover{
+    color:#21618C;
+    background: #A9CCE3;
+    border-right: 2px solid #21618C; 
+    
+}
+
+.sidebar .nav-dropdown.open .nav-link:hover {
+    color:#21618C;
+    background: #A9CCE3;
+     border-right: 2px solid #21618C; 
+
+    
+    
+}
+
+
+.nav-link>.submenu:before {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    border: 1px dotted;
+    border-width: 0 0 0 1px;
+}
+
+
+a {
+    color: #154360;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+/* .sidebar {
+    background-color: #20a8d8;
+    border-right: 1px solid rgba(35, 154, 209, 0.8);
+}
+.sidebar .nav-title {
+    color: #fff;
+}
+.sidebar .nav-link {
+    color: #fff;
+}
+.sidebar .nav-link:hover {
+    background-color: #196ce9;
+}
+.sidebar .nav-link .nav-icon {
+    color: #555;
+} */
+
+
+.card {
+    margin-bottom: 15px;
+    
+}
+
+
+.icon-arrow-up:before {
+    content: "\E601";
+}
+
+
+
+.card-header {
+
+   
+    margin-bottom: 0;
+    border-bottom: 0px solid;
+    background: -webkit-gradient(linear, left top, right bottom, from(rgba(244, 246, 246 , 1)), to(rgba(229, 232, 232 , 1)));
+    background: linear-gradient(to bottom right, rgba(244, 246, 246 , 1), rgba(229, 232, 232 , 1));
+    border-color: #d8dbe0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+/* 
+    border-top: 2px solid #AEB6BF; */
+
+    
+    /* font-size: 18px; */
+
+}
+
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: #f0f3f5;
+    border-top: 1px solid #c8ced3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* font-size: 28px; */
+    text-align: center;
+}
+
+.multiselect {
+    min-height: 35px;
+}
+
+.multiselect, .multiselect__input, .multiselect__single {
+    font-size: 0.875rem;
+    padding: 0;
+}
+
+.multiselect__placeholder {
+    margin-bottom: 0;
+    padding-top: 0;
+}
+
+.multiselect__select {
+    position: absolute;
+    height: 35px;
+    right: 1px;
+    top: 1px;
+    padding: 4px 8px;
+}
+
+.multiselect__tags {
+    /*max-height: 35px;*/
+    /*height: 35px;*/
+    min-height: 35px;
+    padding: 0.375rem 40px 0 0.75rem;
+    font-size: 0.875rem;
+}
+
+.multiselect__tag {
+    /*margin-right: 0;*/
+    margin-bottom: 0;
+}
+
+.multiselect__tag-icon {
+    line-height: 18px;
+}
+
+/*date vue*/
+
+.vdp-datepicker div input.form-control[readonly] {
+    background-color: #ffffff;
+}
+
+/*custom*/
+
+.form-inline {
+    padding-left: 0;
+}
+
+.form-search {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-search .form-group {
+    margin: 5px 0 5px 0;
+}
+
+.btnGrid, .btnGrid .b-dropdown .dropdown-toggle.btn, .btnGrid .b-dropdown .btn {
+    padding: 0;
+}
+
+.dropdown-toggle-no-caret.dropdown-toggle::after {
+    display: none !important;
+}
+
+.modal-backdrop {
+    opacity: 0.5;
+}
+
+.vue-notification {
+    /* opacity: 0.9; */
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.notification-wrapper:first-child {
+    margin-top: 5px !important;
+}
+
+.notification-title {
+    font-size: 16px;
+}
+
+.notification-content {
+    font-size: 14px;
+}
+
+.text-primary {
+    color: #007bff!important
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+@media (max-width: 576px) {
+    /*576px*/
+    .form-search.form-inline {
+        
+        padding-left: 15px;
+        display: block;
+    }
+    .form-search tbody, .form-search tr, .form-search tr>td, .form-search tr>th {
+        width: auto!important;
+        display: block!important;
+    }
+}
