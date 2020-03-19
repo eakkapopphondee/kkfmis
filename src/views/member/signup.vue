@@ -27,7 +27,7 @@
           </b-input-group>
         </b-form-group>
 
-        <b-form-group
+         <b-form-group
           label-for="email"
           invalid-feedback="'Invalid format.'"
           :state="$v.form.email.required ? !$v.form.email.$invalid : null"
@@ -49,7 +49,7 @@
               required
             />
           </b-input-group>
-        </b-form-group>
+        </b-form-group> 
 
         <b-form-group
           label-for="password"
@@ -135,24 +135,21 @@
       </b-form>
     </div>
     <div v-show="verify && !verifySuccess">
-      <p class="text-center">
-        We sent confirmation email to {{$route.query.email}}.
-        <br />Please follow the instructions to complete your registration.
+      <p class="text-center"> ลงทะเบียนเสร็จเรียบร้อยแล้ว
       </p>
       <p></p>
       <b-form-group>
-        <b-button block variant="primary" v-on:click="ResendClick()">Resend Email</b-button>
+        <b-button block variant="primary" v-on:click="ResendClick()">ตกลง</b-button>
       </b-form-group>
-      <hr />
-      <h6>If you haven't received the email, do the following:</h6>
+      <!-- <hr />
+      <h6>หลังจากที่ลงทะเบียนเสร็จเรียบร้อยแล้ว</h6>
       <ul>
-        <li>Make sure provided email address is correct.</li>
-        <li>Check spam or other folders.</li>
-        <li>Set email address whitelist.</li>
-        <li>Check the mail client work normally.</li>
-      </ul>
+        <li>1.ติดต่อ admin เพื่อขอสิทธิ์เข้าใช้งาน</li>
+        <li>2.หลังจากที่ Admin อนุมัติเข้าใช้งานแล้วให้ Signin เข้าสู่ระบบโดยใช้ Username+Password ที่ลงทะเบียน</li>
+
+      </ul> -->
     </div>
-    <div v-show="verifySuccess">
+    <!-- <div v-show="verifySuccess">
       <div v-show="vsuccess">
         <p class="text-center text-success" style="font-size:80px;">
           <span class="fa fa-check-square"></span>
@@ -167,7 +164,7 @@
         <p class="text-center text-danger">Email Verification Fail.</p>
         <h4 class="text-center">Please Contact Administrator.</h4>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -271,30 +268,31 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      grecaptcha.ready(() => {
-        grecaptcha
-          .execute(this.recapchasite(), {
-            action: "signup"
-          })
-          .then(recaptcha => {
-            API.UserRegister({
+
+  API.UserRegister({
               data: this.form,
-              recaptcha: recaptcha,
               callblack: res => {
                 this.$router.push("/member/signup?email=" + res.email);
               }
             });
-          });
-      });
+
+
+     
+
+
+
     },
     ResendClick() {
-      API.UserResendEmail({
-        data: { email: this.$route.query.email },
-        recaptcha: this.recaptcha,
-        callblack: res => {
-          AlertMessage("success");
-        }
-      });
+
+ this.$router.push("/member/signin");
+
+      // API.UserResendEmail({
+      //   data: { email: this.$route.query.email },
+      //   recaptcha: this.recaptcha,
+      //   callblack: res => {
+      //     AlertMessage("success");
+      //   }
+      // });
     }
   },
   watch: {}

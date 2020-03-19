@@ -13,9 +13,17 @@
       <a class="pointer" style="text-decoration: none;" data-bind="click: createAlbum">
         <div class="thumbnail">
           <br>
-          <p style="text-align: center">
+           <p style="text-align: center">
             <i class="icon-graph fa-5x"></i>
-          </p>
+          </p> 
+
+
+
+
+
+
+
+
           <div class="caption" style="text-align: center;">
             <h3>ยอดขาย</h3>
           </div>
@@ -706,6 +714,209 @@ box-shadow: 0px 1px 16px rgba(133, 146, 158  , 0.45);
       padding:9px;color:#5D6D7E
       
       }
+
+
+
+
+
+
+.line-chart-block, .bar-chart-block {
+				height: 80%;
+			}
+				.line-chart {
+					height: 200px;
+					background: #11a8ab;
+				}
+				.time-lenght {
+					padding-top: 22px;
+					padding-left: 38px;
+          overflow: hidden;
+				}
+					.time-lenght-btn {
+						display: block;
+						width: 70px;
+						line-height: 32px;
+						background: #50597b;
+						border-radius: 5px;
+						font-size: 14px;
+						text-align: center;
+						margin-right: 5px;
+						-webkit-transition: background .3s;
+						transition: background .3s;
+					}
+						.time-lenght-btn:hover {
+							text-decoration: none;
+							background: #e64c65;
+						}
+				.month-data {
+					padding-top: 28px;
+				}
+					.month-data p {
+						display: inline-block;
+						margin: 0;
+						padding: 0 25px 15px;            
+						font-size: 16px;
+					}
+						.month-data p:last-child {
+							padding: 0 25px;
+              float: right;
+							font-size: 15px;
+						}
+						.increment {
+							color: #e64c65;
+						}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Bar Graph Vertical */
+.bar-graph .year {
+  -webkit-animation: fade-in-text 2.2s 0.1s forwards;
+  -moz-animation: fade-in-text 2.2s 0.1s forwards;
+  animation: fade-in-text 2.2s 0.1s forwards;
+}
+
+.bar-graph-vertical {
+  margin-top: 2px;
+  max-width: 680px;
+}
+
+.bar-graph-vertical .bar-container {
+  float: left;
+  height: 150px;
+  margin-right: 8px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+}
+
+.bar-graph-vertical .bar {
+  border-radius: 3px;
+  bottom: 40px;
+  position: absolute;
+  width: 40px;
+}
+
+.bar-graph-vertical .year {
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  /* -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); */
+}
+
+.bar-graph-two .bar::after {
+  -webkit-animation: fade-in-text 2.2s 0.1s forwards;
+  -moz-animation: fade-in-text 2.2s 0.1s forwards;
+  animation: fade-in-text 2.2s 0.1s forwards;
+  color: #fff;
+  content: attr(data-percentage);
+  font-weight: 700;
+  left: 0;
+  margin: 0 auto;
+  position: relative;
+  right: 0;
+  text-align: left;
+  top: 24px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.bar-graph-two .bar-one .bar {
+  background-color: #64b2d1;
+  -webkit-animation: show-bar-one-vertical 1.2s 0.1s forwards;
+  -moz-animation: show-bar-one-vertical 1.2s 0.1s forwards;
+  animation: show-bar-one-vertical 1.2s 0.1s forwards;
+}
+
+.bar-graph-two .bar-two .bar {
+  background-color: #5292ac;
+  -webkit-animation: show-bar-two-vertical 1.2s 0.2s forwards;
+  -moz-animation: show-bar-two-vertical 1.2s 0.2s forwards;
+  animation: show-bar-two-vertical 1.2s 0.2s forwards;
+}
+
+.bar-graph-two .bar-three .bar {
+  background-color: #407286;
+  -webkit-animation: show-bar-three-vertical 1.2s 0.3s forwards;
+  -moz-animation: show-bar-three-vertical 1.2s 0.3s forwards;
+  animation: show-bar-three-vertical 1.2s 0.3s forwards;
+}
+
+.bar-graph-two .bar-four .bar {
+  background-color: #2e515f;
+  -webkit-animation: show-bar-four-vertical 1.2s 0.4s forwards;
+  -moz-animation: show-bar-four-vertical 1.2s 0.4s forwards;
+  animation: show-bar-four-vertical 1.2s 0.4s forwards;
+}
+
+/* Bar Graph Vertical Animations */
+@-webkit-keyframes show-bar-one-vertical {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 40%;
+  }
+}
+
+@-webkit-keyframes show-bar-two-vertical {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 55%;
+  }
+}
+
+@-webkit-keyframes show-bar-three-vertical {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 68%;
+  }
+}
+
+@-webkit-keyframes show-bar-four-vertical {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 82%;
+  }
+}
+
+@-webkit-keyframes fade-in-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
 
 
 

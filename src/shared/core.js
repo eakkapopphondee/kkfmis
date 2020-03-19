@@ -4,12 +4,12 @@ import { GetObjVal, AlertMessage } from "@/shared/utils";
 
 //Vue.use(axios)
 
-const url = () => {
-    if (mode) return "http://kkfmisdevapi.kkfnets.com/"; /*prod*/
+const url = () => {  
+    if (mode) return "http://kkfmisapi.kkfnets.com/"; /*prod   http://kkfmisdevapi.kkfnets.com/   */
     else return "https://localhost:44312/"; /*dev*/  
 }
 
-export function Call(o) {
+export function Call(o) {   
     let urlx = !o.url ? url() : o.url;
     urlx = urlx + (!o.path ? '' : o.path);
 
@@ -211,5 +211,12 @@ export const API = {
             Object.assign(o, { method: 'Post', path: 'api/Oauth/Approve' });
             Call(o);
         },
+
+
+            //--------------------User-----------------------//
+    UserRegister: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/User/Register' });
+        Call(o);
+    }
 
 };

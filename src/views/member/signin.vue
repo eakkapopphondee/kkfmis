@@ -133,6 +133,8 @@ export default {
                 this.$localStorage.set("Token", res.token);
                 this.$localStorage.set("User", res.username);
                 window.location.href = "/";
+
+                
               }
             });
 

@@ -15,7 +15,7 @@ export default {
   mounted() {
     API.OauthAccess({
       callblack: res => {
-        this.$localStorage.set("AccessToken", res.accessToken);
+        this.$localStorage.set("AccessToken", res.accessToken);   
       }
     });
     if(!this.$localStorage.get("lang")) { this.$localStorage.set("lang", 'en'); }
