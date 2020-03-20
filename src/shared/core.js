@@ -5,7 +5,7 @@ import { GetObjVal, AlertMessage } from "@/shared/utils";
 //Vue.use(axios)
 
 const url = () => {  
-    if (mode) return "http://kkfmisapi.kkfnets.com/"; /*prod   http://kkfmisdevapi.kkfnets.com/   */
+    if (mode) return "https://kkfmisapi.kkfnets.com/"; /*prod   http://kkfmisdevapi.kkfnets.com/   */
     else return "https://localhost:44312/"; /*dev*/  
 }
 

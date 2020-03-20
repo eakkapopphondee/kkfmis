@@ -267,6 +267,18 @@ export default {
 
   }
 
+
+  .app-header {
+    
+    font-size: 14px;
+    font-weight: 600;
+
+  }
+
+.navbar-brand-full {
+margin-left: -120px;
+}
+
 .app-header .navbar-togglerTo {
     min-width: 50px;
     padding: 0.25rem 0;

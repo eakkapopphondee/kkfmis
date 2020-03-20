@@ -3122,6 +3122,17 @@ font-weight:bold;
 
 	@media screen and (max-width: 600px) { 
 
+
+    .dashboard .all-card {
+    padding: 0px; 
+}
+ 
+
+ .graph_data, .knob_data {
+    font-size: 1.3rem;
+}
+
+
 .fixed-bottom-bar {
   height: 40px;
   z-index: 1020;
