@@ -55,9 +55,11 @@ export default {
 
 
         {
-          name: 'ลูกหนี้',
-        
-          url: '/dashboard'
+          name: 'ลูกหนี้',        
+          
+          url: '/report/mdmAR/mdmARR'
+
+
     
         },
         {

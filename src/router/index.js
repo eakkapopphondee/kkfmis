@@ -35,6 +35,9 @@ const dashboard = () => import('@/views/dashboard')
 
 const reptsummarysale  = () =>import('@/views/report/reptsummarysale')
 
+const mdmAR = () =>import('@/views/report/mdmAR/mdmAR')
+
+
 
 Vue.use(Router)
 
