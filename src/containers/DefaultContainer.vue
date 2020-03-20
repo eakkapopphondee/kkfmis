@@ -311,6 +311,18 @@ margin-left: -120px;
     color:  #922B21;
     margin-right: 5px;
 }
+
+
+.app-header .navbar-brand {
+   
+    justify-content: left; 
+   
+}
+
+
+
+
+
 }
 
 

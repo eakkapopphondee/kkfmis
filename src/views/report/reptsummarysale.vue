@@ -3124,9 +3124,13 @@ font-weight:bold;
 
 
     .dashboard .all-card {
-    padding: 0px; 
-}
- 
+     padding: 0px; 
+     }
+     .navbar-brand {
+
+
+         padding: 0px; 
+      }
 
  .graph_data, .knob_data {
     font-size: 1.3rem;
