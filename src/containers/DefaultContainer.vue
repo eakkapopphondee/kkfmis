@@ -3,10 +3,11 @@
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
   
-      <b-link class="navbar-brand" to="#">
+      <b-link class="navbar-brand" to="/dashboard">
         <img class="navbar-brand-full" src="img/brand/logo.png" width="100%" height="80%" alt="CoreUI Logo">
-        <img class="navbar-brand-minimized" src="img/brand/logokkf.png" width="60" height="50" alt="CoreUI Logo">
+        <img class="navbar-brand-minimized" src="img/brand/logokkf.png" width="60" height="50" alt="CoreUI Logo" >
       </b-link>
+      
       <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen="false" />
  
       <b-navbar-nav class="d-md-down-none">
@@ -275,9 +276,12 @@ export default {
 
   }
 
-.navbar-brand-full {
-margin-left: -120px;
+ .navbar-brand-full {
+
+    display :none;
 }
+
+
 
 .app-header .navbar-togglerTo {
     min-width: 50px;
@@ -313,11 +317,7 @@ margin-left: -120px;
 }
 
 
-.app-header .navbar-brand {
-   
-    justify-content: left; 
-   
-}
+
 
 
 
