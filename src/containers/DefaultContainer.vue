@@ -276,7 +276,7 @@ export default {
 
   }
 
- .navbar-brand-full {
+ .navbar-brand {
 
     display :none;
 }
