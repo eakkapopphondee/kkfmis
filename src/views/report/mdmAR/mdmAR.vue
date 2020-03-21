@@ -51,7 +51,7 @@
                           <div class="card-body border-left-2">
                             <div class="row">
                               <div class="col">
-                                <p class="card-title text-title"><h2>ไม่ครบกำหนด (ลบ.)</h2></p>
+                                <p class="card-title text-title"><h3>ยังไม่ครบกำหนด (ลบ.)</h3></p>
                                 <h2
                                   class="card-text text-amount"
                                 >{{dataDashboardARAllObj.balance_amt_indue| number(2)}}</h2>
