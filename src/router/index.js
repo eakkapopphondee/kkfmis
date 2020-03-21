@@ -94,7 +94,22 @@ export default new Router({
           component: reptsummarysale
         }
       ]
+    },
+    {
+      path: '/report',     
+      name: 'ลูกหนี้',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/mdmAR',
+          name: 'ลูกหนี้',
+          component: mdmAR
+        }
+      ]
+
     }
+    
     ,
     {
       path: '/user',
