@@ -64,8 +64,8 @@ Vue.use(ToggleButton)
 import pageheader from './components/pageheader'
 Vue.component("pageheader", pageheader)
 
-import StreamBarcodeReader  from "vue-barcode-reader";
-Vue.use(StreamBarcodeReader);
+//import StreamBarcodeReader  from "vue-barcode-reader";
+//Vue.use(StreamBarcodeReader);
 
 
   //import VueQuagga from 'vue-quaggajs';

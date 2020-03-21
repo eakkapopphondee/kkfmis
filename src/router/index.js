@@ -35,6 +35,9 @@ const dashboard = () => import('@/views/dashboard')
 
 const reptsummarysale  = () =>import('@/views/report/reptsummarysale')
 
+const mdmAR = () =>import('@/views/report/mdmAR/mdmAR')
+
+
 
 Vue.use(Router)
 
@@ -91,7 +94,22 @@ export default new Router({
           component: reptsummarysale
         }
       ]
+    },
+    {
+      path: '/report',     
+      name: 'ลูกหนี้',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/mdmAR',
+          name: 'ลูกหนี้',
+          component: mdmAR
+        }
+      ]
+
     }
+    
     ,
     {
       path: '/user',

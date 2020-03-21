@@ -217,6 +217,19 @@ export const API = {
     UserRegister: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/User/Register' });
         Call(o);
+    },
+
+
+    //---- รายงานงบลูกหนี้ ------//
+    GetDataARSummary: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmAR/SearchSummary' });
+        Call(o);
+    },
+
+
+    GetDataARDetail: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmARDetail/SearchDetail' });
+        Call(o);
     }
 
 };
