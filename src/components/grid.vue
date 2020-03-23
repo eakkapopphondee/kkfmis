@@ -118,7 +118,6 @@
       :class="{'table-sm' : o_grid_sm}"
       v-resize:throttle.100="onResize"
       :id="name"
-
       v-if="reset_flag"
     >
       <thead>
