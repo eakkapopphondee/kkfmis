@@ -5,6 +5,8 @@
       <div  > 
       <!-- <img src="img/kkf/loginKKF.png" width="180px;" height="80px">  -->
       <p  style="color:#1B4F72" >Sign In to your account : MIS KKF Application</p>
+      
+
       <hr>
       <b-form-group label-for="username">
         <b-input-group>
@@ -76,7 +78,8 @@
       </div>
     </b-form>
 
-
+      <a class="pointer" style="text-decoration: none;"  @click="to_register">
+      <p style="color:#B03A2E"  >Register</p> </a>
 
   </div>
 
@@ -118,6 +121,15 @@ export default {
     }
   },
   methods: {
+
+
+    to_register()
+    {
+        this.$router.push("/member/signup");
+    },
+
+
+
     onSubmit(evt) {
       evt.preventDefault();
 
@@ -345,6 +357,9 @@ export default {
 }
 
 
+.pointer {
+  cursor: pointer;
+}
 
 
 
