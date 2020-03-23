@@ -1396,21 +1396,26 @@ label {
     border: 1px solid #5499C7;   
  
     background: white;
+   
 
   }
   th {
     background: #7FB3D5;
 
+    background: #A9CCE3;
+    
+
     font-weight: lighter;
-    text-shadow: 0 1px 0 #5499C7;
-    color: #154360;
-    border: 1px solid #5499C7 ;
-    box-shadow: inset 0px 1px 2px #A9CCE3  ;
+    /* text-shadow: 0 1px 0 #5499C7; */
+    color: #424949 ;
+    border: 1px solid #7FB3D5 ;
+    box-shadow: inset 0px 1px 2px #D6EAF8     ;
     transition: all 0.2s;
     
   }
   tr {
     border-bottom: 1px solid #cccccc;
+
   }
   tr:last-child {
     border-bottom: 0px;
