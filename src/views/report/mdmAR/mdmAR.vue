@@ -1448,13 +1448,7 @@ export default {
   border: 0px solid;
 }
 
-.table-bordered thead th,
-.table-bordered thead td {
-  /* background: #ddd url(../../assets/BgBlue.gif) repeat top left; */
-  background: linear-gradient(to bottom right, #eaf2f8, #eaf2f8);
-  font-size: 0.875rem;
-  font-weight: 400;
-}
+
 
 .dashboard {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,

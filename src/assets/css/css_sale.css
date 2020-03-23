@@ -353,13 +353,7 @@ font-weight:bold;
 
 
 
-.table-bordered thead th, .table-bordered thead td {
- 
-      /* background: #ddd url(../../assets/BgBlue.gif) repeat top left; */
-      background: linear-gradient(to bottom right, #EAF2F8 , #EAF2F8 );
-      font-size: 0.875rem;
-      font-weight: 400;
-}
+
 
 .dashboard {
 

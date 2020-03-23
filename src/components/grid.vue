@@ -1183,10 +1183,15 @@ export default {
   border-bottom: 1px solid #c8ced3;
 }
 
+
+
+
+  
 .table {
   background-color: #fff;
   margin-bottom: 0;
 }
+
 
 .table thead th {
   vertical-align: top;
@@ -1375,4 +1380,83 @@ label {
 .tdd {
   width: 100%;
 } */
+
+
+
+  Table {
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: float 5s infinite;
+  }
+
+  table {
+
+
+    border-collapse: collapse;
+    border: 1px solid #5499C7;   
+ 
+    background: white;
+
+  }
+  th {
+    background: #7FB3D5;
+
+    font-weight: lighter;
+    text-shadow: 0 1px 0 #5499C7;
+    color: #154360;
+    border: 1px solid #5499C7 ;
+    box-shadow: inset 0px 1px 2px #A9CCE3  ;
+    transition: all 0.2s;
+    
+  }
+  tr {
+    border-bottom: 1px solid #cccccc;
+  }
+  tr:last-child {
+    border-bottom: 0px;
+  }
+  td {
+    border-right: 1px solid #cccccc;
+    padding: 10px;
+    transition: all 0.2s;
+    
+  }
+  td:last-child {
+    border-right: 0px;
+  }
+  td.selected {
+    background: #d7e4ef;
+   
+  }
+  td input {
+    font-size: 14px;
+    background: none;
+    outline: none;
+    border: 0;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+  }
+  td input:focus {
+    box-shadow: 0 1px 0 steelblue;
+    color: steelblue;
+  }
+  ::-moz-selection {
+    background: steelblue;
+    color: white;
+  }
+  ::selection {
+    background: steelblue;
+    color: white;
+  }
+  
+
+  .table-hover tbody tr:not(:hover) {
+
+    background-color: #fff;
+  
+  }
+
+
+
 </style>

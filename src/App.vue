@@ -83,7 +83,7 @@ $simple-line-font-path: "~simple-line-icons/fonts/";
 @import "assets/scss/style";
 
 @import 'assets/css/style';
-@import 'assets/css/table';
+
  @import "assets/css/main";
 </style>
 
