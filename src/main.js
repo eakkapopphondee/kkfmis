@@ -17,7 +17,7 @@ import VueProgressBar from 'vue-progressbar'
 import Multiselect from 'vue-multiselect'
 
 import Datepicker from 'vuejs-datepicker'
-
+import gridmobile from './components/gridmobile.vue'
 import grid from './components/grid.vue'
 import gridmodify from './components/gridmodify.vue'
 import deletedetail from './components/deletedetail'
@@ -53,6 +53,9 @@ Vue.component('datepicker', Datepicker)
 Vue.component('draggable', Draggable)
 
 Vue.component("grid", grid)
+Vue.component("gridmobile", gridmobile)
+
+
 Vue.component("gridmodify",gridmodify)
 Vue.component("delete-detail", deletedetail)
 

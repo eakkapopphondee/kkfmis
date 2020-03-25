@@ -190,12 +190,7 @@
                 :class="['ml-1','grid-th-checkbox-'+trackBy]"
               ></b-form-checkbox>
             </th>
-            <th
-              v-else-if="field.name === '_more'"
-              width="30px"
-              :key="fieldIndex"
-              v-show="col_viewmore"
-            ></th>
+  
             <th
               v-else
               :key="fieldIndex"
@@ -204,7 +199,7 @@
               @click="orderBy(field, $event)"
               class="text-center"
               :width="field.width"
-              v-show="field._show && (field.visible || field.visible === undefined)"
+              v-show="true"
             >
               <span v-if="o_col_drag" :class="['handle', 'pull-left fa fa-bars']"></span>
               <span v-html="renderTitle(field)"></span>
@@ -239,7 +234,7 @@
         <template v-for="(item, itemIndex) in visibleData">
           <tr :key="itemIndex" :class="[{'selected' : rowSelectedClass(item)}, getTextColor(item)]">
             <template v-if="item._opt">
-              <td :colspan="tableFields.length">
+              <td :colspan="tableFields.length" >
                 <table class="table-borderless">
                   <template v-for="(field2, fieldIndex2) in tableFields">
                     <tr
@@ -248,10 +243,10 @@
                     >
                       <th v-html="renderTitle(field2)"></th>
                       <template v-if="hasCallback(field2)">
-                        <td v-html="callCallback(field2, item)"></td>
+                        <td v-html="callCallback(field2, item)" ></td>
                       </template>
                       <template v-else>
-                        <td v-html="getObjectValue(item, field2.name, '')"></td>
+                        <td v-html="getObjectValue(item, field2.name, '')" ></td>
                       </template>
                     </tr>
                   </template>
@@ -278,13 +273,8 @@
                 ></b-form-checkbox>
               </td>
              
-              <td
-                class="more-view"
-                @click="onViewMore(item, itemIndex, $event)"
-                v-if="col_viewmore"
-              >
-                <i :class="['fa fa-lg ', rowViewMore(item)]"></i>
-              </td>
+           
+
               <template v-for="(field, fieldIndex) in tableFields">
                 <template v-if="!field.o_col && (field.visible || field.visible === undefined)">
 
@@ -293,9 +283,11 @@
                     v-if="hasCallback(field)"
                     @click="onRowClicked(item, $event)"
                     :key="fieldIndex"
-                    v-show="field._show"
+                
+                     v-show="true"
                     :class="field.class"
                     v-html="callCallback(field, item)"
+                    :data-label="field.title"
                   ></td>
 
 
@@ -303,9 +295,11 @@
                     v-else
                     @click="onRowClicked(item, $event)"
                     :key="fieldIndex"
-                    v-show="field._show"
+                    v-show="true"
                     :class="field.class"
                     v-html="getObjectValue(item, field.name, '')"
+
+                    :data-label="field.title"
                   >
                   </td>
 
@@ -495,8 +489,7 @@ export default {
 
     this.tableFields = [
       { name: "_drag", _width: 30, visible: this.o_row_drag, o_col: true },
-      { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: true },
-      { name: "_more", _width: 32, visible: this.col_viewmore, o_col: true }
+      { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: false }
     ];
     this.tableFields = this.tableFields.concat(this.fields);
     this.genTitle();
@@ -608,6 +601,9 @@ export default {
               show = false;
             }
             c._show = show;
+
+            c._show = false;
+          
           }
         });
         this.tableFields = this.tableFields.slice();
@@ -761,9 +757,8 @@ export default {
     this.reset_flag= false;
     
     this.tableFields = [
-      { name: "_drag", _width: 30, visible: this.o_row_drag, o_col: true },
-      { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: true },
-      { name: "_more", _width: 32, visible: this.col_viewmore, o_col: true }
+      { name: "_drag", _width: 30, visible: this.o_row_drag, o_col: false },
+      { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: false }
     ];
     this.tableFields = this.tableFields.concat(this.fields);
     this.genTitle();
@@ -1182,15 +1177,10 @@ export default {
   border-bottom: 1px solid #c8ced3;
 }
 
-
-
-
-  
 .table {
   background-color: #fff;
   margin-bottom: 0;
 }
-
 
 .table thead th {
   vertical-align: top;
@@ -1381,7 +1371,6 @@ label {
 } */
 
 
-
   Table {
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -1399,8 +1388,6 @@ label {
 
   }
   th {
-
-    
     background: #7FB3D5;
 
     background: #A9CCE3;
@@ -1463,6 +1450,85 @@ label {
   
   }
 
+
+
+@media screen and (max-width: 700px) {
+
+   .table-hover tbody tr {
+
+    background-color: #fff;
+  
+  }
+
+
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+ 
+  }
+
+  table td:first-child  {
+    border-bottom: 3px solid #ddd;
+    display: block;
+   
+
+    background: #7FB3D5;
+
+    background: #A9CCE3;
+    
+
+    font-weight: lighter;
+    /* text-shadow: 0 1px 0 #5499C7; */
+    color: #424949 ;
+    border: 1px solid #7FB3D5 ;
+    box-shadow: inset 0px 1px 2px #D6EAF8     ;
+    transition: all 0.2s;
+
+
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+
+
+  
+}
 
 
 </style>

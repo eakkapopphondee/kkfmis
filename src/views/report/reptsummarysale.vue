@@ -32,14 +32,14 @@
  <div class="tabset">
  
   <input type="radio" name="tabset12" id="tab1" aria-controls="marzen" checked >
-  <label for="tab1">Dash board ยอดขาย ณ เดือนปัจจุบัน</label>
+  <label for="tab1">Dash board ยอดขายสะสมถึงเดือนปัจจุบัน</label>
  
   <input type="radio" name="tabset12" id="tab2" aria-controls="rauchbier" >
   <label for="tab2">Dash board  ยอดขายทั้งปี</label>
 
   
   <div class="tab-panels">
-    <section id="marzen" class="tab-panel"> 
+  <section id="marzen" class="tab-panel"> 
 
 
 
@@ -219,9 +219,18 @@
                 <b-col sm="4">
                   <div class="callout callout-warning">
                     <small class="text-muted">ต่างจากเป้าหมาย (ลบ.)</small><br>
-                    <strong class="h2">{{dataDashboardEXobj.cum_diff_value| number(2)}}</strong>
+                    <strong class="h2">
+
+                      <div style="color:#C0392B; display:block;" id="1NOK" >{{dataDashboardEXobj.cum_diff_value| number(2)}}</div>
+                      <div style="color:#2471A3; display:none;"  id="1OK" >{{dataDashboardEXobj.cum_diff_value| number(2)}}</div>
+
+           
+
+
+
+
+                    </strong>
                     <div class="chart-wrapper" :style="{ top: '-10px'}">
-               
                     </div>
                   </div>
                 </b-col>
@@ -249,7 +258,7 @@
         <b-card   style="border: 0px solid;">   
             
                   <div class="knob_data" style= "background-image: url('img/brand/thai2.png'); background-repeat: no-repeat;
-                  background-size: contain; background-position: left;  color:#641E16; text-align: center;" >ขายในประเทศ {{dataDashboardDMobj.cum_percent_diff| number(2)}}% <span class="txt_smaller"></span></div>
+                  background-size: contain; background-position: left;  color:#1A5276; text-align: center;" >ขายในประเทศ {{dataDashboardDMobj.cum_percent_diff| number(2)}}% <span class="txt_smaller"></span></div>
              
                <b-row>
                 <b-col sm="4">
@@ -275,7 +284,12 @@
                 <b-col sm="4">
                   <div class="callout callout-warning">
                     <small class="text-muted">ต่างจากเป้าหมาย (ลบ.)</small><br>
-                    <strong class="h2">{{dataDashboardDMobj.cum_diff_value| number(2)}}</strong>
+               
+<strong class="h2">
+                      <div style="color:#C0392B; display:block; " id="2NOK" >{{dataDashboardDMobj.cum_diff_value| number(2)}}</div>
+                      <div style="color:#2471A3; display:none;" id="2OK" >{{dataDashboardDMobj.cum_diff_value| number(2)}}</div>
+</strong>
+
                     <div class="chart-wrapper" :style="{ top: '-10px'}">
                      
                     </div>
@@ -361,7 +375,12 @@
             <div class="row">
               <div class="col">
                 <p class="card-title text-title">ต่างจากเป้าหมาย (ลบ.)</p>
+
+  
                 <h2 class="card-text text-amount">{{dataDashboardobjYY.diff_value| number(2)}}</h2>
+
+
+
               </div>
               <div class="col-auto">
                <div class="icon-shape icon-pie">
@@ -379,6 +398,11 @@
               <div class="col">
                <p class="card-title text-title">% เทียบเป้าหมาย</p>
                 <h2 class="card-text text-amount">{{dataDashboardobjYY.percent_diff| number(2)}} %</h2>
+
+
+
+
+
               </div>
               <div class="col-auto">
                 <div class="icon-shape icon-percent">
@@ -436,7 +460,15 @@
                 <b-col sm="4">
                   <div class="callout callout-warning">
                     <small class="text-muted">ต่างจากเป้าหมาย (ลบ.)</small><br>
-                    <strong class="h2">{{dataDashboardEXobjYY.diff_value| number(2)}}</strong>
+
+                  <strong class="h2">
+
+                     <div style="color:#C0392B; display:block; " id="11NOK" >{{dataDashboardEXobjYY.diff_value| number(2)}}</div>
+                      <div style="color:#2471A3; display:none;" id="11OK" >{{dataDashboardEXobjYY.diff_value| number(2)}}</div>
+
+                 </strong>
+
+
                     <div class="chart-wrapper" :style="{ top: '-10px'}">
                
                     </div>
@@ -492,8 +524,13 @@
                 <b-col sm="4">
                   <div class="callout callout-warning">
                     <small class="text-muted">ต่างจากเป้าหมาย (ลบ.)</small><br>
-                    <strong class="h2">{{dataDashboardDMobjYY.diff_value| number(2)}}</strong>
-                                         
+           
+                     <strong class="h2">
+                      <div style="color:#C0392B; display:block;" id="22NOK" >{{dataDashboardDMobjYY.diff_value| number(2)}}</div>
+                      <div style="color:#2471A3; display:none;" id="22OK" >{{dataDashboardDMobjYY.diff_value| number(2)}}</div>          
+                    </strong>
+
+
                     <div class="chart-wrapper" :style="{ top: '-10px'}">
                      
                     </div>
@@ -609,11 +646,15 @@
   <div class="tab-panels">
     <section id="marzen" class="tab-panel"> -->
 
- 
-         <grid
+         <b-row>
+           <b-col sm="12">
+
+              <br>
+          <p>ตารางสรุปข้อมูลแบบสะสม</p>
+         <gridmobile
                 ref="gridDrawing"
                 
-                :fields="fieldData"
+                :fields="fieldDrawingsum"
                 :name="name"
                 :btnGrid="false"
                 :btnAdd="false"
@@ -630,7 +671,70 @@
                 
                 
             >
-            </grid>
+            </gridmobile>
+            </b-col>
+             </b-row>
+             <br>
+                <b-row>
+
+
+            <b-col sm="4">
+             <div style="width:350px;">
+               <canvas id="graph1" width="400" height="400"></canvas>
+
+
+             </div>
+             
+             </b-col>
+            <b-col sm="4">
+             <div style="width:350px;">
+               <canvas id="graphEX" width="400" height="400"></canvas>
+
+
+             </div>
+             
+             </b-col>
+                         <b-col sm="4">
+             <div style="width:350px;">
+               <canvas id="graphDM" width="400" height="400"></canvas>
+
+
+             </div>
+
+
+
+
+
+             </b-col>
+         </b-row>
+
+          <b-row>
+           <b-col sm="12">
+          <br>
+         <p>ตารางสรุปข้อมูลแบบประจำเดือน</p>
+         <gridmobile
+                ref="gridDrawingM"
+                
+                :fields="fieldDrawing"
+                :name="name"
+                :btnGrid="false"
+                :btnAdd="false"
+                :btnClone="false"
+                :btnView="false"
+                :btnEdit="false"
+              
+                :btnDelete="false"
+                :o_col_checkbox="false"
+                :trackBy="'rowID'"
+                :data="dataDrawing"
+                :o_navfooter_visible="false"
+              
+                
+                
+            >
+            </gridmobile>
+            </b-col>
+             </b-row> 
 
 
 <!-- 
@@ -690,7 +794,7 @@
       <b-col lg="12">
         <transition name="fade">
           <b-card no-body v-if="show">
-            <div slot="header"><i class="fa fa-bar-chart" aria-hidden="true"></i> รายงานสรุปยอดขายต่างประเทศ 
+            <div slot="header" style=" color:#2E86C1;" ><i class="fa fa-bar-chart" aria-hidden="true"></i> รายงานสรุปยอดขายต่างประเทศ 
               <div class="card-header-actions">
       
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse3>
@@ -719,12 +823,14 @@
   
   <div class="tab-panels">
     <section id="marzen" class="tab-panel"> -->
-
- 
-         <grid
+   <b-row>
+        <b-col sm="12">
+               <br>
+          <p>ตารางสรุปข้อมูลแบบสะสม</p>
+         <gridmobile
                 ref="gridDrawing2"
        
-                :fields="fieldData"
+                :fields="fieldDrawingsum"
                 :name="name"
                 :btnGrid="false"
                 :btnAdd="false"
@@ -741,7 +847,40 @@
                 
                 
             >
-            </grid> 
+            </gridmobile> 
+
+        </b-col>
+
+        <b-col sm="12">
+               <br>
+          <p>ตารางสรุปข้อมูลแบบประจำเดือน</p>
+         <gridmobile
+                ref="gridDrawing2M"
+       
+                :fields="fieldDrawing"
+                :name="name"
+                :btnGrid="false"
+                :btnAdd="false"
+                :btnClone="false"
+                :btnView="false"
+                :btnEdit="false"
+              
+                :btnDelete="false"
+                :o_col_checkbox="false"
+                :trackBy="'rowID'"
+                :data="dataDrawingEX"
+                :o_navfooter_visible="false"
+              
+                
+                
+            >
+            </gridmobile> 
+
+        </b-col>
+
+
+
+  </b-row>          
 
 <!-- 
 
@@ -806,7 +945,7 @@
       <b-col lg="12">
         <transition name="fade">
           <b-card no-body v-if="show">
-            <div slot="header"><i class="fa fa-bar-chart" aria-hidden="true"></i> รายงานสรุปยอดขายในประเทศ 
+            <div slot="header" style=" color:#117A65;" ><i class="fa fa-bar-chart" aria-hidden="true"></i> รายงานสรุปยอดขายในประเทศ 
               <div class="card-header-actions">
       
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse4>
@@ -834,9 +973,11 @@
   
   <div class="tab-panels">
     <section id="marzen" class="tab-panel"> -->
-
-
-         <grid
+   <b-row>
+        <b-col sm="12">
+              <br>
+          <p>ตารางสรุปข้อมูลแบบสะสม</p>
+         <gridmobile
                 ref="gridDrawing3"
        
                 :fields="fieldData"
@@ -856,8 +997,35 @@
                 
                 
             >
-            </grid> 
+            </gridmobile> 
+      </b-col>
+        <b-col sm="12">
+              <br>
+          <p>ตารางสรุปข้อมูลแบบประจำเดือน</p>
+         <gridmobile
+                ref="gridDrawing3M"
+       
+                :fields="fieldDrawing"
+                :name="name"
+                :btnGrid="false"
+                :btnAdd="false"
+                :btnClone="false"
+                :btnView="false"
+                :btnEdit="false"
+              
+                :btnDelete="false"
+                :o_col_checkbox="false"
+                :trackBy="'rowID'"
+                :data="dataDrawingDM"
+                :o_navfooter_visible="false"
+              
+                
+                
+            >
+            </gridmobile> 
+      </b-col>     
 
+</b-row>
 <!-- 
 
   </section>
@@ -1000,6 +1168,10 @@
 
 
 import Vue from 'vue'
+
+
+import Chart from 'chart.js'
+
  
 import { API } from "@/shared/core";
 import { GetDateView, AlertMessage, ObjCopy, ObjResetValue, GetLastUpdate,GetDateTimeFormat } from "@/shared/utils";
@@ -1010,10 +1182,11 @@ import dic from "@/shared/dic";
 import 'webrtc-adapter';
 
 
+
+
 export default {
 
 
- 
 
 
   
@@ -1039,7 +1212,7 @@ export default {
     this.Search();
 
 
-    
+
 
 
   },
@@ -1092,7 +1265,7 @@ export default {
                       'Checkboxes - custom', 'Inline Checkboxes - custom'],
       radioNames: ['Radios', 'Inline Radios',
                     'Radios - custom', 'Inline Radios - custom'],
-
+    bar:null,
 
 
     seen: true,
@@ -1113,23 +1286,14 @@ export default {
       startRow: 0,
       stopRow: 25,
 
-    // dataDrawing:[
-    //  {rowID:1,mnt:"1/2019",fcValue:420,poValue:380,saleValue:350,diffValue:70,percTarget:83.33}
-    // ,{rowID:2,mnt:"2/2019",fcValue:420,poValue:400,saleValue:390,diffValue:30,percTarget:92.86}
-    // ,{rowID:3,mnt:"3/2019",fcValue:420,poValue:370,saleValue:366,diffValue:54,percTarget:87.14}
-    // ,{rowID:4,mnt:"4/2019",fcValue:420,poValue:405,saleValue:400,diffValue:20,percTarget:95.24}
-    // ,{rowID:5,mnt:"5/2019",fcValue:420,poValue:400,saleValue:382,diffValue:38,percTarget:90.95}
-    // ,{rowID:6,mnt:"6/2019",fcValue:420,poValue:410,saleValue:390,diffValue:30,percTarget:92.86}
-    // ,{rowID:7,mnt:"7/2019",fcValue:420,poValue:420,saleValue:398,diffValue:22,percTarget:94.76}
-    // ,{rowID:8,mnt:"8/2019",fcValue:420,poValue:420,saleValue:406,diffValue:14,percTarget:96.67}
-    // ,{rowID:9,mnt:"9/2019",fcValue:420,poValue:440,saleValue:414,diffValue:6,percTarget:98.57}
-    // ,{rowID:10,mnt:"10/2019",fcValue:420,poValue:430,saleValue:400,diffValue:20,percTarget:95.24}
-    // ,{rowID:11,mnt:"11/2019",fcValue:400,poValue:375,saleValue:350,diffValue:50,percTarget:87.50}
-    // ,{rowID:12,mnt:"12/2019",fcValue:400,poValue:0,saleValue:0,diffValue:400,percTarget:0}
-    // ],
-
+     dataDrawingGraph:[],
+     dataDrawingGraph2:[],
 
     dataDrawingYY:[],
+
+    dataDrawingYYgraph:[],
+dataDrawingYYgraph2:[],
+
      dataDrawingEXYY:[],
     dataDrawingDMYY:[],
 
@@ -1145,6 +1309,13 @@ export default {
 
 
 
+
+    dataDrawing2:[],
+     dataDrawingEX2:[],
+    dataDrawingDM2:[],
+
+
+   
 
     fieldData:[
       
@@ -1586,7 +1757,7 @@ export default {
     },
     dataSelect:[],
     objSelect:{},
-
+    bar:null,
 
     dataDashboardobj:{},
     dataDashboardEXobj:{},
@@ -1625,44 +1796,47 @@ export default {
     },
 
 
+
     Settyperept(){
 
+        
+
+
+             this.dataDrawing    =  [];
+             this.dataDrawingEX  =  [];
+             this.dataDrawingDM  =  [];
+
+             if (this.chktyperept)
+             {
+              this.dataDrawing    =  this.dataDrawingYY;
+              this.dataDrawingEX =  this.dataDrawingEXYY;
+              this.dataDrawingDM =  this.dataDrawingDMYY;
+
+             } else {
+ 
+               this.dataDrawing   =  this.dataDrawingMM;  
+               this.dataDrawingEX =  this.dataDrawingEXMM; 
+               this.dataDrawingDM =  this.dataDrawingDMMM; 
+ 
+             }
+
+            
+      
+
+             
+      
 
 
 
-            this.fieldData = [];
+               this.$refs.gridDrawing.reset();
+               this.$refs.gridDrawing2.reset();
+               this.$refs.gridDrawing3.reset();
+
+               this.$refs.gridDrawingM.reset();
+               this.$refs.gridDrawing2M.reset();
+               this.$refs.gridDrawing3M.reset();
 
 
-           if (this.chktyperept)
-           {
-            this.fieldData =this.fieldDrawingsum;
-           }
-           else {
-                this.fieldData =this.fieldDrawing;
-           }
-
-
-      this.dataDrawing =  [];
-
-      if (this.chktyperept)   
-      {
-            this.dataDrawing =  this.dataDrawingYY;
-            this.dataDrawingEX =  this.dataDrawingEXYY;
-            this.dataDrawingDM =  this.dataDrawingDMYY;
-     
-      } 
-      else
-      {
-            this.dataDrawing =  this.dataDrawingMM;
-             this.dataDrawingEX =  this.dataDrawingEXMM;
-             this.dataDrawingDM =  this.dataDrawingDMMM;     
-      }
-
-
-
-              this.$refs.gridDrawing.reset();
-              this.$refs.gridDrawing2.reset();
-              this.$refs.gridDrawing3.reset();
 
     },
 
@@ -1691,9 +1865,17 @@ export default {
               return ;
             }
 
+
+
             this.dataDrawingMM = [];
             this.dataDrawingYY = [];
+
+
             this.dataDrawing = [];
+
+
+            this.dataDrawingYYgraph=[];
+            this.dataDrawingYYgraph2=[];
 
 
 
@@ -1711,63 +1893,143 @@ export default {
             numA  = GetDateTimeFormat( date,"MM");
             numYY = GetDateTimeFormat( date,"YYYY");
             
-            if (numYY > numYYchk )
-            {
-                numA=12;
-            }
-
-
-
-             res.forEach((d,i) => {
-
-
-             this.dataDrawingYY.push(d);
-
-
-            });
-  
-
-
-        
-
-
-
-      if (this.chktyperept)   
-      {
-            
-
-             res.forEach((d,i) => {
-
-
-             this.dataDrawing.push(d);
-
-
-            });
       
 
-      } 
-      else 
-      {
+            if (this.chktyperept)  
+            {
+               numA=12;  
+               
+
+            } else {
+
+               numA=GetDateTimeFormat( date,"MM");
+            }
+             
+             if (numYY > numYYchk )
+             {
+                numA=12;
+             }
 
 
-                  res.forEach((d,i) => {
+            this.dataDrawingGraph=[];
+            this.dataDrawingGraph2=[];
 
-            if (i<numA ) {
+            this.dataDrawingYYgraph.push(0);
+            this.dataDrawingYYgraph2.push(0);
 
 
-            this.dataDrawing.push(d);
+  
 
+             res.forEach((d,i) => {
+
+
+
+               if (i<numA ) {
+
+
+              this.dataDrawingMM.push(d);   
+
+              this.dataDrawingYYgraph.push(Number(res[i].totsale_value));
+
+               }
+                 
+              this.dataDrawingYY.push(d);
+
+              this.dataDrawingYYgraph2.push(Number(res[i].target_value));
+        
+
+            });
+
+      
+
+    
+            if (this.chktyperept)  
+            {
+               this.dataDrawing = this.dataDrawingYY;
+
+            } else {
+
+                this.dataDrawing = this.dataDrawingMM;
             }
 
 
 
 
 
+             
 
-            });
+
+     this.dataDrawingGraph = this.dataDrawingYYgraph;
+     
+     this.dataDrawingGraph2 = this.dataDrawingYYgraph2;
+
+
+  
+
+   var ctx = document.getElementById('graph1').getContext('2d')
+
+   
+
+   this.bar = new Chart(ctx, {
+   type: 'line',
+      options: {
+      responsive: true,
+
+      title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
+            text: "กราฟสรุปยอดขายประจำเดือน-ภาพรวม",
+            display: true
+         }
+
+
+
+  },
+      data: {
+        labels: ['','ม.ค.', 'ก.พ.', 'มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],
+        datasets: [
+          {
+   backgroundColor: 'rgba(55, 173, 221, 0.1)',
+      borderColor: 'rgba(55, 173, 221, 1.0)',
+            label: 'เป้าหมายประจำเดือน (ลบ.)',
+         
+            data: this.dataDrawingGraph2
+
+          },
+          {
+
+            backgroundColor: 'rgba(217, 136, 128   , 0.4)',
+            borderColor: 'rgba(217, 136, 128  , 1.0)',       
+  
+            label: 'ยอดขายประจำเดือน (ลบ.)',
+            data: this.dataDrawingGraph
+          }
+          
+          
+          
+          
+          ]
+      }
+      
+    });
+
+
+
+
+   
+
+    
+
+
+
 
         
-      }
+
+      
+
+     
+
+
+        
+      
      
 
 
@@ -1780,7 +2042,7 @@ export default {
             if (i<numA ) {
 
 
-            this.dataDrawingMM.push(d);
+            
 
 
             this.setdataDashboardobj= []; 
@@ -1826,6 +2088,7 @@ export default {
              this.dataDrawingEXMM = [];
              this.dataDrawingEXYY = [];
              this.dataDrawingEX =  [];
+              this.dataDrawingEX2 =  [];
 
              let date = new Date();
 
@@ -1844,65 +2107,123 @@ export default {
             numA = GetDateTimeFormat( date,"MM");
             numYY = GetDateTimeFormat( date,"YYYY");
             
-            if (numYY > numYYchk )
+            if (this.chktyperept)  
+            {
+           
+
+                numA=12;
+            } else {
+
+              numA=GetDateTimeFormat( date,"MM");
+              
+            }
+             
+             if (numYY > numYYchk )
             {
                 numA=12;
             }
+            this.dataDrawingYYgraph=[];
+             this.dataDrawingYYgraph2=[];
 
 
+       this.dataDrawingGraph=[];
+             this.dataDrawingGraph2=[];
 
+              this.dataDrawingYYgraph.push(0);
+               this.dataDrawingYYgraph2.push(0);
 
 
              res.forEach((d,i) => {
 
 
-             this.dataDrawingEXYY.push(d);
+            
+ 
+               
 
+               if (i<numA ) {
+              this.dataDrawingYYgraph.push(Number(res[i].totsale_value));
+              this.dataDrawingEXMM.push(d);
+               }
+                 
+              this.dataDrawingEXYY.push(d);
+              this.dataDrawingYYgraph2.push(Number(res[i].target_value));
+        
 
             });
+
+      
+    
+            if (this.chktyperept)  
+            {
+               this.dataDrawingEX = this.dataDrawingEXYY;
+
+            } else {
+
+                this.dataDrawingEX = this.dataDrawingEXMM;
+            }
+
+    
+
+
+     this.dataDrawingGraph = this.dataDrawingYYgraph;
+     
+     this.dataDrawingGraph2 = this.dataDrawingYYgraph2;
+
   
 
 
-        this.dataDrawingEX = [];
 
 
 
-      if (this.chktyperept)   
-      {
-             
+   var ctxEX = document.getElementById('graphEX').getContext('2d')
 
-             res.forEach((d,i) => {
+   this.barEX = new Chart(ctxEX, {
+   type: 'line',
+      options: {
+    responsive: true,
 
+      title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
+            text: "กราฟสรุปยอดขายประจำเดือน-ขายต่างประเทศ",
+            display: true
+         }
+  },
+      data: {
+        labels: ['','ม.ค.', 'ก.พ.', 'มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],
+        datasets: [
+          {
+   backgroundColor: 'rgba(55, 173, 221, 0.1)',
+      borderColor: 'rgba(55, 173, 221, 1.0)',
+            label: 'เป้าหมายประจำเดือน (ลบ.)',
+         
+            data: this.dataDrawingGraph2
 
-             this.dataDrawingEX.push(d);
-
-
-            });
+          },
+          {
+          
+    
+            label: 'ยอดขายประจำเดือน (ลบ.)',
+            data: this.dataDrawingGraph
+          }
+          
+          
+          
+          
+          ]
+      }
       
-
-      } 
-      else 
-      {
-
-
-                  res.forEach((d,i) => {
-
-            if (i<numA ) {
-
-
-            this.dataDrawingEX.push(d);
-
-            }
+    });
 
 
 
 
 
 
-            });
+
+
+
 
         
-      }
+      
      
 
 
@@ -1910,7 +2231,7 @@ export default {
             res.forEach((d,i) => {
 
             if (i<numA ) {
-            this.dataDrawingEXMM.push(d);
+         
 
             this.setdataDashboardEXobj= []; 
 
@@ -1930,6 +2251,18 @@ export default {
 
 
 
+                       if (this.dataDashboardEXobj.cum_diff_value < 0 )
+                      document.getElementById('1NOK').style.display = "block";
+                      else
+                      document.getElementById('1NOK').style.display = "none";
+
+                      if (this.dataDashboardEXobj.cum_diff_value < 0 )
+                      document.getElementById('1OK').style.display = "none";
+                      else
+                      document.getElementById('1OK').style.display = "block";
+
+
+
             
           
        
@@ -1940,8 +2273,17 @@ export default {
 
 
 
+        
+
+
+
+
 
       });
+
+
+
+
       API.reptsummarysaleGetDataGrid({
    
        data:{yr:this.txtSearch,tsale:"0"},    
@@ -1958,11 +2300,10 @@ export default {
             }
 
 
-
              this.dataDrawingDMYY = [];
              this.dataDrawingDMMM = [];
-                   this.dataDrawingDM = [];
-
+             this.dataDrawingDM = [];
+             this.dataDrawingDM2 = [];
 
              let date = new Date();
 
@@ -1976,67 +2317,130 @@ export default {
 
             numYYchk = this.txtSearch;
 
+
+            this.dataDrawingGraph=[];
+            this.dataDrawingGraph2=[];
+
+            this.dataDrawingYYgraph=[];
+            this.dataDrawingYYgraph2=[];
+
+            this.dataDrawingYYgraph.push(0);
+            this.dataDrawingYYgraph2.push(0);
             
           
             numA  = GetDateTimeFormat( date,"MM");
             numYY = GetDateTimeFormat( date,"YYYY");
             
-            if (numYY > numYYchk )
+            if (this.chktyperept)  
+            {
+              numA=12;
+
+
+            } else {
+
+              
+
+                 numA=GetDateTimeFormat( date,"MM");
+            }
+             
+             if (numYY > numYYchk )
             {
                 numA=12;
             }
+
+          
 
 
              res.forEach((d,i) => {
 
 
-             this.dataDrawingDMYY.push(d);
+          
 
+
+
+               if (i<numA ) {
+              this.dataDrawingYYgraph.push(Number(res[i].totsale_value));
+
+                 this.dataDrawingDMMM.push(d);
+               }
+                 
+                this.dataDrawingDMYY.push(d);
+                this.dataDrawingYYgraph2.push(Number(res[i].target_value));
+        
 
             });
 
+      
 
+            if (this.chktyperept)  
+            {
+               this.dataDrawingDM = this.dataDrawingDMYY;
+
+            } else {
+
+                this.dataDrawingDM = this.dataDrawingDMMM;
+            }
+    
+
+
+            this.dataDrawingGraph = this.dataDrawingYYgraph;
+     
+            this.dataDrawingGraph2 = this.dataDrawingYYgraph2;
+
+
+
+
+
+   var ctxDM = document.getElementById('graphDM').getContext('2d')
+
+   this.barDM = new Chart(ctxDM, {
+   type: 'line',
+      options: {
+    responsive: true    , title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
+            text: "กราฟสรุปยอดขายประจำเดือน-ขายในประเทศ",
+            display: true
+         }
+  },
+      data: {
+        labels: ['','ม.ค.', 'ก.พ.', 'มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],
+        datasets: [
+          {
+   backgroundColor: 'rgba(55, 173, 221, 0.1)',
+      borderColor: 'rgba(55, 173, 221, 1.0)',
+            label: 'เป้าหมายประจำเดือน (ลบ.)',
+         
+            data: this.dataDrawingGraph2
+
+          },
+          {
+          
+    
+            label: 'ยอดขายประจำเดือน (ลบ.)',
+            data: this.dataDrawingGraph
+          }
+          
+          
+          
+          
+          ]
+      }
+      
+    });
 
   
 
 
 
-      if (this.chktyperept)   
-      {
+     
+
             
-
-             res.forEach((d,i) => {
-
-
-             this.dataDrawingDM.push(d);
-
-
-            });
       
 
-      } 
-      else 
-      {
 
 
-                  res.forEach((d,i) => {
-
-            if (i<numA ) {
-
-
-            this.dataDrawingDM.push(d);
-
-            }
-
-
-
-
-
-
-            });
 
         
-      }
+      
      
 
 
@@ -2051,7 +2455,7 @@ export default {
 
             if (i<numA ) {
 
-                  this.dataDrawingDMMM.push(d);
+     
 
             this.setdataDashboardDMobj= []; 
 
@@ -2064,52 +2468,168 @@ export default {
 
 
 
+
+
             });
 
 
             
+                       if (this.setdataDashboardDMobj.cum_diff_value < 0 )
+                      document.getElementById('2NOK').style.display = "block";
+                      else
+                      document.getElementById('2NOK').style.display = "none";
+
+                      if (this.setdataDashboardDMobj.cum_diff_value < 0 )
+                      document.getElementById('2OK').style.display = "none";
+                      else
+                      document.getElementById('2OK').style.display = "block";
  
 
 
         }
 
-
-
-
-
       });
+
+
 
 
             API.reptsummarysaleGetDataDashboardAll({
               data:{yr:this.txtSearch,tsale:""},              
               callblack: res => {
-                  this.dataDashboardAll =  res ;
-                  this.dataDashboardobjYY = res[0];
 
 
- 
+                  this.dataDashboardAll   =  res ;
+                  this.dataDashboardobjYY =  res[0];
+             
+             
+           
+
+
+
+
               }
+
+
             });
 
 
             API.reptsummarysaleGetDataDashboardAll({
               data:{yr:this.txtSearch,tsale:"1"},              
               callblack: res => {
-                  this.dataDashboardEX =  res ;
-                  this.dataDashboardEXobjYY = res[0];
+
+
+                  this.dataDashboardEX      =  res ;
+                  this.dataDashboardEXobjYY =  res[0];
+
+
+
+               res.forEach((d,i) => {
+
+           
+
+     
+
+            this.setdataDashboardDMobj= []; 
+
+            this.setdataDashboardDMobj.push(d);
+
+
+            this.dataDashboardDMobj = this.setdataDashboardDMobj[0];
+
+          
+                       if (this.dataDashboardDMobj.diff_value < 0 )
+                      document.getElementById('11NOK').style.display = "block";
+                      else
+                      document.getElementById('11NOK').style.display = "none";
+
+                      if (this.dataDashboardDMobj.diff_value < 0 )
+                      document.getElementById('11OK').style.display = "none";
+                      else
+                      document.getElementById('11OK').style.display = "block";
+
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
+                  
                    
               }
+
+
             });
+                
+             
+            
+
+
+                 
+
+
 
             API.reptsummarysaleGetDataDashboardAll({
               data:{yr:this.txtSearch,tsale:"0"},              
               callblack: res => {
+
+
                   this.dataDashboardDM =  res ;
                   this.dataDashboardDMobjYY = res[0];
-              }
+
+
+
+  res.forEach((d,i) => {
+
+           
+
+     
+
+            this.setdataDashboardDMobj= []; 
+
+            this.setdataDashboardDMobj.push(d);
+
+
+            this.dataDashboardDMobj = this.setdataDashboardDMobj[0];
+
+
+                       if (this.dataDashboardDMobjYY.diff_value < 0 )
+                      document.getElementById('22NOK').style.display = "block";
+                      else
+                      document.getElementById('22NOK').style.display = "none";
+
+                      if (this.dataDashboardDMobjYY.diff_value < 0 )
+                      document.getElementById('22OK').style.display = "none";
+                      else
+                      document.getElementById('22OK').style.display = "block";
+
+
+
+
+
             });
 
 
+
+
+
+
+
+
+
+              }
+              
+            });
+
+
+          
 
 
 
