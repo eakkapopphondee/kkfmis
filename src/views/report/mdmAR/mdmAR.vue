@@ -314,6 +314,7 @@
                     :o_navfooter_visible="false"                                        
                   ></grid>
                 <p>(หน่วย : ล้านบาท)</p>
+                <p>หมายเหตุ : ข้อมูลยอดลูกหนี้เป็นยอดหนี้จากข้อมูลย้อนหลัง 1 วัน </p>
                 </b-card-body>
               </b-collapse>
             </b-card>
@@ -698,7 +699,7 @@ export default {
                                                                                                 //this.dataDrawingARAll.push(d);   
                                                                                                 //console.log(d.balance_amt);           
                                                                                                 this.dataDrawingARValueAll.tsale_idx = d.tsale;
-                                                                                                this.dataDrawingARValueAll.tsale = "รวม";                                              
+                                                                                                this.dataDrawingARValueAll.tsale = "รวมยอดหนี้";                                              
                                                                                                 this.dataDrawingARValueAll.balance_amt_indue = d.balance_amt_indue;
                                                                                                 this.dataDrawingARValueAll.balance_out_1 = d.balance_out_1;
                                                                                                 this.dataDrawingARValueAll.balance_out_2 = d.balance_out_2;
