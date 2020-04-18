@@ -48,7 +48,7 @@ export default {
   /*asyncComputed: {
     async myResolvedValue() {
       return await AlertMessage().then((ok) => { console.log(ok); });
-    }
+    }  ////BEE
   },*/
   watch: {
     $route: function(p) {
