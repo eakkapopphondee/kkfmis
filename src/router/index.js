@@ -37,7 +37,8 @@ const reptsummarysale  = () =>import('@/views/report/reptsummarysale')
 
 const mdmAR = () =>import('@/views/report/mdmAR/mdmAR')
 
-
+const Rroapercent = () =>import('@/views/report/roapercent')
+const RMaterial = () =>import('@/views/report/reptmaterial')
 
 Vue.use(Router)
 
@@ -103,13 +104,39 @@ export default new Router({
 
         {
           path: '/report/mdmAR',
-          name: 'ลูกหนี้',
+          name: 'ลูกหนี้ 1',
           component: mdmAR
         }
       ]
 
+    },
+    {
+      path: '/report',     
+      name: 'ROA ยอดขาย และ % กำไร',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/roapercent',
+          name: 'ROA ยอดขาย และ % กำไร 1',
+          component: Rroapercent
+        }
+      ]
+    },
+    {
+      path: '/report',     
+      name: 'วัตถุดิบ',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/reptmaterial',
+          name: 'วัตถุดิบ',
+          component: RMaterial
+        }
+      ]
     }
-    
+
     ,
     {
       path: '/user',

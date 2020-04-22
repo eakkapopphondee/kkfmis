@@ -49,18 +49,10 @@ export default {
           // ]
         },
 
-
-
-
-
-
         {
           name: 'ลูกหนี้',        
           
           url: '/report/mdmAR'
-
-
-    
         },
         {
           name: 'คลังสินค้าสำเร็จรูป',
@@ -89,6 +81,10 @@ export default {
         {
           name: 'คลังพัสดุ',
           url: '/dashboard'
+        },
+        {
+          name: 'ROA ยอดขาย % กำไร',
+          url: '/report/roapercent'
         }
       ]
     }
