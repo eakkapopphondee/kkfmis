@@ -30,8 +30,7 @@
                         v-model="txtSearch"
                         @change="Search"
                         :plain="true"
-                        :options="[2019,2020]"
-                        value="Please select"
+                        :options="iSeleY" value="Please select">
                       ></b-form-select>
                     </b-form-group>
                   </b-col>
@@ -47,11 +46,11 @@
                             style="background-image: url('img/brand/Flagex.png'); background-repeat: no-repeat;
                               background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
                           >
-                            
+                            ค่าใช้จ่ายสะสม : {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
                             <span
                               class="txt_smaller"
-                            >
-                            ค่าใช้จ่ายสะสม : {{this.dataDrawingexpenValue.total_cost| number(2)}} (ลบ.)
+                            > 
+
                             </span>
                           </div>
                           <b-row>
@@ -450,12 +449,22 @@ export default {
 
       startRow: 0,
       stopRow: 25,
-
+      
+      iSeleY: [],
       dataDrawingARAll: [],
-      dataDrawingexpenValue: {},
+      dataDrawingexpenValue: {
+            yr :0, total_cost :0, material_cost:0,
+            material_per :0, employee_cost :0, employee_per  :0,
+            paoun_cost :0, paoun_per:0,production_cost :0, production_per:0,
+            sale_cost:0, sale_per:0, manage_cost :0,manage_per:0,dp_cost:0,dp_per:0
+        
+      },
       dataDrawingexpenValuegraph: {},
       dataDrawingexpenValueByMn: [],
-      dataDrawingexpenValueByMnQ :{},
+      dataDrawingexpenValueByMnQ :{ total_cost :0, material_cost:0, employee_cost :0,  
+                                    paoun_cost :0, production_cost :0, sale_cost:0, 
+                                    manage_cost :0,dp_cost:0
+                                  },
 
       dataDrawingexpenValueByMngraph1: [],
       dataDrawingexpenValueByMngraph2: [],
@@ -588,6 +597,8 @@ export default {
     },
 
     QueryData() {
+      //  this.dataDrawingexpenValue = {};  
+      //this.dataDrawingexpenValuegraph = {};  
       API.GetDataKexpensestotal({
         data: { yr: this.txtSearch },
         callblack: res => {
@@ -595,15 +606,39 @@ export default {
           let _statusA = "";
           if (res.length <= 0) {
             AlertMessage("error", "ไม่พบข้อมูลต้นทุนและค่าใช้จ่ายภาพรวม");
+            this.dataDrawingexpenValue.total_cost = 0;
+            this.dataDrawingexpenValue.material_cost = 0;
+            this.dataDrawingexpenValue.material_per = 0;
+            this.dataDrawingexpenValue.employee_cost = 0;
+            this.dataDrawingexpenValue.employee_per = 0;
+            this.dataDrawingexpenValue.paoun_cost = 0;
+            this.dataDrawingexpenValue.paoun_per = 0;
+            this.dataDrawingexpenValue.production_cost = 0;
+            this.dataDrawingexpenValue.production_per = 0;
+            this.dataDrawingexpenValue.sale_cost = 0;
+            this.dataDrawingexpenValue.sale_per = 0;
+            this.dataDrawingexpenValue.manage_cost = 0;
+            this.dataDrawingexpenValue.manage_per = 0;
+            this.dataDrawingexpenValue.dp_cost = 0;
+            this.dataDrawingexpenValue.dp_per = 0;
+
+            this.dataDrawingexpenValuegraph.material_cost = 0;
+            this.dataDrawingexpenValuegraph.employee_cost = 0;
+            this.dataDrawingexpenValuegraph.paoun_cost = 0;
+            this.dataDrawingexpenValuegraph.production_cost = 0;
+            this.dataDrawingexpenValuegraph.sale_cost = 0;
+            this.dataDrawingexpenValuegraph.manage_cost = 0;
+            this.dataDrawingexpenValuegraph.dp_cost = 0;
+
             return;
           }
-//console.log(res);
+ console.log(res);
           res.forEach((d, i) => {
             //this.dataDrawingARAll.push(d);
-            
+          
             this.dataDrawingexpenValue.yr = d.yr;
             this.dataDrawingexpenValue.total_cost = d.total_cost;
-            console.log(this.dataDrawingexpenValue.total_cost);
+            
             this.dataDrawingexpenValue.material_cost = d.material_cost;
             this.dataDrawingexpenValue.material_per = d.material_per;
             this.dataDrawingexpenValue.employee_cost = d.employee_cost;
@@ -655,7 +690,7 @@ export default {
                           }
                         });
                          
-          
+           console.log(this.txtSearch);
           API.GetDataKexpensesBymn({
             data: { yr: this.txtSearch },
             callblack: res => {
@@ -665,8 +700,9 @@ export default {
                 AlertMessage("error", "ไม่พบข้อมูล");
                 return;
               }
-                console.log(res);
-//yr	mn	material_cost	employee_cost	paoun_cost	production_cost	sale_cost	manage_cost	dp_cost	Total_cost
+             console.log(res);
+              
+
 this.dataDrawingexpenValueByMn = [];
 this.dataDrawingexpenValueByMnQ =[];
 this.dataDrawingGraph=[];
@@ -697,7 +733,8 @@ this.dataDrawingLabel =[];
 this.dataDrawingYYLabel=[]; 
 this.dataDrawingYYLabel.push(0);
 
-              var ii;   
+              var ii; 
+               
              for (ii = 0; ii < res.length; ii++) {
                 console.log(res[ii]["mn"]);
                 //res[0]["yr"][i].toString(),
@@ -1067,11 +1104,24 @@ this.dataDrawingYYLabel.push(0);
 
   mounted() {
    
-    let date = new Date();
+    //let date = new Date();
+   
+    var iii;
+    var Selet = new Array();
+     let date = new Date();
+     Selet[0] = date.getFullYear();
+     for (iii = 1; iii < 5; iii++) 
+     {
+        Selet[iii] = date.getFullYear()-iii;
+     }
+     this.iSeleY = Selet;
+    //   console.log("555555");
+  //   H1 = [];
+
     this.txtSearch = date.getFullYear();
 
-    this.Search();
-    console.log(this.txtSearch);
+    //this.Search();
+    //console.log(this.txtSearch);
     this.QueryData();
   }
 };
