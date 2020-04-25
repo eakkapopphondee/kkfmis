@@ -67,10 +67,17 @@
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <div style>
-                      <canvas id="graph1"></canvas>
-                    </div>
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟผลการดำเนินงานภาพรวม" align="center">
+                      <b-card-text>
+                        <div style>
+                                    <canvas id="graph1"></canvas>
+                                  </div>
+
+                      </b-card-text>
+                    </b-card>
                   </b-col>
+
+
                 </b-row>
               </b-card-body>
 
@@ -96,15 +103,25 @@
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <div style>
-                      <canvas id="graph2"></canvas>
-                    </div>
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                      <b-card-text>
+                        <div style>
+                                    <canvas id="graph2"></canvas>
+                                  </div>
+
+                      </b-card-text>
+                    </b-card>
                   </b-col>
 
                   <b-col sm="6">
-                    <div style>
-                      <canvas id="graph3"></canvas>
-                    </div>
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
+                      <b-card-text>
+                        <div style>
+                                    <canvas id="graph3"></canvas>
+                                  </div>
+
+                      </b-card-text>
+                    </b-card>
                   </b-col>
                 </b-row>
               </b-card-body>
@@ -131,15 +148,25 @@
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <div style>
-                      <canvas id="graph4"></canvas>
-                    </div>
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                      <b-card-text>
+                        <div style>
+                                    <canvas id="graph4"></canvas>
+                                  </div>
+
+                      </b-card-text>
+                    </b-card>
                   </b-col>
 
                   <b-col sm="6">
-                    <div style>
-                      <canvas id="graph5"></canvas>
-                    </div>
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
+                      <b-card-text>
+                        <div style>
+                                    <canvas id="graph5"></canvas>
+                                  </div>
+
+                      </b-card-text>
+                    </b-card>
                   </b-col>
                 </b-row>
               </b-card-body>
@@ -459,7 +486,7 @@ export default {
               responsive: true,
               title: {
                 // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                text: "กราฟผลการดำเนินงานภาพรวม",
+               
                 display: true
               }
             },
@@ -532,7 +559,7 @@ export default {
                       responsive: true,
                       title: {
                         // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                        text: "กราฟROA (%)",
+                        //text: "กราฟROA (%)",
                         display: true
                       }
                     },
@@ -564,7 +591,7 @@ export default {
                     responsive: true,
                     title: {
                       // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                      text: "กราฟกำไรจากการดำเนินงาน (%)",
+                    //  text: "กราฟกำไรจากการดำเนินงาน (%)",
                       display: true
                     }
                   },
@@ -634,7 +661,7 @@ export default {
                       responsive: true,
                       title: {
                         // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                        text: "กราฟROA (%)",
+                       // text: "กราฟROA (%)",
                         display: true
                       }
                     },
@@ -666,7 +693,7 @@ export default {
                     responsive: true,
                     title: {
                       // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                      text: "กราฟกำไรจากการดำเนินงาน (%)",
+                     // text: "กราฟกำไรจากการดำเนินงาน (%)",
                       display: true
                     }
                   },
