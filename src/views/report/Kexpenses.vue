@@ -47,10 +47,12 @@
                             style="background-image: url('img/brand/Flagex.png'); background-repeat: no-repeat;
                               background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
                           >
-                            ค่าใช้จ่ายสะสม : {{dataDrawingexpenValue.total_cost| number(2)}} (ลบ.)
+                            
                             <span
                               class="txt_smaller"
-                            ></span>
+                            >
+                            ค่าใช้จ่ายสะสม : {{this.dataDrawingexpenValue.total_cost| number(2)}} (ลบ.)
+                            </span>
                           </div>
                           <b-row>
                             <b-col sm="2">
@@ -59,7 +61,7 @@
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.material_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.material_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -67,7 +69,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.material_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.material_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -86,7 +88,7 @@
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.employee_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.employee_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -94,7 +96,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.employee_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -111,7 +113,7 @@
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ปะอวน (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -119,7 +121,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.paoun_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -138,7 +140,7 @@
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.production_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.production_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -146,7 +148,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.production_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.production_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -163,7 +165,7 @@
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การขาย (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.sale_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.sale_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -171,7 +173,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.sale_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -188,7 +190,7 @@
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การบริหาร (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.manage_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.manage_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -196,7 +198,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.manage_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -213,7 +215,7 @@
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ตัดจ่าย/เสื่อมราคา (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.dp_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.dp_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -221,7 +223,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.dp_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -598,9 +600,10 @@ export default {
 //console.log(res);
           res.forEach((d, i) => {
             //this.dataDrawingARAll.push(d);
-            //console.log(d.balance_amt);
+            
             this.dataDrawingexpenValue.yr = d.yr;
             this.dataDrawingexpenValue.total_cost = d.total_cost;
+            console.log(this.dataDrawingexpenValue.total_cost);
             this.dataDrawingexpenValue.material_cost = d.material_cost;
             this.dataDrawingexpenValue.material_per = d.material_per;
             this.dataDrawingexpenValue.employee_cost = d.employee_cost;
@@ -662,6 +665,7 @@ export default {
                 AlertMessage("error", "ไม่พบข้อมูล");
                 return;
               }
+                console.log(res);
 //yr	mn	material_cost	employee_cost	paoun_cost	production_cost	sale_cost	manage_cost	dp_cost	Total_cost
 this.dataDrawingexpenValueByMn = [];
 this.dataDrawingexpenValueByMnQ =[];
@@ -692,7 +696,7 @@ this.dataDrawingYYgraph7.push(0);
 this.dataDrawingLabel =[];
 this.dataDrawingYYLabel=[]; 
 this.dataDrawingYYLabel.push(0);
- //console.log(res.length);
+
               var ii;   
              for (ii = 0; ii < res.length; ii++) {
                 console.log(res[ii]["mn"]);
@@ -1062,12 +1066,13 @@ this.dataDrawingYYLabel.push(0);
   },
 
   mounted() {
-    // console.log("555555");
+   
     let date = new Date();
     this.txtSearch = date.getFullYear();
 
     this.Search();
-    //this.QueryData();
+    console.log(this.txtSearch);
+    this.QueryData();
   }
 };
 </script>
