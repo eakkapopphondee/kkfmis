@@ -88,9 +88,9 @@
 
 
 
-   <div class="col-xs-12 col-sm-4 col-md-4" >
+   <div class="col-xs-12 col-sm-4 col-md-4" @click="to_expensesall">
       <a class="pointer" data-bind="click: manageGalleries">
-        <div class="thumbnail_dis">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-calculator fa-5x"></i>
@@ -148,7 +148,7 @@
             <i class="icon-user-follow fa-5x"></i>
           </p>
           <div class="caption" style="text-align: center;">
-            <h3>ROA ยอดขาย และ % กำไร</h3>
+            <h3>ROA และ % กำไร</h3>
           </div>
         </div>
       </a>

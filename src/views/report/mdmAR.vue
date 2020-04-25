@@ -24,7 +24,7 @@
                           <div class="card-body border-left-1">
                             <div class="row">
                               <div class="col">
-                                <p class="card-title text-title"><h3>ลูกหนี้รวม (ลบ.)</h3></p>
+                                <p class="card-title text-title"><h3>ลูกหนี้รวม (ลบ.)</h3>
                                 <h2
                                   class="card-text text-amount"
                                 >{{dataDashboardARAllObj.balance_amt| number(2)}}</h2>
@@ -51,7 +51,7 @@
                           <div class="card-body border-left-2">
                             <div class="row">
                               <div class="col">
-                                <p class="card-title text-title"><h2>ไม่ครบกำหนด (ลบ.)</h2></p>
+                                <p class="card-title text-title"><h2>ไม่ครบกำหนด (ลบ.)</h2>
                                 <h2
                                   class="card-text text-amount"
                                 >{{dataDashboardARAllObj.balance_amt_indue| number(2)}}</h2>
@@ -86,7 +86,7 @@
                           <div class="card-body border-left-3">
                             <div class="row">
                               <div class="col">
-                                <p class="card-title text-title"><h2>เกินกำหนด (ลบ.)</h2></p>
+                                <p class="card-title text-title"><h2>เกินกำหนด (ลบ.)</h2>
                                 <h2
                                   class="card-text text-amount"
                                 >{{dataDashboardARAllObj.balance_amt_outdue| number(2)}}</h2>

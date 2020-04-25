@@ -83,7 +83,7 @@ export default {
           url: '/dashboard'
         },
         {
-          name: 'ROA ยอดขาย % กำไร',
+          name: 'ROA & % กำไร',
           url: '/report/roapercent'
         }
       ]
