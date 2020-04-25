@@ -94,8 +94,8 @@
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-4">
-      <a class="pointer" style="text-decoration: none;" data-bind="click: viewAnalytics">
-        <div class="thumbnail_dis">
+      <a class="pointer" style="text-decoration: none;"  @click="to_expensesall">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-calculator fa-5x"></i>
@@ -400,6 +400,11 @@ export default {
     {
       this.$router.push("/report/mdmAR")
     },
+ to_expensesall()
+    {
+      this.$router.push("/report/Kexpenses")
+    },
+    
     onSubmit(evt) {
       evt.preventDefault();
        window.location.href = "/member/signin";

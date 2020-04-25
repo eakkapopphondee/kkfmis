@@ -78,8 +78,8 @@ export default {
         },
         {
           name: 'ค่าใช้จ่าย',
-        
-          url: '/dashboard'
+          url: '/report',
+          url: '/report/Kexpenses'
         },
         {
           name: 'งบประมาณโครงการ',
