@@ -226,10 +226,20 @@ export const API = {
         Call(o);
     },
 
-
+//
     GetDataARDetail: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmARDetail/SearchDetail' });
         Call(o);
+    },
+    //---- รายงานค่าใช้จ่าย ------//
+    GetDataKexpensestotal: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmKexpensestotal/SearchKexpensestotal' });
+        Call(o);
+    },
+
+
+    GetDataKexpensesBymn: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmKexpensesbymn/SearchKexpensesBymn' });
     },
 
     GetDataROASummary: (o) => {     

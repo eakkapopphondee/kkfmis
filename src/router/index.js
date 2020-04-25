@@ -37,6 +37,7 @@ const reptsummarysale  = () =>import('@/views/report/reptsummarysale')
 
 const mdmAR = () =>import('@/views/report/mdmAR/mdmAR')
 
+const Kexpenses  = () =>import('@/views/report/Kexpenses')
 const Rroapercent = () =>import('@/views/report/roapercent')
 const RMaterial = () =>import('@/views/report/reptmaterial')
 
@@ -135,6 +136,21 @@ export default new Router({
           component: RMaterial
         }
       ]
+    }
+    ,
+    {
+      path: '/report',     
+      name: 'ค่าใช้จ่ายในการดำเนินงาน',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/Kexpenses',
+          name: 'ค่าใช้จ่าย',
+          component: Kexpenses
+        }
+      ]
+
     }
 
     ,

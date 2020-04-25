@@ -70,8 +70,8 @@ export default {
         },
         {
           name: 'ค่าใช้จ่าย',
-        
-          url: '/dashboard'
+          url: '/report',
+          url: '/report/Kexpenses'
         },
         {
           name: 'งบประมาณโครงการ',
@@ -83,7 +83,7 @@ export default {
           url: '/dashboard'
         },
         {
-          name: 'ROA ยอดขาย % กำไร',
+          name: 'ROA & % กำไร',
           url: '/report/roapercent'
         }
       ]
