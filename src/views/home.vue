@@ -413,13 +413,11 @@ export default {
     {
       this.$router.push("/report/mdmAR")
     },
-<<<<<<< HEAD
  to_expensesall()
     {
       this.$router.push("/report/Kexpenses")
     },
     
-=======
     to_roapercent()
     {
       this.$router.push("/report/roapercent")
@@ -427,7 +425,6 @@ export default {
     {
       this.$router.push("/report/reptmaterial")
     },
->>>>>>> f3e339778f956a2d8e5b3e844b1c189f184f382e
     onSubmit(evt) {
       evt.preventDefault();
        window.location.href = "/member/signin";
