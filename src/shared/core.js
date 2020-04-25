@@ -254,9 +254,17 @@ export const API = {
     GetDataRoaPercentQuarter: (o) => {     
         Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchRoaPercentQuarter' });
         Call(o);
+    },
+
+    GetDataSearchMaterial: (o) => {         
+        Object.assign(o, { method: 'Post', path: 'api/mdmMaterial/SearchMaterial' });
+        Call(o);
+    },
+
+    GetDataSearchMaterialPRC: (o) => {         
+        Object.assign(o, { method: 'Post', path: 'api/mdmMaterial/SearchMaterialPrice' });
+        Call(o);
     }
-
-
 
 
 

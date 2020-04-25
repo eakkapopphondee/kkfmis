@@ -2,12 +2,13 @@
   <!-- <WidgetsBrand/> -->
 
   <div class="animated fadeIn">
+    
     <b-row>
       <b-col lg="12">
         <transition name="fade">
           <b-card no-body v-if="show">
             <div slot="header">
-              <i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ
+              <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ</h5>
               <div class="card-header-actions">
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
                   <i class="icon-arrow-up"></i>
@@ -25,7 +26,7 @@
 
                       <b-container class="bv-example-row">
                         <b-row>
-                          <b-col>
+                          <b-col sm="4">
                              <b-form-group
                                   label="ประจำเดือน"
                                   label-for="basicSelect"
@@ -34,18 +35,19 @@
 
 
                                       <b-form-select 
-                                        id="sale"
-                                        v-model="txtSearch" 
-                                        @change="Search" 
-                                        
+                                        id="txtid_mn"
+                                        v-model="txtSearch_mn" 
+                                       
                                         :plain="true"
-                                        :options="iSeleY" value="Please select">
+                                        :options="iMun"  value-field="valuei"
+                                       
+                                        >
                                       </b-form-select>
 
 
                               </b-form-group>
                           </b-col>
-                          <b-col>
+                          <b-col sm="4">
 
 
                             <b-form-group
@@ -58,8 +60,6 @@
                                       <b-form-select 
                                         id="sale"
                                         v-model="txtSearch" 
-                                        @change="Search" 
-                                        
                                         :plain="true"
                                         :options="iSeleY" value="Please select">
                                       </b-form-select>
@@ -68,8 +68,8 @@
                               </b-form-group>
                            
                           </b-col>
-                          <b-col>
-                             <b-button squared>Search</b-button>
+                          <b-col sm="4">
+                             <b-button @click="Search" size="lg" variant="outline-info" squared    >แสดงข้อมูล</b-button>
                           </b-col>
                         </b-row>
                       </b-container>
@@ -77,65 +77,177 @@
                   </b-container>
                 </b-card>
 
-
-<i class="fa fa-television" aria-hidden="true"></i>
- ปริมาณและมูลค่าคงเหลือวัตถุดิบ
-                <grid
-                  ref="DGV1"
-                  :fields="F_DGV1"
-                  :name="name"
-                  :btnGrid="false"
-                  :btnAdd="false"
-                  :btnClone="false"
-                  :btnView="false"
-                  :btnEdit="false"
-                  :btnDelete="false"
-                  :o_col_checkbox="false"
-                  :trackBy="'rowID'"
-                  :data=[]
-                  :o_navfooter_visible="false"
-                ></grid>
-
-
+                   
+                      
+                                  <i class="fa fa-television" aria-hidden="true"></i>
+                                  ปริมาณและมูลค่าคงเหลือวัตถุดิบ
+                                      <grid
+                                        ref="DGV1"
+                                        :fields="F_DGV1"
+                                        :name="name"
+                                        :btnGrid="false"
+                                        :btnAdd="false"
+                                        :btnClone="false"
+                                        :btnView="false"
+                                        :btnEdit="false"
+                                        :btnDelete="false"
+                                        :o_col_checkbox="false"
+                                        :trackBy="'rowID'"
+                                        :data="dataDGV1"
+                                        :o_navfooter_visible="false"
+                                      ></grid>
+           
+                 
 
 
               </b-card-body>
 
-              <b-card-body>
-                <i class="fa fa-television" aria-hidden="true"></i>
-              สัดส่วนปริมาณการใช้และปริมาณคงเหลือเม็ดวัตถุดิบสะสม
+         
               
-                <br />
+            </b-collapse>
+          </b-card>
+       </transition>
+      </b-col>
+    </b-row>
+
+
+     <div class="animated fadeIn">
+      <b-row>
+        <b-col lg="12">
+          <transition name="fade">
+            <b-card no-body v-if="show">
+              <div slot="header">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> สัดส่วนปริมาณการใช้และปริมาณคงเหลือเม็ดวัตถุดิบสะสม
+                <div class="card-header-actions">
+                  <b-link class="card-header-action btn-minimize" v-b-toggle.collapse3>
+                    <i class="icon-arrow-up"></i>
+                  </b-link>
+                </div>
+              </div>
+              <b-collapse id="collapse3" visible>
+                <b-card-body>
+                 
                 <b-row>
-                  <b-col sm="4">
-                    <div style>
-                      <canvas id="graph1"></canvas>
+
+      <b-col xs="4">
+          <b-card border-variant="secondary" bg-variant="light" header="ปริมาณรับเข้าสะสม" align="center">
+            
+        <b-card-text>
+          
+          <div class="chart-container">
+                      <canvas height="250" id="graph1" ></canvas>
                     </div>
-                  </b-col>
-                   <b-col sm="4">
-                    <div style>
-                      <canvas id="graph2"></canvas>
+
+        </b-card-text>
+      </b-card>
+      </b-col>
+
+ <b-col xs="4">
+          <b-card border-variant="secondary"  bg-variant="light" header="ปริมาณจ่ายออกสะสม" align="center">
+        <b-card-text>
+          <div style>
+                      <canvas height="250" id="graph2"></canvas>
                     </div>
-                  </b-col>
-                   <b-col sm="4">
-                    <div style>
-                      <canvas id="graph3"></canvas>
+
+        </b-card-text>
+      </b-card>
+      </b-col>
+
+ <b-col  xs="4">
+          <b-card border-variant="secondary" bg-variant="light" header="ปริมาณคงเหลือ" align="center">
+        <b-card-text>
+          <div style>
+                      <canvas height="250" id="graph3"></canvas>
                     </div>
-                  </b-col>
+
+        </b-card-text>
+      </b-card>
+      </b-col>
+                  
+                  
                 </b-row>
-              </b-card-body>
+               
+               
+                </b-card-body>
+              </b-collapse>
+            </b-card>
+          </transition>
+        </b-col>
+      </b-row>
+    </div>
 
-              <b-card-body>
-                <i class="fa fa-television" aria-hidden="true"></i>
-                แนวโน้มราคาวัตถุดิบย้อนหลัง 1 ปี
 
+
+
+     <div class="animated fadeIn">
+      <b-row>
+        <b-col lg="12">
+          <transition name="fade">
+            <b-card no-body v-if="show">
+              <div slot="header">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> แนวโน้มราคาวัตถุดิบย้อนหลัง 1 ปี
+                <div class="card-header-actions">
+                  <b-link class="card-header-action btn-minimize" v-b-toggle.collapse4>
+                    <i class="icon-arrow-up"></i>
+                  </b-link>
+                </div>
+              </div>
+              <b-collapse id="collapse4" visible>
+                <b-card-body>
+                  
+                 
                               <b-row>
-                                <b-col sm="6">  
-                                                  <canvas id="graph4"></canvas>
-                                                </b-col>
-                                <b-col sm="6"><grid
-                                                      ref="DGV1"
-                                                      :fields="F_DGV1"
+
+                                <b-col sm="12">  
+
+                                <div >
+                                        <b-card border-variant="secondary" bg-variant="light" header="กราฟแนวโน้มราคาวัตถุดิบย้อนหลัง 1 ปี" align="center">
+                                          <b-card-text>
+                                            
+                                                        <canvas height = 100; id="graph4"></canvas>
+                                           
+
+                                          </b-card-text>
+                                        </b-card>
+                              </div>
+         
+                                </b-col>
+                               
+
+                              </b-row>
+               
+               
+               
+                </b-card-body>
+              </b-collapse>
+            </b-card>
+          </transition>
+        </b-col>
+      </b-row>
+    </div>
+
+    
+
+    <div class="animated fadeIn">
+      <b-row>
+        <b-col lg="12">
+          <transition name="fade">
+            <b-card no-body v-if="show">
+              <div slot="header">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> ราคาวัตถุดิบ (บาท/กก.) 5 รายการแรก(ตามปริมาณคงเหลือ)
+                <div class="card-header-actions">
+                  <b-link class="card-header-action btn-minimize" v-b-toggle.collapse5>
+                    <i class="icon-arrow-up"></i>
+                  </b-link>
+                </div>
+              </div>
+              <b-collapse id="collapse5" visible>
+                <b-card-body>
+                              <b-row>
+                                <b-col sm="8">
+                                  <grid
+                                                      ref="DGV2"
+                                                      :fields="F_DGV2"
                                                       :name="name"
                                                       :btnGrid="false"
                                                       :btnAdd="false"
@@ -145,21 +257,24 @@
                                                       :btnDelete="false"
                                                       :o_col_checkbox="false"
                                                       :trackBy="'rowID'"
-                                                      :data=[]
+                                                      :data="dataDGV2"
                                                       :o_navfooter_visible="false"
-                                                    ></grid>  </b-col>
-
+                                                    ></grid>  
+                               </b-col>
                               </b-row>
+                </b-card-body>
+              </b-collapse>
+            </b-card>
+          </transition>
+        </b-col>
+      </b-row>
+    </div>
 
 
-              </b-card-body>
 
-              
-            </b-collapse>
-          </b-card>
-        </transition>
-      </b-col>
-    </b-row>
+
+ 
+
   </div>
 </template>
 
@@ -188,6 +303,7 @@ import "webrtc-adapter";
 import Chart from "chart.js";
 
 var i;
+var t;
    var  H2 = new Array();
 
 
@@ -215,7 +331,7 @@ export default {
       selected: [],
       show: true,
       horizontal: { label: "col-3", input: "col-6" },
-
+      name: "rptDrawing",
       selectedOption: ["some value", "another value"],
       chktyperept: false,
       formCollapsed: true,
@@ -246,7 +362,8 @@ export default {
       errMsg: "",
       avSearch: false,
       txtSearch: "",
-      name: "rptDrawing",
+      txtSearch_mn: "",
+     // name: "rptDrawing",
       drawingCd: "",
       perPage: 25,
 
@@ -258,93 +375,143 @@ export default {
         loaded: false
       },
       iSeleY: [],
+      iMun: [],
       dataDGV1: [],
       dataDGV2: [],
       dataDGV3: [],
       objSelect: {},
-      F_DGV1: [      {
-                        name: "",
+      F_DGV1: [  {
+                        name: "matgrprpcd",
                         title: "รหัสกลุ่มวัตถุดิบ",
                         sortField: "",
                         class: "text-left",
                         visible: true
                       },
                       {
-                        name: "",
+                        name: "matgrprpname",
                         title: "รายละเอียด",
                         sortField: "",
                         class: "text-left",
                         visible: true
                       },
                       {
-                        name: "",
+                        name: "mat_price",
                         title: "ราคาวัตถุดิบ(บาท/กก.)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "prd_rec_wei",
                         title: "รับเข้า(ตัน)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "prd_pay_wei",
                         title: "เบิกใช้(ตัน)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "end_wei",
                         title: "คงเหลือ(ตัน)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "end_cost",
                         title: "มูลค่าคงเหลือ(ลบ.)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "rec_wei_cum",
                         title: "รับเข้าสะสมตลอดปี(ตัน)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       },
                       {
-                        name: "",
+                        name: "pay_wei_cum",
                         title: "เบิกใช้สะสมตลอดปี(ตัน)",
                         sortField: "",
-                        class: "text-left",
-                        visible: true
+                        class: "text-right",
+                        visible: true,
+                        callback:(v) => {
+                            if (this.$root.$options.filters.number(v,2) != 0) {
+                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            } else{
+                                '<spen>/span> '
+                            } 
+                  
+                          }
                       }
-              ]
+              ],
+         F_DGV2: [],
       
     };
   },
 
   methods: {
     Search(e) {
-
+       
       this.QueryData();
-
-
-             
-
-
     },
 
     QueryData() {
-      
-     
- 
       
       var Tc = 0;
       var H1 = new Array();
@@ -353,68 +520,46 @@ export default {
       var ChartCul_H1 = new Array();
       var ChartDATA_H1_1 = new Array();
       var ChartDATA_H1_2 = new Array();
+      var ChartDATA_H1_3 = new Array();
      
-       var ChartROA_H1 = new Array();
-       var CDATA_H2_1 = new Array();
-       var CDATA_H2_2 = new Array();
-       var CDATA_H3_1 = new Array();
-       var CDATA_H3_2 = new Array();
+       var Charttxt_H1 = new Array();
 
-       var ChartROA_H2 = new Array(); 
-       var CDATA_H4_1  = new Array();
-       var CDATA_H4_2  = new Array();
-       var CDATA_H5_1  = new Array();
-       var CDATA_H5_2  = new Array();
+       var C_COLOR = new Array();
+       var C_NAME_C = new Array();
 
-        var ctx = document.getElementById("graph4").getContext("2d");
-        this.bar = new Chart(ctx, {
-              type: "line",
-              options: {
-                responsive: true,
-                title: {
-                  // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                  text: "กราฟผลการดำเนินงานภาพรวม",
-                  display: true
-                }
-              },
-              data: {
-                labels: ['1','2','3','4','5','6','4','5','6'],
-                datasets: [
-                  {
-                    backgroundColor:"rgba(0, 0, 0, 0)",
-                    borderColor: "rgba(55, 173, 221, 1.0)",
-                    label: "copo",
-                    data: [1,1,5,1,1,10,15]
-                  },
-                  {
-                    backgroundColor:"rgba(0, 0, 0, 0)",
-                    borderColor: "rgba(217, 136, 128  , 1.0)",
-                    label: "homo",
-                     data: [1,3,1,5,1,10,15]
-                  },
-                  {
-                    backgroundColor:"rgba(0, 0, 0, 0)",
-                    borderColor: "rgba(217, 136, 128  , 1.0)",
-                    label: "pe-a",
-                     data: [1,3,1,5,1,10,15]
-                  }
-                  ,
-                  {
-                    backgroundColor:"rgba(0, 0, 0, 0)",
-                    borderColor: "rgba(217, 136, 128  , 1.0)",
-                    label: "nylon",
-                     data: [1,3,1,5,1,10,15]
-                  }
-                  ,
-                  {
-                    backgroundColor:"rgba(0, 0, 0, 0)",
-                    borderColor: "rgba(217, 136, 128  , 1.0)",
-                    label: "pe-b",
-                     data: [1,3,1,10,1,10,15]
-                  }
-                ]
-              }
-            });
+    
+      var CharDATA_H2 = new Array();
+      var CharDATA_set = new Array();
+
+        this.F_DGV2 = H1;
+        this.dataDGV2 = dataH1;
+        this.$refs.DGV2.reset();
+
+      /// var iMouns = this.txtSearch_mn.selectedIndex;
+      //    var iMouns =  this.$refs.txtid_mn.selectedIndex();  
+    //   console.log(iMouns);
+          
+
+          API.GetDataSearchMaterial({
+              data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
+              callblack: res => {
+                 /// console.log(res);
+                   this.dataDGV1   =  res ;
+                   
+                  var cui = res.length;
+                  var rop = 1;
+              res.forEach((d,i) => {
+                if(rop!=cui)
+                      {
+                          Charttxt_H1[i]   =res[i].matgrprpname;
+
+                          ChartDATA_H1_1[i]=res[i].prd_rec_wei;
+                          ChartDATA_H1_2[i]=res[i].prd_pay_wei;
+                          ChartDATA_H1_3[i]=res[i].end_wei;
+                      }
+                     
+                      rop++;
+                   });
 
 
               var ctx = document.getElementById('graph1').getContext("2d");
@@ -422,10 +567,10 @@ export default {
                 var myChart = new Chart(ctx, {
                   type: 'pie',
                   data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                    labels: Charttxt_H1,
                     datasets: [{
                       label: 'Page A',
-                      data: [61, 122, 107, 73 , 10],
+                      data: ChartDATA_H1_1,
                       backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
                     }]
                   },
@@ -435,15 +580,15 @@ export default {
                 });
 
 
-                var ctx = document.getElementById('graph2').getContext("2d");
+             var ctx = document.getElementById('graph2').getContext("2d");
              // var ctx = document.getElementById("graph1").getContext("2d");
                 var myChart = new Chart(ctx, {
                   type: 'pie',
                   data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                    labels:  Charttxt_H1,
                     datasets: [{
                       label: 'Page A',
-                      data: [61, 122, 107, 73 , 10],
+                      data: ChartDATA_H1_2,
                       backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
                     }]
                   },
@@ -459,10 +604,10 @@ export default {
                 var myChart = new Chart(ctx, {
                   type: 'pie',
                   data: {
-                 labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                 labels: Charttxt_H1,
                     datasets: [{
                       label: 'Page A',
-                      data: [61, 122, 107, 73 , 10],
+                      data: ChartDATA_H1_3,
                       backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
                     }]
                   },
@@ -471,35 +616,196 @@ export default {
                   }
                 });
 
+
+
+
+
+              }
+              });
+
+
+
+
+
+              API.GetDataSearchMaterialPRC({
+              data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
+              callblack: res => {
+
+                      H1[0] = {
+                          name: "mn_name",
+                          title: "เดือน/ปี",
+                          sortField: "",
+                          class: "text-left",
+                          visible: true
+                        };
+
+                        for (i = 0; i < res[0]["c_herder"].length; i++) {
+                            Tc = i + 1;
+                              H1[Tc] = {
+                              name: "CUL" + Tc.toString(),
+                              title: res[0]["c_herder"][i].toString(),
+                              sortField: "",
+                              class: "text-right",
+                              visible: true,
+                              callback:(v) => {
+                                  if (this.$root.$options.filters.number(v,2) != 0) {
+                                  return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                                  } else{
+                                      '<spen>/span> '
+                                  } 
+                        
+                                }
+                                };
+                           
+                          };
+                       
+                        
+                        for (i = 0; i < res[0]["c_data"].length; i++) {
+                                 ChartCul_H1[i] = (res[0]["c_data"][i]["mn_name"].toString()+" "+ res[0]["c_data"][i]["iYear"].toString().substring(2, 4));
+
+                                            ///console.log(res[0]["c_data"][i]["iYear"].toString());
+                              
+                                        const expr = res[0]["c_herder"].length;
+                                        switch (expr) {                          
+                                          
+                                          case 1:dataH1[i] = {
+                                                     mn_name: (res[0]["c_data"][i]["mn_name"].toString()+" "+ res[0]["c_data"][i]["iYear"].toString().substring(2, 4)),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString()
+                                                  }
+                                          case 2:dataH1[i] = {
+                                                     mn_name:  res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString()
+                                                  }
+                                          case 3:dataH1[i] = {
+                                                     mn_name:  (res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4)),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString(),
+                                                     CUL3: res[0]["c_data"][i]["cuL_3"].toString()
+                                                  }
+                                          case 4:  dataH1[i] = {
+                                                     mn_name: res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString(),
+                                                     CUL3: res[0]["c_data"][i]["cuL_3"].toString(),
+                                                     CUL4: res[0]["c_data"][i]["cuL_4"].toString()
+                                                  }
+                                          case 5: dataH1[i] = {
+                                                     mn_name:  res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString(),
+                                                     CUL3: res[0]["c_data"][i]["cuL_3"].toString(),
+                                                     CUL4: res[0]["c_data"][i]["cuL_4"].toString(),
+                                                     CUL5: res[0]["c_data"][i]["cuL_5"].toString()
+                                                  }
+                                        } 
+                          }
+
+                         
+                            //  console.log(C_NAME_C);
+                            C_COLOR = ["rgba(54, 193, 161, 1.0)","rgba(51, 157, 249, 1.0)","rgba(226, 161, 30, 1.0)","rgba(226, 144, 229, 1.0)","rgba(249, 101, 101, 1.0)"];
+                           // C_NAME_C = ["copo","copo","copo"];
+                            CharDATA_H2 = [[0],[0],[0],[0],[0]];
+                          
+                                         
+                              for (i = 0; i < res[0]["c_herder"].length; i++) {
+                                    C_NAME_C[i] = res[0]["c_herder"][i].toString();
+
+
+                                    for (t = 0; t < res[0]["c_data"].length; t++) {
+                                          Tc = i + 1;
+                                          var CULhh = "cuL_" + Tc.toString();
+                                          CharDATA_H2[i][t] = res[0]["c_data"][t][CULhh].toString();
+                                    }
+
+                                    CharDATA_set[i] = {backgroundColor:"rgba(0, 0, 0, 0)",
+                                                borderColor: C_COLOR[i],
+                                                label: C_NAME_C[i],
+                                                data: CharDATA_H2[i]} ;
+                              }
+
+///console.log(CharDATA_set);
+
+                          var ctx = document.getElementById("graph4").getContext("2d");
+                          this.bar = new Chart(ctx, {
+                            type: "line",
+                            options: {
+                              responsive: true,
+                              title: {
+                                // ข้อความที่อยู่ด้านบนของแผนภูมิ
+                                
+                                display: true
+                              }
+                            },
+                            data: {
+                              labels: ChartCul_H1,
+                              datasets: CharDATA_set
+                            }
+                          });
+
+                    
+                          this.F_DGV2 = H1;
+                          this.$refs.DGV2.reset();
+                        
+
+                        ///   dataH1[0]['mn_name'] =  res[0]["c_data"][1]["mn_name"].toString();   
+
+                      }
+             
+              });
+
+
+
+
+
     }
   },
 
   mounted() {
      var Selet = new Array();
      let date = new Date();
+
      Selet[0] = date.getFullYear();
      for (i = 1; i < 5; i++) 
      {
         Selet[i] = date.getFullYear()-i;
      }
      this.iSeleY = Selet;
+     
+     this.iMun = [
+       { valuei: 1, text: "มกราคม" }
+       ,{ valuei: 2, text: "กุมภาพันธ์" } 
+       ,{ valuei: 3, text: "มีนาคม" } 
+       ,{ valuei: 4, text: "เมษายน" } 
+       ,{ valuei: 5, text: "พฤษภาคม" } 
+       ,{ valuei: 6, text: "มิถุนายน" } 
+       ,{ valuei: 7, text: "กรกฎาคม" } 
+       ,{ valuei: 8, text: "สิงหาคม" } 
+       ,{ valuei: 9, text: "กันยายน" } 
+       ,{ valuei: 10, text: "ตุลาคม" } 
+       ,{ valuei: 11, text: "พฤศจิกายน" } 
+       ,{ valuei: 12, text: "ธันวาคม" } 
+      
+     ];
+    
     //   console.log("555555");
   //   H1 = [];
-
+    ///console.log(date.getMonth());
+    this.txtSearch_mn =4;
     this.txtSearch = date.getFullYear();
+
     this.QueryData();
   }
 };
 </script>
 
-
-
-
+ 
 
 <style>
 .app-body .main {
   background-image: linear-gradient(rgba(234, 242, 248, 0.8), #f2f3f4);
 }
+
 
 .card_body {
   background: linear-gradient(
