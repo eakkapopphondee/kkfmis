@@ -240,7 +240,25 @@ export const API = {
 
     GetDataKexpensesBymn: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmKexpensesbymn/SearchKexpensesBymn' });
+    },
+
+    GetDataROASummary: (o) => {     
+        Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchSum' });
+        Call(o);
+    },
+
+    GetDataRoaPercentBymn: (o) => {     
+        Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchRoaPercentBymn' });
+        Call(o);
+    },
+
+    GetDataRoaPercentQuarter: (o) => {     
+        Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchRoaPercentQuarter' });
         Call(o);
     }
+
+
+
+
 
 };

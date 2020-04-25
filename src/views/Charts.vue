@@ -16,7 +16,7 @@
           <doughnut-example chartId="chart-doughnut-01"/>
         </div>
       </b-card>
-      <b-card header="Radar Chart">
+      <b-card header="Radar Chart">    
         <div class="chart-wrapper">
           <radar-example chartId="chart-radar-01"/>
         </div>

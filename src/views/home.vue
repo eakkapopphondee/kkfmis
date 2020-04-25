@@ -17,13 +17,6 @@
             <i class="icon-graph fa-5x"></i>
           </p> 
 
-
-
-
-
-
-
-
           <div class="caption" style="text-align: center;">
             <h3>ยอดขาย</h3>
           </div>
@@ -79,8 +72,8 @@
       </a>
     </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-4">
-      <a class="pointer" style="text-decoration: none;" data-bind="click: viewAnalytics">
+    <div class="col-xs-12 col-sm-4 col-md-4"  >
+      <a class="pointer"  data-bind="click: viewAnalytics" >
         <div class="thumbnail_dis">
           <br>
           <p style="text-align: center">
@@ -93,9 +86,11 @@
       </a>
     </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-4">
-      <a class="pointer" style="text-decoration: none;"  @click="to_expensesall">
-        <div class="thumbnail">
+
+
+   <div class="col-xs-12 col-sm-4 col-md-4" >
+      <a class="pointer" data-bind="click: manageGalleries">
+        <div class="thumbnail_dis">
           <br>
           <p style="text-align: center">
             <i class="icon-calculator fa-5x"></i>
@@ -107,6 +102,8 @@
       </a>
     </div>
 
+
+  
   </div>
 
 
@@ -136,6 +133,22 @@
           </p>
           <div class="caption" style="text-align: center;">
             <h3>คลังพัสดุ</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+
+    <div class="col-xs-12 col-sm-4 col-md-4"  @click="to_roapercent">
+      <a class="pointer" data-bind="click: manageGalleries">
+        <div class="thumbnail">
+          <br>
+          <p style="text-align: center">
+            <i class="icon-user-follow fa-5x"></i>
+          </p>
+          <div class="caption" style="text-align: center;">
+            <h3>ROA ยอดขาย และ % กำไร</h3>
           </div>
         </div>
       </a>
@@ -400,11 +413,21 @@ export default {
     {
       this.$router.push("/report/mdmAR")
     },
+<<<<<<< HEAD
  to_expensesall()
     {
       this.$router.push("/report/Kexpenses")
     },
     
+=======
+    to_roapercent()
+    {
+      this.$router.push("/report/roapercent")
+    },to_Material()
+    {
+      this.$router.push("/report/reptmaterial")
+    },
+>>>>>>> f3e339778f956a2d8e5b3e844b1c189f184f382e
     onSubmit(evt) {
       evt.preventDefault();
        window.location.href = "/member/signin";
