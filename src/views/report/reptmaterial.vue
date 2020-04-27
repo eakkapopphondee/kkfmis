@@ -539,6 +539,9 @@ export default {
         this.dataDGV2 = dataH1;
         this.$refs.DGV2.reset();
 
+
+
+
       /// var iMouns = this.txtSearch_mn.selectedIndex;
       //    var iMouns =  this.$refs.txtid_mn.selectedIndex();  
     //   console.log(iMouns);
@@ -597,7 +600,7 @@ export default {
             
                 }
             
-              
+             
              
 
 
@@ -892,7 +895,10 @@ export default {
     ///console.log(date.getMonth());
     this.txtSearch_mn =4;
     this.txtSearch = date.getFullYear();
-
+ myChart1 = null;
+ myChart2= null;
+ myChart3= null;
+ bar= null;
 
 
     this.QueryData();
