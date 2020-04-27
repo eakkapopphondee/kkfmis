@@ -299,35 +299,35 @@
        
           </transition>
         </b-col>
-         <b-col sm="4">
+         <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn1" width="400" height="400"></canvas>
 
 
              </div>
            </b-col> 
-            <b-col sm="4">
+            <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn2" width="400" height="400"></canvas>
 
 
              </div>
             </b-col>  
-             <b-col sm="4">
+             <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn3" width="400" height="400"></canvas>
 
 
              </div>
 </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn4" width="400" height="400"></canvas>
 
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn5" width="400" height="400"></canvas>
 
@@ -341,14 +341,14 @@
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn7" width="400" height="400"></canvas>
 
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn8" width="400" height="400"></canvas>
 
