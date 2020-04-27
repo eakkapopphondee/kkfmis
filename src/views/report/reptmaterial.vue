@@ -134,7 +134,7 @@
             
         <b-card-text>
           
-          <div class="chart-container">
+          <div class="chart-container" id = "DVg1" >
                       <canvas height="250" id="graph1" ></canvas>
                     </div>
 
@@ -304,8 +304,12 @@ import Chart from "chart.js";
 
 var i;
 var t;
-   var  H2 = new Array();
+var  H2 = new Array();
 
+var myChart1 = null;
+var myChart2 = null;
+var myChart3 = null;
+var bar= null;
 
 export default {
   i18n: {
@@ -560,29 +564,76 @@ export default {
                      
                       rop++;
                    });
+              
+              
+                var ctx = document.getElementById("graph1").getContext("2d");
+                
+                if(myChart1 !== null)
+                {
+                         myChart1.data.labels = Charttxt_H1;
+                         myChart1.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_1,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart1.update();
+                }else
+                {
+
+                         myChart1 = new Chart(ctx, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_1,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
+            
+              
+             
 
 
-              var ctx = document.getElementById('graph1').getContext("2d");
+             var ctx2 = document.getElementById('graph2').getContext("2d");
              // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
-                  type: 'pie',
-                  data: {
-                    labels: Charttxt_H1,
-                    datasets: [{
-                      label: 'Page A',
-                      data: ChartDATA_H1_1,
-                      backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
-                    }]
-                  },
-                  options: {
-                    responsive: true
-                  }
-                });
+             if(myChart2 !== null)
+                {
+                         myChart2.data.labels = Charttxt_H1;
+                         myChart2.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_2,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart2.update();
+                }else
+                {
 
+                         myChart2 = new Chart(ctx2, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_2,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
 
-             var ctx = document.getElementById('graph2').getContext("2d");
-             // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
+              
+            /*  var myChart2 = new Chart(ctx2, {
                   type: 'pie',
                   data: {
                     labels:  Charttxt_H1,
@@ -596,12 +647,43 @@ export default {
                     responsive: true
                   }
                 });
+*/
+
+               
+                var ctx3 = document.getElementById('graph3').getContext("2d");
 
 
+                if(myChart3 !== null)
+                {
+                         myChart3.data.labels = Charttxt_H1;
+                         myChart3.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_3,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart3.update();
+                }else
+                {
 
-                var ctx = document.getElementById('graph3').getContext("2d");
+                         myChart3 = new Chart(ctx3, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_3,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
+                
              // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
+            /*   var  myChart = new Chart(ctx3, {
                   type: 'pie',
                   data: {
                  labels: Charttxt_H1,
@@ -614,7 +696,7 @@ export default {
                   options: {
                     responsive: true
                   }
-                });
+                });*/
 
 
 
@@ -727,21 +809,37 @@ export default {
 ///console.log(CharDATA_set);
 
                           var ctx = document.getElementById("graph4").getContext("2d");
-                          this.bar = new Chart(ctx, {
-                            type: "line",
-                            options: {
-                              responsive: true,
-                              title: {
-                                // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                                
-                                display: true
-                              }
-                            },
-                            data: {
-                              labels: ChartCul_H1,
-                              datasets: CharDATA_set
-                            }
-                          });
+
+                        if(bar !== null)
+                          {
+                                  bar.data.labels = ChartCul_H1;
+                                  bar.data.datasets =  CharDATA_set;
+                                  bar.update();
+                          }else
+                          {
+
+                                  bar = new Chart(ctx, {
+                                    type: "line",
+                                    options: {
+                                      responsive: true,
+                                      title: {
+                                        // ข้อความที่อยู่ด้านบนของแผนภูมิ
+                                        
+                                        display: true
+                                      }
+                                    },
+                                    data: {
+                                      labels: ChartCul_H1,
+                                      datasets: CharDATA_set
+                                    }
+                                  });
+                      
+                          }
+
+
+
+                          
+                         
 
                     
                           this.F_DGV2 = H1;
@@ -751,7 +849,8 @@ export default {
                         ///   dataH1[0]['mn_name'] =  res[0]["c_data"][1]["mn_name"].toString();   
 
                       }
-             
+                       
+            
               });
 
 
@@ -794,7 +893,10 @@ export default {
     this.txtSearch_mn =4;
     this.txtSearch = date.getFullYear();
 
+
+
     this.QueryData();
+  //  chart.update();
   }
 };
 </script>

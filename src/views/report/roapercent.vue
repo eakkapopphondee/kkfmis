@@ -438,6 +438,11 @@ export default {
               visible: true
             };
 
+
+              ChartCul_H1[0] = 0;
+              ChartDATA_H1_1[0] = 0;
+              ChartDATA_H1_2[0] = 0;
+
             for (i = 0; i < res[0]["yeaRs"].length; i++) {
               Tc = i + 1;
               H1[Tc] = {
@@ -455,9 +460,9 @@ export default {
               ///dataH1.unshift( {"CUL1": res[0]["roAs"][0].toString()})
            //dataH1[0] = dataH1[0].+{"CUL1": res[0]["roAs"][0].toString()} ;   
 
-              ChartCul_H1[i] = res[0]["yeaRs"][i].toString().substring(0, 4);
-              ChartDATA_H1_1[i] = res[0]["roAs"][i];
-              ChartDATA_H1_2[i] = res[0]["margin"][i];
+              ChartCul_H1[i+1] = res[0]["yeaRs"][i].toString().substring(0, 4);
+              ChartDATA_H1_1[i+1] = res[0]["roAs"][i];
+              ChartDATA_H1_2[i+1] = res[0]["margin"][i];
             }
              
 
@@ -536,16 +541,23 @@ export default {
 
                    var cui = res.length;
                   var rop = 1;
+                          ChartROA_H1[0]=0;
+                          CDATA_H2_1[0]=0;
+                          CDATA_H2_2[0]=0;
+
+                          CDATA_H3_1[0]=0;
+                          CDATA_H3_2[0]=0;
+
                   res.forEach((d,i) => {
                       if(rop!=cui)
                       {
-                          ChartROA_H1[i]=res[i].mn_name;
+                          ChartROA_H1[i+1]=res[i].mn_name;
 
-                          CDATA_H2_1[i]=res[i].now_per_roa;
-                          CDATA_H2_2[i]=res[i].compare_per_roa;
+                          CDATA_H2_1[i+1]=res[i].now_per_roa;
+                          CDATA_H2_2[i+1]=res[i].compare_per_roa;
 
-                          CDATA_H3_1[i]=res[i].now_per_margin;
-                          CDATA_H3_2[i]=res[i].compare_per_margin;
+                          CDATA_H3_1[i+1]=res[i].now_per_margin;
+                          CDATA_H3_2[i+1]=res[i].compare_per_margin;
                       }
                      
                       rop++;
@@ -637,18 +649,26 @@ export default {
                  // console.log(x);
                  var cui = res.length;
                  var rop = 1;
+
+                 ChartROA_H2[0]=0;
+
+                        CDATA_H4_1[0]=0;
+                        CDATA_H4_2[0]=0;
+
+                        CDATA_H5_1[0]=0;
+                        CDATA_H5_2[0]=0;
                  
                   res.forEach((d,i) => {
                       
                       if(rop!=cui)
                       {
-                        ChartROA_H2[i]=res[i].mn_name;
+                        ChartROA_H2[i+1]=res[i].mn_name;
 
-                        CDATA_H4_1[i]=res[i].now_per_roa;
-                        CDATA_H4_2[i]=res[i].compare_per_roa;
+                        CDATA_H4_1[i+1]=res[i].now_per_roa;
+                        CDATA_H4_2[i+1]=res[i].compare_per_roa;
 
-                        CDATA_H5_1[i]=res[i].now_per_margin;
-                        CDATA_H5_2[i]=res[i].compare_per_margin;
+                        CDATA_H5_1[i+1]=res[i].now_per_margin;
+                        CDATA_H5_2[i+1]=res[i].compare_per_margin;
                       }
                      
                       rop++;
