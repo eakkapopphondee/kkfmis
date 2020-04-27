@@ -236,12 +236,11 @@ export const API = {
         Object.assign(o, { method: 'Post', path: 'api/mdmKexpensestotal/SearchKexpensestotal' });
         Call(o);
     },
-
-
-    GetDataKexpensesBymn: (o) => {
+    GetDataKexpensesBymn: (o) => {                                     
         Object.assign(o, { method: 'Post', path: 'api/mdmKexpensesbymn/SearchKexpensesBymn' });
+        Call(o);
     },
-
+ 
     GetDataROASummary: (o) => {     
         Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchSum' });
         Call(o);

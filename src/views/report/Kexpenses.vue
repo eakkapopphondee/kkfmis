@@ -20,7 +20,7 @@
                 <b-row>
                   <b-col sm="4">
                     <b-form-group
-                      label="ปีดำเนินงาน"
+                      label="ปี"
                       label-for="basicSelect"
                       :label-cols="3"
                       :horizontal="true"
@@ -30,8 +30,7 @@
                         v-model="txtSearch"
                         @change="Search"
                         :plain="true"
-                        :options="[2019,2020]"
-                        value="Please select"
+                        :options="iSeleY" value="Please select">
                       ></b-form-select>
                     </b-form-group>
                   </b-col>
@@ -44,22 +43,32 @@
                         <b-card style="border: 0px solid;">
                           <div
                             class="knob_data"
-                            style="background-image: url('img/brand/Flagex.png'); background-repeat: no-repeat;
+                            style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
                               background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
                           >
-                            ค่าใช้จ่ายสะสม : {{dataDrawingexpenValue.total_cost| number(2)}} (ลบ.)
+                               {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
                             <span
-                              class="txt_smaller"
-                            ></span>
+                              class="knob_data"
+                            > 
+
+                            </span>
+                            
                           </div>
+                          <hr>
+                          <div class="card-title text-title"  style="text-align: center; ">
+                            <span  
+                            > 
+                            ค่าใช้จ่ายสะสม
+                            </span>
+                             </div>
                           <b-row>
-                            <b-col sm="2">
-                              <div class="callout callout-successdanger">
+                            <b-col sm="3">
+                              <div class="callout callout-warning">
                                 <small class="card-title text-title">วัตถุดิบใช้ไป (ลบ.)</small>
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.material_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.material_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -67,7 +76,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.material_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.material_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -80,13 +89,13 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">เกี่ยวกับพนักงาน (ลบ.)</small>
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.employee_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.employee_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -94,7 +103,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.employee_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -107,11 +116,11 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ปะอวน (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -119,7 +128,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.paoun_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -132,13 +141,13 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การผลิต (ลบ.)</small>
                                 <br />
                                 <strong
                                   class="h2"
-                                >{{dataDrawingexpenValue.production_cost| number(2)}}</strong>
+                                >{{this.dataDrawingexpenValue.production_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -146,7 +155,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.production_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.production_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -159,11 +168,11 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การขาย (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.sale_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.sale_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -171,7 +180,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.sale_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -184,11 +193,11 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การบริหาร (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.manage_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.manage_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -196,7 +205,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.manage_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -209,11 +218,11 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ตัดจ่าย/เสื่อมราคา (ลบ.)</small>
                                 <br />
-                                <strong class="h2">{{dataDrawingexpenValue.dp_cost| number(2)}}</strong>
+                                <strong class="h2">{{this.dataDrawingexpenValue.dp_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
@@ -221,7 +230,7 @@
                                   <span class="title">%</span>
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{dataDrawingexpenValue.dp_per| number(2)}}%</span>
+                                  >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -244,9 +253,20 @@
           </b-card>
         </transition>
       </b-col>
+      <b-col sm="12">
+      <b-card border-variant="secondary"  bg-variant="light" header="กราฟสรุปต้นทุน และค่าใช้จ่ายในการดำเนินงาน" align="center"
+      >
+        <b-card-text>
+          <div style>
+                    <canvas id="graph1"></canvas>
+                    </div>
+
+        </b-card-text>
+      </b-card>
+    </b-col>
     </b-row>
 
-<canvas id="graph1"></canvas>
+
 
     <div class="animated fadeIn">
       <b-row>
@@ -288,35 +308,35 @@
        
           </transition>
         </b-col>
-         <b-col sm="4">
+         <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn1" width="400" height="400"></canvas>
 
 
              </div>
            </b-col> 
-            <b-col sm="4">
+            <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn2" width="400" height="400"></canvas>
 
 
              </div>
             </b-col>  
-             <b-col sm="4">
+             <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn3" width="400" height="400"></canvas>
 
 
              </div>
 </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn4" width="400" height="400"></canvas>
 
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn5" width="400" height="400"></canvas>
 
@@ -330,14 +350,14 @@
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn7" width="400" height="400"></canvas>
 
 
              </div>
              </b-col>  
-              <b-col sm="4">
+              <b-col sm="6">
              <div style="width:350px;">
                <canvas id="graphBymn8" width="400" height="400"></canvas>
 
@@ -448,12 +468,22 @@ export default {
 
       startRow: 0,
       stopRow: 25,
-
+      
+      iSeleY: [],
       dataDrawingARAll: [],
-      dataDrawingexpenValue: {},
+      dataDrawingexpenValue: {
+            yr :0, total_cost :0, material_cost:0,
+            material_per :0, employee_cost :0, employee_per  :0,
+            paoun_cost :0, paoun_per:0,production_cost :0, production_per:0,
+            sale_cost:0, sale_per:0, manage_cost :0,manage_per:0,dp_cost:0,dp_per:0
+        
+      },
       dataDrawingexpenValuegraph: {},
       dataDrawingexpenValueByMn: [],
-      dataDrawingexpenValueByMnQ :{},
+      dataDrawingexpenValueByMnQ :{ total_cost :0, material_cost:0, employee_cost :0,  
+                                    paoun_cost :0, production_cost :0, sale_cost:0, 
+                                    manage_cost :0,dp_cost:0
+                                  },
 
       dataDrawingexpenValueByMngraph1: [],
       dataDrawingexpenValueByMngraph2: [],
@@ -586,6 +616,8 @@ export default {
     },
 
     QueryData() {
+      //  this.dataDrawingexpenValue = {};  
+      //this.dataDrawingexpenValuegraph = {};  
       API.GetDataKexpensestotal({
         data: { yr: this.txtSearch },
         callblack: res => {
@@ -593,14 +625,39 @@ export default {
           let _statusA = "";
           if (res.length <= 0) {
             AlertMessage("error", "ไม่พบข้อมูลต้นทุนและค่าใช้จ่ายภาพรวม");
+            this.dataDrawingexpenValue.total_cost = 0;
+            this.dataDrawingexpenValue.material_cost = 0;
+            this.dataDrawingexpenValue.material_per = 0;
+            this.dataDrawingexpenValue.employee_cost = 0;
+            this.dataDrawingexpenValue.employee_per = 0;
+            this.dataDrawingexpenValue.paoun_cost = 0;
+            this.dataDrawingexpenValue.paoun_per = 0;
+            this.dataDrawingexpenValue.production_cost = 0;
+            this.dataDrawingexpenValue.production_per = 0;
+            this.dataDrawingexpenValue.sale_cost = 0;
+            this.dataDrawingexpenValue.sale_per = 0;
+            this.dataDrawingexpenValue.manage_cost = 0;
+            this.dataDrawingexpenValue.manage_per = 0;
+            this.dataDrawingexpenValue.dp_cost = 0;
+            this.dataDrawingexpenValue.dp_per = 0;
+
+            this.dataDrawingexpenValuegraph.material_cost = 0;
+            this.dataDrawingexpenValuegraph.employee_cost = 0;
+            this.dataDrawingexpenValuegraph.paoun_cost = 0;
+            this.dataDrawingexpenValuegraph.production_cost = 0;
+            this.dataDrawingexpenValuegraph.sale_cost = 0;
+            this.dataDrawingexpenValuegraph.manage_cost = 0;
+            this.dataDrawingexpenValuegraph.dp_cost = 0;
+
             return;
           }
-//console.log(res);
+ //console.log(res);
           res.forEach((d, i) => {
             //this.dataDrawingARAll.push(d);
-            //console.log(d.balance_amt);
+          
             this.dataDrawingexpenValue.yr = d.yr;
             this.dataDrawingexpenValue.total_cost = d.total_cost;
+            
             this.dataDrawingexpenValue.material_cost = d.material_cost;
             this.dataDrawingexpenValue.material_per = d.material_per;
             this.dataDrawingexpenValue.employee_cost = d.employee_cost;
@@ -652,7 +709,7 @@ export default {
                           }
                         });
                          
-          
+           //console.log(this.txtSearch);
           API.GetDataKexpensesBymn({
             data: { yr: this.txtSearch },
             callblack: res => {
@@ -662,7 +719,9 @@ export default {
                 AlertMessage("error", "ไม่พบข้อมูล");
                 return;
               }
-//yr	mn	material_cost	employee_cost	paoun_cost	production_cost	sale_cost	manage_cost	dp_cost	Total_cost
+             //console.log(res);
+              
+
 this.dataDrawingexpenValueByMn = [];
 this.dataDrawingexpenValueByMnQ =[];
 this.dataDrawingGraph=[];
@@ -692,10 +751,11 @@ this.dataDrawingYYgraph7.push(0);
 this.dataDrawingLabel =[];
 this.dataDrawingYYLabel=[]; 
 this.dataDrawingYYLabel.push(0);
- //console.log(res.length);
-              var ii;   
+
+              var ii; 
+               
              for (ii = 0; ii < res.length; ii++) {
-                console.log(res[ii]["mn"]);
+               // console.log(res[ii]["mn"]);
                 //res[0]["yr"][i].toString(),
                 this.dataDrawingexpenValueByMnQ =[];
                 this.dataDrawingexpenValueByMnQ.mn_ntx =  res[ii]["mn"];
@@ -1062,12 +1122,26 @@ this.dataDrawingYYLabel.push(0);
   },
 
   mounted() {
-    // console.log("555555");
-    let date = new Date();
+   
+    //let date = new Date();
+   
+    var iii;
+    var Selet = new Array();
+     let date = new Date();
+     Selet[0] = date.getFullYear();
+     for (iii = 1; iii < 5; iii++) 
+     {
+        Selet[iii] = date.getFullYear()-iii;
+     }
+     this.iSeleY = Selet;
+    //   console.log("555555");
+  //   H1 = [];
+
     this.txtSearch = date.getFullYear();
 
-    this.Search();
-    //this.QueryData();
+    //this.Search();
+    //console.log(this.txtSearch);
+    this.QueryData();
   }
 };
 </script>
