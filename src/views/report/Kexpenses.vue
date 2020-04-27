@@ -46,7 +46,7 @@
                             style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
                               background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
                           >
-                            ค่าใช้จ่ายสะสม :  {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
+                               {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
                             <span
                               class="knob_data"
                             > 
@@ -55,6 +55,12 @@
                             
                           </div>
                           <hr>
+                          <div class="card-title text-title"  style="text-align: center; ">
+                            <span  
+                            > 
+                            ค่าใช้จ่ายสะสม
+                            </span>
+                             </div>
                           <b-row>
                             <b-col sm="3">
                               <div class="callout callout-warning">
