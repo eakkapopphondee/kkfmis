@@ -20,7 +20,7 @@
                 <b-row>
                   <b-col sm="4">
                     <b-form-group
-                      label="ปีดำเนินงาน"
+                      label="ปี"
                       label-for="basicSelect"
                       :label-cols="3"
                       :horizontal="true"
@@ -54,7 +54,7 @@
                             </span>
                           </div>
                           <b-row>
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-successdanger">
                                 <small class="card-title text-title">วัตถุดิบใช้ไป (ลบ.)</small>
                                 <br />
@@ -81,7 +81,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">เกี่ยวกับพนักงาน (ลบ.)</small>
                                 <br />
@@ -108,7 +108,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ปะอวน (ลบ.)</small>
                                 <br />
@@ -133,7 +133,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การผลิต (ลบ.)</small>
                                 <br />
@@ -160,7 +160,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การขาย (ลบ.)</small>
                                 <br />
@@ -185,7 +185,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">การบริหาร (ลบ.)</small>
                                 <br />
@@ -210,7 +210,7 @@
                               </div>
                             </b-col>
 
-                            <b-col sm="2">
+                            <b-col sm="3">
                               <div class="callout callout-warning">
                                 <small class="card-title text-title">ตัดจ่าย/เสื่อมราคา (ลบ.)</small>
                                 <br />
@@ -245,9 +245,19 @@
           </b-card>
         </transition>
       </b-col>
+      <b-col sm="12">
+      <b-card border-variant="secondary"  bg-variant="light" header="กราฟค่าใช้จ่ายสะสม" align="center">
+        <b-card-text>
+          <div style>
+                    <canvas id="graph1"></canvas>
+                    </div>
+
+        </b-card-text>
+      </b-card>
+    </b-col>
     </b-row>
 
-<canvas id="graph1"></canvas>
+
 
     <div class="animated fadeIn">
       <b-row>
@@ -632,7 +642,7 @@ export default {
 
             return;
           }
- console.log(res);
+ //console.log(res);
           res.forEach((d, i) => {
             //this.dataDrawingARAll.push(d);
           
@@ -690,7 +700,7 @@ export default {
                           }
                         });
                          
-           console.log(this.txtSearch);
+           //console.log(this.txtSearch);
           API.GetDataKexpensesBymn({
             data: { yr: this.txtSearch },
             callblack: res => {
@@ -700,7 +710,7 @@ export default {
                 AlertMessage("error", "ไม่พบข้อมูล");
                 return;
               }
-             console.log(res);
+             //console.log(res);
               
 
 this.dataDrawingexpenValueByMn = [];
@@ -736,7 +746,7 @@ this.dataDrawingYYLabel.push(0);
               var ii; 
                
              for (ii = 0; ii < res.length; ii++) {
-                console.log(res[ii]["mn"]);
+               // console.log(res[ii]["mn"]);
                 //res[0]["yr"][i].toString(),
                 this.dataDrawingexpenValueByMnQ =[];
                 this.dataDrawingexpenValueByMnQ.mn_ntx =  res[ii]["mn"];
