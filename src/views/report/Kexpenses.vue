@@ -43,19 +43,21 @@
                         <b-card style="border: 0px solid;">
                           <div
                             class="knob_data"
-                            style="background-image: url('img/brand/Flagex.png'); background-repeat: no-repeat;
+                            style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
                               background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
                           >
-                            ค่าใช้จ่ายสะสม : {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
+                            ค่าใช้จ่ายสะสม :  {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
                             <span
-                              class="txt_smaller"
+                              class="knob_data"
                             > 
 
                             </span>
+                            
                           </div>
+                          <hr>
                           <b-row>
                             <b-col sm="3">
-                              <div class="callout callout-successdanger">
+                              <div class="callout callout-warning">
                                 <small class="card-title text-title">วัตถุดิบใช้ไป (ลบ.)</small>
                                 <br />
                                 <strong
@@ -246,7 +248,8 @@
         </transition>
       </b-col>
       <b-col sm="12">
-      <b-card border-variant="secondary"  bg-variant="light" header="กราฟค่าใช้จ่ายสะสม" align="center">
+      <b-card border-variant="secondary"  bg-variant="light" header="กราฟสรุปต้นทุน และค่าใช้จ่ายในการดำเนินงาน" align="center"
+      >
         <b-card-text>
           <div style>
                     <canvas id="graph1"></canvas>
