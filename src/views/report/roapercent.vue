@@ -49,7 +49,7 @@
               <b-card-body>
                 
  <i class="fa fa-television" aria-hidden="true"></i>ผลการดำเนินงานภาพรวม
-                <grid
+                <gridmobile
                   ref="DGV1"
                   :fields="F_DGV1"
                   :name="name"
@@ -63,7 +63,7 @@
                   :trackBy="'rowID'"
                   :data="dataDGV1"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
                 <br />
                 <b-row>
        
@@ -91,7 +91,7 @@
               <b-card-body>
                 <i class="fa fa-television" aria-hidden="true"></i>
  เปรียบเทียบผลการดำเนินงาน ปี {{this.txtSearch}} กับปี {{this.txtSearch-1}} แยกรายเดือน
-                <grid
+                <gridmobile
                   ref="DGV2"
                   :fields="F_DGV2"
                   :name="name"
@@ -105,7 +105,7 @@
                   :trackBy="'rowID'"
                   :data="dataDGV2"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
 
                 <br />
                 <b-row>
@@ -136,7 +136,7 @@
               <b-card-body>
                 <i class="fa fa-television" aria-hidden="true"></i>
  เปรียบเทียบผลการดำเนินงาน ปี {{this.txtSearch}} กับปี {{this.txtSearch-1}} แยกไตรมาส
-                <grid
+                <gridmobile
                   ref="DGV3"
                   :fields="F_DGV3"
                   :name="name"
@@ -150,7 +150,7 @@
                   :trackBy="'rowID'"
                   :data="dataDGV3"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
 
                 <br />
                 <b-row>
