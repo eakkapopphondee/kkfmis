@@ -66,16 +66,23 @@
                 ></grid>
                 <br />
                 <b-row>
-                  <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟผลการดำเนินงานภาพรวม" align="center">
-                      <b-card-text>
-                        <div style>
-                                    <canvas id="graph1"></canvas>
-                                  </div>
+       
 
-                      </b-card-text>
+
+                <b-col sm="6">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                      <b-card-text>
+                       <div v-resize:throttle.100="onResize">
+                          <canvas id="graph1" ref="CDG1" v-bind:height="height" ></canvas>
+
+
+                        </div>
+                        </b-card-text>
                     </b-card>
                   </b-col>
+
+
+
 
 
                 </b-row>
@@ -106,7 +113,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph2"></canvas>
+                                    <canvas id="graph2" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -117,7 +124,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph3"></canvas>
+                                    <canvas id="graph3" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -151,7 +158,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph4"></canvas>
+                                    <canvas id="graph4" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -162,7 +169,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph5"></canvas>
+                                    <canvas id="graph5" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -185,7 +192,7 @@
 
 <script>
 import Vue from "vue";
-
+import resize from "vue-resize-directive";
 import { API } from "@/shared/core";
 import {
   GetDateView,
@@ -201,6 +208,8 @@ import dic from "@/shared/dic";
 
 import "webrtc-adapter";
 import Chart from "chart.js";
+
+
 
 var i;
    var  H2 = new Array();
@@ -218,8 +227,8 @@ export default {
     },
     sharedMessages: dic
   },
-
-  name: "rptDrawing",
+  directives:{resize},
+  name: "roapercent",
 
   created: function() {
     const self = this;
@@ -261,7 +270,7 @@ export default {
       errMsg: "",
       avSearch: false,
       txtSearch: "",
-      name: "rptDrawing",
+      name: "roapercent",
       drawingCd: "",
       perPage: 25,
 
@@ -277,6 +286,7 @@ export default {
       dataDGV2: [],
       dataDGV3: [],
       objSelect: {},
+      height:100,
       F_DGV1: [],
       F_DGV2: [{
                         name: "mn_name",
@@ -372,15 +382,23 @@ export default {
 
   methods: {
     Search(e) {
-
       this.QueryData();
-
-
+    },onResize(el)
+    {
+          
+          if(el.offsetWidth < 300)
+          {
+              //  console.log(el.offsetWidth, el.offsetHeight);
+               this.height = 500;
              
-
-
+              
+          }else
+          {
+               this.height = 200;
+              
+              
+          }
     },
-
     QueryData() {
       
      
@@ -761,6 +779,7 @@ export default {
     this.QueryData();
   }
 };
+
 </script>
 
 

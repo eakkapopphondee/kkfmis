@@ -2,11 +2,26 @@
   <!-- <WidgetsBrand/> -->
 
   <div class="animated fadeIn">
+
+<div v-if="show_err">
+<b-row>
+<div>
+  <b-alert show variant="danger">
+    <h4 class="alert-heading">ผิดพลาด!</h4>
+    <p>
+      <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
+    </p>
+   
+  </b-alert>
+</div>
+</b-row>
+</div>
+
     
-    <b-row>
+    <b-row v-if="show">
       <b-col lg="12">
         <transition name="fade">
-          <b-card no-body v-if="show">
+          <b-card no-body >
             <div slot="header">
               <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ</h5>
               <div class="card-header-actions">
@@ -111,11 +126,11 @@
     </b-row>
 
 
-     <div class="animated fadeIn">
-      <b-row>
+     <div class="animated fadeIn" v-if="show">
+      <b-row >
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> สัดส่วนปริมาณการใช้และปริมาณคงเหลือเม็ดวัตถุดิบสะสม
                 <div class="card-header-actions">
@@ -179,11 +194,11 @@
 
 
 
-     <div class="animated fadeIn">
+     <div class="animated fadeIn" v-if="show">
       <b-row>
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> แนวโน้มราคาวัตถุดิบย้อนหลัง 1 ปี
                 <div class="card-header-actions">
@@ -228,11 +243,11 @@
 
     
 
-    <div class="animated fadeIn">
+    <div class="animated fadeIn" v-if="show">
       <b-row>
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> ราคาวัตถุดิบ (บาท/กก.) 5 รายการแรก(ตามปริมาณคงเหลือ)
                 <div class="card-header-actions">
@@ -365,6 +380,7 @@ export default {
       mode: "Add",
       errMsg: "",
       avSearch: false,
+      show_err : true,
       txtSearch: "",
       txtSearch_mn: "",
      // name: "rptDrawing",
@@ -539,7 +555,7 @@ export default {
         this.dataDGV2 = dataH1;
         this.$refs.DGV2.reset();
 
-
+        var sNO_DM = false;
 
 
       /// var iMouns = this.txtSearch_mn.selectedIndex;
@@ -558,6 +574,19 @@ export default {
               res.forEach((d,i) => {
                 if(rop!=cui)
                       {
+                        
+                        /*else
+                        {
+                          this.show_err = false;
+                          this.show = true;
+                        }*/
+                       if(res[i].matgrprpcd.toString() === "NO_DM")
+                        {
+                          sNO_DM = false;
+                        }
+
+
+
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
                           ChartDATA_H1_1[i]=res[i].prd_rec_wei;
@@ -847,6 +876,18 @@ export default {
                     
                           this.F_DGV2 = H1;
                           this.$refs.DGV2.reset();
+
+                         if(sNO_DM)
+                         {
+                            this.show_err = false;
+                           this.show = true;
+                         }else
+                         {
+                           this.show_err = true;
+                           this.show = false;
+                         }
+                        
+                        
                         
 
                         ///   dataH1[0]['mn_name'] =  res[0]["c_data"][1]["mn_name"].toString();   
