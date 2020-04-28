@@ -11,6 +11,10 @@
     <p>
       <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
     </p>
+    <hr>
+   
+   <div v-html="txt_PB"></div>
+
    
   </b-alert>
 </div>
@@ -376,6 +380,7 @@ export default {
       formtime: "",
       time: "",
       date: "",
+      txt_PB:"",
       modal: false,
       mode: "Add",
       errMsg: "",
@@ -582,7 +587,8 @@ export default {
                         }*/
                        if(res[i].matgrprpcd.toString() === "NO_DM")
                         {
-                          sNO_DM = false;
+                          
+                             sNO_DM = false;
                         }
 
 
@@ -745,6 +751,24 @@ export default {
               data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
               callblack: res => {
 
+
+                        if(sNO_DM)
+                         {
+                           
+                         }else
+                         {
+                           for (i = 0; i < res[0]["s_pb"].length; i++) 
+                           {
+                                this.txt_PB = this.txt_PB +res[0]["s_pb"][i].toString()+ '</br>';
+                           }
+                           
+                         }
+
+
+
+
+
+
                       H1[0] = {
                           name: "mn_name",
                           title: "เดือน/ปี",
@@ -869,9 +893,9 @@ export default {
                           }
 
 
-
+                        
                           
-                         
+                            
 
                     
                           this.F_DGV2 = H1;

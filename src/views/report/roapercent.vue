@@ -7,7 +7,7 @@
         <transition name="fade">
           <b-card no-body v-if="show">
             <div slot="header">
-              <h5> <i class="fa fa-television" aria-hidden="true"></i> รายงานสรุป ROA ยอดขาย และ % กำไร</h5>
+              <h5> <i class="fa fa-television" aria-hidden="true"></i> รายงานสรุป ROA และ % กำไร</h5>
               <div class="card-header-actions">
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
                   <i class="icon-arrow-up"></i>
@@ -24,7 +24,7 @@
              
 <b-col sm="5">
               <b-form-group
-            label="ผลการดำเนินงานปี"
+            label="ปีดำเนินงาน"
             label-for="basicSelect"
             :label-cols="5"
             :horizontal="true">
@@ -70,7 +70,7 @@
 
 
                 <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA และกำไรจากการดำเนินงาน (%)" align="center">
                       <b-card-text>
                        <div v-resize:throttle.100="onResize">
                           <canvas id="graph1" ref="CDG1" v-bind:height="height" ></canvas>
@@ -110,7 +110,7 @@
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA (%)" align="center">
                       <b-card-text>
                         <div style>
                                     <canvas id="graph2" v-bind:height="height"></canvas>
@@ -155,7 +155,7 @@
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA (%)" align="center">
                       <b-card-text>
                         <div style>
                                     <canvas id="graph4" v-bind:height="height"></canvas>
@@ -286,7 +286,7 @@ export default {
       dataDGV2: [],
       dataDGV3: [],
       objSelect: {},
-      height:100,
+      height:200,
       F_DGV1: [],
       F_DGV2: [{
                         name: "mn_name",
@@ -777,6 +777,7 @@ export default {
 
     this.txtSearch = date.getFullYear();
     this.QueryData();
+   
   }
 };
 
