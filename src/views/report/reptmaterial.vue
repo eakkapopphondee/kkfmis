@@ -595,9 +595,9 @@ export default {
 
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
-                          ChartDATA_H1_1[i]=res[i].rec_wei_cum;
-                          ChartDATA_H1_2[i]=res[i].pay_wei_cum;
-                          ChartDATA_H1_3[i]=res[i].end_wei;
+                          ChartDATA_H1_1[i]=res[i].rec_wei_cum.toFixed(2);
+                          ChartDATA_H1_2[i]=res[i].pay_wei_cum.toFixed(2);
+                          ChartDATA_H1_3[i]=res[i].end_wei.toFixed(2);
                       }
                      
                       rop++;
