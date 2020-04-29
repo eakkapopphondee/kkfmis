@@ -385,7 +385,7 @@ export default {
       mode: "Add",
       errMsg: "",
       avSearch: false,
-      show_err : true,
+      show_err : false,
       txtSearch: "",
       txtSearch_mn: "",
      // name: "rptDrawing",
@@ -560,7 +560,7 @@ export default {
         this.dataDGV2 = dataH1;
         this.$refs.DGV2.reset();
 
-        var sNO_DM = false;
+        var sNO_DM = true;
 
 
       /// var iMouns = this.txtSearch_mn.selectedIndex;
@@ -595,8 +595,8 @@ export default {
 
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
-                          ChartDATA_H1_1[i]=res[i].prd_rec_wei;
-                          ChartDATA_H1_2[i]=res[i].prd_pay_wei;
+                          ChartDATA_H1_1[i]=res[i].rec_wei_cum;
+                          ChartDATA_H1_2[i]=res[i].pay_wei_cum;
                           ChartDATA_H1_3[i]=res[i].end_wei;
                       }
                      
