@@ -21,6 +21,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.1",
     "chart.js": "^2.9.3",
+    "chartjs-plugin-labels": "^1.1.0",
     "core-js": "^2.6.9",
     "css-vars-ponyfill": "^1.16.2",
     "exceljs": "^1.15.0",

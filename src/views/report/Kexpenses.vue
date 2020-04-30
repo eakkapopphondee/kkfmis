@@ -41,12 +41,19 @@
                     <b-row>
                       <b-col md="12">
                         <b-card style="border: 0px solid;">
+                           <div class="knob_data"  style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
+                              background-size: contain; background-position: left;  color:#1A5276; text-align: center; ">
+                            <span  
+                            > 
+                            ค่าใช้จ่ายสะสม (ลบ.)
+                            </span>
+                             </div>
                           <div
-                            class="knob_data"
-                            style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
-                              background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
+                            class="knob_data"  style=" background-repeat: no-repeat;
+                              background-size: contain; background-position: left;  color:#1A5276; text-align: center;"
+                             
                           >
-                               {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
+                               {{this.dataDrawingexpenValue.total_cost}} 
                             <span
                               class="knob_data"
                             > 
@@ -55,16 +62,11 @@
                             
                           </div>
                           <hr>
-                          <div class="card-title text-title"  style="text-align: center; ">
-                            <span  
-                            > 
-                            ค่าใช้จ่ายสะสม
-                            </span>
-                             </div>
+                         
                           <b-row>
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">วัตถุดิบใช้ไป (ลบ.)</small>
+                                <small class="card-title text-title"><h3>วัตถุดิบใช้ไป</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -73,11 +75,12 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.material_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount">{{this.dataDrawingexpenValue.material_per| number(2)}}%</h2></span>
                                 </div>
+                                
                                 <div class="progress-group-bars">
                                   <b-progress
                                     height="{}"
@@ -86,12 +89,13 @@
                                     variant="success"
                                   ></b-progress>
                                 </div>
+                                
                               </div>
                             </b-col>
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">เกี่ยวกับพนักงาน (ลบ.)</small>
+                                <small class="card-title text-title"><h3>เกี่ยวกับพนักงาน</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -100,10 +104,10 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.employee_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -118,17 +122,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">ปะอวน (ลบ.)</small>
+                                <small class="card-title text-title"><h3>ปะอวน</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -143,7 +147,7 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การผลิต (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การผลิต</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -152,10 +156,10 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.production_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.production_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -170,17 +174,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การขาย (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การขาย</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.sale_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                  
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.sale_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -195,17 +199,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การบริหาร (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การบริหาร</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.manage_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                  
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.manage_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -220,17 +224,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">ตัดจ่าย/เสื่อมราคา (ลบ.)</small>
+                                <small class="card-title text-title"><h3>ตัดจ่าย/เสื่อมราคา</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.dp_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</span>
+                                  ><h3>{{this.dataDrawingexpenValue.dp_per| number(2)}}%</h3></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -382,7 +386,7 @@
 import Vue from "vue";
 
 import Chart from "chart.js";
-
+require('chartjs-plugin-labels')
 import { API } from "@/shared/core";
 import {
   GetDateView,
@@ -705,7 +709,30 @@ export default {
                             }]
                           },
                           options: {
-                            responsive: true
+                             legend: {
+                             display: false
+                               }, // responsive: true,
+    plugins: { //setup chartjs-plugin-labels plug in 
+        labels: [
+          
+            {
+               // labels: ['วัตถุดิบใช้ไป', 'เกี่ยวกับพนักงาน', 'ปะอวน','การผลิต','การขาย','การบริหาร','ตัดจ่าย/เสื่อมราคา'],
+                render: 'label',
+                position: 'outside',
+                outsidePadding: 6,
+            },
+            {
+                render: 'percentage',
+               //arc: true,
+                 precision: 2,// font size, default is defaultFontSize
+                fontSize: 10,
+                fontStyle: 'bold',
+                // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                fontColor: '#fff',
+            },
+        ],
+    }
+
                           }
                         });
                          
