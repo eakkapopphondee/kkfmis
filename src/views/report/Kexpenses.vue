@@ -261,8 +261,8 @@
       <b-card border-variant="secondary"  bg-variant="light" header="กราฟสรุปต้นทุน และค่าใช้จ่ายในการดำเนินงาน" align="center"
       >
         <b-card-text>
-          <div style>
-                    <canvas id="graph1"></canvas>
+          <div v-resize:throttle.100="onResize">
+                    <canvas id="graph1"   ref="CDG1"  v-bind:height="height" ></canvas>
                     </div>
 
         </b-card-text>
@@ -313,57 +313,57 @@
           </transition>
         </b-col>
          <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn1" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn1" ref="CDG1" v-bind:height="height" ></canvas>
 
 
              </div>
            </b-col> 
             <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn2" width="400" height="400"></canvas>
+             <div  v-resize:throttle.100="onResize">
+               <canvas id="graphBymn2" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
             </b-col>  
              <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn3" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn3" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
 </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn4" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn4" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn5" width="400" height="400"></canvas>
-
-
-             </div>
-             </b-col>  
-              <b-col sm="4">
-             <div style="width:350px;">
-               <canvas id="graphBymn6" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn5" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn7" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn6" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn8" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn7" ref="CDG1" v-bind:height="height"></canvas>
+
+
+             </div>
+             </b-col>  
+              <b-col sm="6">
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn8" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
@@ -384,7 +384,7 @@
 
 <script>
 import Vue from "vue";
-
+import resize from "vue-resize-directive";
 import Chart from "chart.js";
 require('chartjs-plugin-labels')
 import { API } from "@/shared/core";
@@ -414,7 +414,8 @@ export default {
     },
     sharedMessages: dic
   },
-
+   directives:{resize},
+  
   name: "rptDrawing",
 
   created: function() {
@@ -469,7 +470,7 @@ export default {
       name: "rptDrawing",
       drawingCd: "",
       perPage: 25,
-
+      height:200,
       startRow: 0,
       stopRow: 25,
       
@@ -617,6 +618,21 @@ export default {
   methods: {
     Search(e) {
       this.QueryData();
+    },onResize(el)
+    {
+          
+          if(el.offsetWidth < 300)
+          {
+              //  console.log(el.offsetWidth, el.offsetHeight);
+               this.height = 500;
+             
+              
+          }else
+          {
+               this.height = 200;
+              
+              
+          }
     },
 
     QueryData() {
@@ -868,10 +884,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "วัตถุดิบใช้ไป (ลบ.)",
-                          //display: true
-                      }
-
-
+                           display: true
+                      },  
+                        legend: {
+                             display: false
+                               },
+                              
 
                 },
                     data: {
@@ -880,14 +898,14 @@ this.dataDrawingYYLabel.push(0);
                         {
                 backgroundColor: 'rgba(55, 173, 221, 0.1)',
                     borderColor: 'rgba(55, 173, 221, 1.0)',
-                          label: 'วัตถุดิบใช้ไป (ลบ.)',
-                      
+                         // label: 'วัตถุดิบใช้ไป (ลบ.)',
+                        
                           data: this.dataDrawingGraph//['',71.27,75.77,75.77]
 
                         } 
 
                         ]
-                    }
+                    },
                     
                   }); 
              
@@ -901,10 +919,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "เกี่ยวกับพนักงานสายผลิต (ลบ.)",
-                          //display: true
-                      }
+                           display: true
+                      },
 
-
+                        legend: {
+                             display: false
+                               }
 
                 },
                     data: {
@@ -934,9 +954,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "ค่าปะอวน (ลบ.)",
-                          //display: true
+                           display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -967,9 +990,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การผลิต (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1000,9 +1026,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การขาย (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1033,9 +1062,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การบริหาร (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1066,9 +1098,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "ตัดจ่าย และเสื่อมราคา (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1099,9 +1134,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "รวม (ลบ.)",
-                          //display: true
+                           display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
