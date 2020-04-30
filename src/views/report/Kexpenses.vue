@@ -78,7 +78,7 @@
                                    
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h2 class="card-text text-amount">{{this.dataDrawingexpenValue.material_per| number(2)}}%</h2></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.material_per| number(2)}}%</h2></span>
                                 </div>
                                 
                                 <div class="progress-group-bars">
@@ -107,7 +107,7 @@
                                    
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.employee_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -132,7 +132,7 @@
                                    
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -159,7 +159,7 @@
                                    
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.production_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.production_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -184,7 +184,7 @@
                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.sale_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -209,7 +209,7 @@
                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.manage_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -234,7 +234,7 @@
                                    
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  ><h3>{{this.dataDrawingexpenValue.dp_per| number(2)}}%</h3></span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
