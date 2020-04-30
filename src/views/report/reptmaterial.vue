@@ -2,11 +2,30 @@
   <!-- <WidgetsBrand/> -->
 
   <div class="animated fadeIn">
+
+<div v-if="show_err">
+<b-row>
+<div>
+  <b-alert show variant="danger">
+    <h4 class="alert-heading">ผิดพลาด!</h4>
+    <p>
+      <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
+    </p>
+    <hr>
+   
+   <div v-html="txt_PB"></div>
+
+   
+  </b-alert>
+</div>
+</b-row>
+</div>
+
     
-    <b-row>
+    <b-row v-if="show">
       <b-col lg="12">
         <transition name="fade">
-          <b-card no-body v-if="show">
+          <b-card no-body >
             <div slot="header">
               <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ</h5>
               <div class="card-header-actions">
@@ -111,11 +130,11 @@
     </b-row>
 
 
-     <div class="animated fadeIn">
-      <b-row>
+     <div class="animated fadeIn" v-if="show">
+      <b-row >
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> สัดส่วนปริมาณการใช้และปริมาณคงเหลือเม็ดวัตถุดิบสะสม
                 <div class="card-header-actions">
@@ -134,7 +153,7 @@
             
         <b-card-text>
           
-          <div class="chart-container">
+          <div class="chart-container" id = "DVg1" >
                       <canvas height="250" id="graph1" ></canvas>
                     </div>
 
@@ -179,11 +198,11 @@
 
 
 
-     <div class="animated fadeIn">
+     <div class="animated fadeIn" v-if="show">
       <b-row>
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> แนวโน้มราคาวัตถุดิบย้อนหลัง 1 ปี
                 <div class="card-header-actions">
@@ -228,11 +247,11 @@
 
     
 
-    <div class="animated fadeIn">
+    <div class="animated fadeIn" v-if="show">
       <b-row>
         <b-col lg="12">
           <transition name="fade">
-            <b-card no-body v-if="show">
+            <b-card no-body >
               <div slot="header">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i> ราคาวัตถุดิบ (บาท/กก.) 5 รายการแรก(ตามปริมาณคงเหลือ)
                 <div class="card-header-actions">
@@ -304,8 +323,12 @@ import Chart from "chart.js";
 
 var i;
 var t;
-   var  H2 = new Array();
+var  H2 = new Array();
 
+var myChart1 = null;
+var myChart2 = null;
+var myChart3 = null;
+var bar= null;
 
 export default {
   i18n: {
@@ -357,10 +380,12 @@ export default {
       formtime: "",
       time: "",
       date: "",
+      txt_PB:"",
       modal: false,
       mode: "Add",
       errMsg: "",
       avSearch: false,
+      show_err : false,
       txtSearch: "",
       txtSearch_mn: "",
      // name: "rptDrawing",
@@ -535,6 +560,9 @@ export default {
         this.dataDGV2 = dataH1;
         this.$refs.DGV2.reset();
 
+        var sNO_DM = true;
+
+
       /// var iMouns = this.txtSearch_mn.selectedIndex;
       //    var iMouns =  this.$refs.txtid_mn.selectedIndex();  
     //   console.log(iMouns);
@@ -551,38 +579,99 @@ export default {
               res.forEach((d,i) => {
                 if(rop!=cui)
                       {
+                        
+                        /*else
+                        {
+                          this.show_err = false;
+                          this.show = true;
+                        }*/
+                       if(res[i].matgrprpcd.toString() === "NO_DM")
+                        {
+                          
+                             sNO_DM = false;
+                        }
+
+
+
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
-                          ChartDATA_H1_1[i]=res[i].prd_rec_wei;
-                          ChartDATA_H1_2[i]=res[i].prd_pay_wei;
-                          ChartDATA_H1_3[i]=res[i].end_wei;
+                          ChartDATA_H1_1[i]=res[i].rec_wei_cum.toFixed(2);
+                          ChartDATA_H1_2[i]=res[i].pay_wei_cum.toFixed(2);
+                          ChartDATA_H1_3[i]=res[i].end_wei.toFixed(2);
                       }
                      
                       rop++;
                    });
+              
+              
+                var ctx = document.getElementById("graph1").getContext("2d");
+                
+                if(myChart1 !== null)
+                {
+                         myChart1.data.labels = Charttxt_H1;
+                         myChart1.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_1,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart1.update();
+                }else
+                {
+
+                         myChart1 = new Chart(ctx, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_1,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
+            
+             
+             
 
 
-              var ctx = document.getElementById('graph1').getContext("2d");
+             var ctx2 = document.getElementById('graph2').getContext("2d");
              // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
-                  type: 'pie',
-                  data: {
-                    labels: Charttxt_H1,
-                    datasets: [{
-                      label: 'Page A',
-                      data: ChartDATA_H1_1,
-                      backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
-                    }]
-                  },
-                  options: {
-                    responsive: true
-                  }
-                });
+             if(myChart2 !== null)
+                {
+                         myChart2.data.labels = Charttxt_H1;
+                         myChart2.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_2,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart2.update();
+                }else
+                {
 
+                         myChart2 = new Chart(ctx2, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_2,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
 
-             var ctx = document.getElementById('graph2').getContext("2d");
-             // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
+              
+            /*  var myChart2 = new Chart(ctx2, {
                   type: 'pie',
                   data: {
                     labels:  Charttxt_H1,
@@ -596,12 +685,43 @@ export default {
                     responsive: true
                   }
                 });
+*/
+
+               
+                var ctx3 = document.getElementById('graph3').getContext("2d");
 
 
+                if(myChart3 !== null)
+                {
+                         myChart3.data.labels = Charttxt_H1;
+                         myChart3.data.datasets =  [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_3,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }];
+                         myChart3.update();
+                }else
+                {
 
-                var ctx = document.getElementById('graph3').getContext("2d");
+                         myChart3 = new Chart(ctx3, {
+                                      type: 'pie',
+                                      data: {
+                                        labels:  Charttxt_H1,
+                                        datasets: [{
+                                          label: 'Page A',
+                                          data: ChartDATA_H1_3,
+                                          backgroundColor: ['#36C1A1', '#339DF9', '#E2A11E', '#E290E5','#F96565']
+                                        }]
+                                      },
+                                      options: {
+                                        responsive: true
+                                      }
+                                    });
+            
+                }
+                
              // var ctx = document.getElementById("graph1").getContext("2d");
-                var myChart = new Chart(ctx, {
+            /*   var  myChart = new Chart(ctx3, {
                   type: 'pie',
                   data: {
                  labels: Charttxt_H1,
@@ -614,7 +734,7 @@ export default {
                   options: {
                     responsive: true
                   }
-                });
+                });*/
 
 
 
@@ -630,6 +750,24 @@ export default {
               API.GetDataSearchMaterialPRC({
               data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
               callblack: res => {
+
+
+                        if(sNO_DM)
+                         {
+                           
+                         }else
+                         {
+                           for (i = 0; i < res[0]["s_pb"].length; i++) 
+                           {
+                                this.txt_PB = this.txt_PB +res[0]["s_pb"][i].toString()+ '</br>';
+                           }
+                           
+                         }
+
+
+
+
+
 
                       H1[0] = {
                           name: "mn_name",
@@ -727,31 +865,60 @@ export default {
 ///console.log(CharDATA_set);
 
                           var ctx = document.getElementById("graph4").getContext("2d");
-                          this.bar = new Chart(ctx, {
-                            type: "line",
-                            options: {
-                              responsive: true,
-                              title: {
-                                // ข้อความที่อยู่ด้านบนของแผนภูมิ
-                                
-                                display: true
-                              }
-                            },
-                            data: {
-                              labels: ChartCul_H1,
-                              datasets: CharDATA_set
-                            }
-                          });
+
+                        if(bar !== null)
+                          {
+                                  bar.data.labels = ChartCul_H1;
+                                  bar.data.datasets =  CharDATA_set;
+                                  bar.update();
+                          }else
+                          {
+
+                                  bar = new Chart(ctx, {
+                                    type: "line",
+                                    options: {
+                                      responsive: true,
+                                      title: {
+                                        // ข้อความที่อยู่ด้านบนของแผนภูมิ
+                                        
+                                        display: true
+                                      }
+                                    },
+                                    data: {
+                                      labels: ChartCul_H1,
+                                      datasets: CharDATA_set
+                                    }
+                                  });
+                      
+                          }
+
+
+                        
+                          
+                            
 
                     
                           this.F_DGV2 = H1;
                           this.$refs.DGV2.reset();
+
+                         if(sNO_DM)
+                         {
+                            this.show_err = false;
+                           this.show = true;
+                         }else
+                         {
+                           this.show_err = true;
+                           this.show = false;
+                         }
+                        
+                        
                         
 
                         ///   dataH1[0]['mn_name'] =  res[0]["c_data"][1]["mn_name"].toString();   
 
                       }
-             
+                       
+            
               });
 
 
@@ -793,8 +960,14 @@ export default {
     ///console.log(date.getMonth());
     this.txtSearch_mn =4;
     this.txtSearch = date.getFullYear();
+ myChart1 = null;
+ myChart2= null;
+ myChart3= null;
+ bar= null;
+
 
     this.QueryData();
+  //  chart.update();
   }
 };
 </script>

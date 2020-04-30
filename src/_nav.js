@@ -66,7 +66,7 @@ export default {
         },
         {
           name: 'วัตถุดิบ',
-          url: '/dashboard'
+          url: '/report/reptmaterial'
         },
         {
           name: 'ค่าใช้จ่าย',

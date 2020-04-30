@@ -7,7 +7,7 @@
         <transition name="fade">
           <b-card no-body v-if="show">
             <div slot="header">
-              <h5> <i class="fa fa-television" aria-hidden="true"></i> รายงานสรุป ROA ยอดขาย และ % กำไร</h5>
+              <h5> <i class="fa fa-television" aria-hidden="true"></i> รายงานสรุป ROA และ % กำไร</h5>
               <div class="card-header-actions">
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
                   <i class="icon-arrow-up"></i>
@@ -24,7 +24,7 @@
              
 <b-col sm="5">
               <b-form-group
-            label="ผลการดำเนินงานปี"
+            label="ปีดำเนินงาน"
             label-for="basicSelect"
             :label-cols="5"
             :horizontal="true">
@@ -49,7 +49,7 @@
               <b-card-body>
                 
  <i class="fa fa-television" aria-hidden="true"></i>ผลการดำเนินงานภาพรวม
-                <grid
+                <gridmobile
                   ref="DGV1"
                   :fields="F_DGV1"
                   :name="name"
@@ -63,19 +63,26 @@
                   :trackBy="'rowID'"
                   :data="dataDGV1"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
                 <br />
                 <b-row>
-                  <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟผลการดำเนินงานภาพรวม" align="center">
-                      <b-card-text>
-                        <div style>
-                                    <canvas id="graph1"></canvas>
-                                  </div>
+       
 
-                      </b-card-text>
+
+                <b-col sm="6">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA และกำไรจากการดำเนินงาน (%)" align="center">
+                      <b-card-text>
+                       <div v-resize:throttle.100="onResize">
+                          <canvas id="graph1" ref="CDG1" v-bind:height="height" ></canvas>
+
+
+                        </div>
+                        </b-card-text>
                     </b-card>
                   </b-col>
+
+
+
 
 
                 </b-row>
@@ -84,7 +91,7 @@
               <b-card-body>
                 <i class="fa fa-television" aria-hidden="true"></i>
  เปรียบเทียบผลการดำเนินงาน ปี {{this.txtSearch}} กับปี {{this.txtSearch-1}} แยกรายเดือน
-                <grid
+                <gridmobile
                   ref="DGV2"
                   :fields="F_DGV2"
                   :name="name"
@@ -98,15 +105,15 @@
                   :trackBy="'rowID'"
                   :data="dataDGV2"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
 
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph2"></canvas>
+                                    <canvas id="graph2" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -117,7 +124,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph3"></canvas>
+                                    <canvas id="graph3" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -129,7 +136,7 @@
               <b-card-body>
                 <i class="fa fa-television" aria-hidden="true"></i>
  เปรียบเทียบผลการดำเนินงาน ปี {{this.txtSearch}} กับปี {{this.txtSearch-1}} แยกไตรมาส
-                <grid
+                <gridmobile
                   ref="DGV3"
                   :fields="F_DGV3"
                   :name="name"
@@ -143,15 +150,15 @@
                   :trackBy="'rowID'"
                   :data="dataDGV3"
                   :o_navfooter_visible="false"
-                ></grid>
+                ></gridmobile>
 
                 <br />
                 <b-row>
                   <b-col sm="6">
-                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟROA (%)" align="center">
+                    <b-card border-variant="secondary"  bg-variant="light" header="กราฟ ROA (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph4"></canvas>
+                                    <canvas id="graph4" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -162,7 +169,7 @@
                     <b-card border-variant="secondary"  bg-variant="light" header="กราฟกำไรจากการดำเนินงาน (%)" align="center">
                       <b-card-text>
                         <div style>
-                                    <canvas id="graph5"></canvas>
+                                    <canvas id="graph5" v-bind:height="height"></canvas>
                                   </div>
 
                       </b-card-text>
@@ -185,7 +192,7 @@
 
 <script>
 import Vue from "vue";
-
+import resize from "vue-resize-directive";
 import { API } from "@/shared/core";
 import {
   GetDateView,
@@ -201,6 +208,8 @@ import dic from "@/shared/dic";
 
 import "webrtc-adapter";
 import Chart from "chart.js";
+
+
 
 var i;
    var  H2 = new Array();
@@ -218,8 +227,8 @@ export default {
     },
     sharedMessages: dic
   },
-
-  name: "rptDrawing",
+  directives:{resize},
+  name: "roapercent",
 
   created: function() {
     const self = this;
@@ -261,7 +270,7 @@ export default {
       errMsg: "",
       avSearch: false,
       txtSearch: "",
-      name: "rptDrawing",
+      name: "roapercent",
       drawingCd: "",
       perPage: 25,
 
@@ -277,6 +286,7 @@ export default {
       dataDGV2: [],
       dataDGV3: [],
       objSelect: {},
+      height:200,
       F_DGV1: [],
       F_DGV2: [{
                         name: "mn_name",
@@ -372,15 +382,23 @@ export default {
 
   methods: {
     Search(e) {
-
       this.QueryData();
-
-
+    },onResize(el)
+    {
+          
+          if(el.offsetWidth < 300)
+          {
+              //  console.log(el.offsetWidth, el.offsetHeight);
+               this.height = 500;
              
-
-
+              
+          }else
+          {
+               this.height = 200;
+              
+              
+          }
     },
-
     QueryData() {
       
      
@@ -438,6 +456,11 @@ export default {
               visible: true
             };
 
+
+              ChartCul_H1[0] = 0;
+              ChartDATA_H1_1[0] = 0;
+              ChartDATA_H1_2[0] = 0;
+
             for (i = 0; i < res[0]["yeaRs"].length; i++) {
               Tc = i + 1;
               H1[Tc] = {
@@ -455,9 +478,9 @@ export default {
               ///dataH1.unshift( {"CUL1": res[0]["roAs"][0].toString()})
            //dataH1[0] = dataH1[0].+{"CUL1": res[0]["roAs"][0].toString()} ;   
 
-              ChartCul_H1[i] = res[0]["yeaRs"][i].toString().substring(0, 4);
-              ChartDATA_H1_1[i] = res[0]["roAs"][i];
-              ChartDATA_H1_2[i] = res[0]["margin"][i];
+              ChartCul_H1[i+1] = res[0]["yeaRs"][i].toString().substring(0, 4);
+              ChartDATA_H1_1[i+1] = res[0]["roAs"][i];
+              ChartDATA_H1_2[i+1] = res[0]["margin"][i];
             }
              
 
@@ -536,16 +559,23 @@ export default {
 
                    var cui = res.length;
                   var rop = 1;
+                          ChartROA_H1[0]=0;
+                          CDATA_H2_1[0]=0;
+                          CDATA_H2_2[0]=0;
+
+                          CDATA_H3_1[0]=0;
+                          CDATA_H3_2[0]=0;
+
                   res.forEach((d,i) => {
                       if(rop!=cui)
                       {
-                          ChartROA_H1[i]=res[i].mn_name;
+                          ChartROA_H1[i+1]=res[i].mn_name;
 
-                          CDATA_H2_1[i]=res[i].now_per_roa;
-                          CDATA_H2_2[i]=res[i].compare_per_roa;
+                          CDATA_H2_1[i+1]=res[i].now_per_roa;
+                          CDATA_H2_2[i+1]=res[i].compare_per_roa;
 
-                          CDATA_H3_1[i]=res[i].now_per_margin;
-                          CDATA_H3_2[i]=res[i].compare_per_margin;
+                          CDATA_H3_1[i+1]=res[i].now_per_margin;
+                          CDATA_H3_2[i+1]=res[i].compare_per_margin;
                       }
                      
                       rop++;
@@ -637,18 +667,26 @@ export default {
                  // console.log(x);
                  var cui = res.length;
                  var rop = 1;
+
+                 ChartROA_H2[0]=0;
+
+                        CDATA_H4_1[0]=0;
+                        CDATA_H4_2[0]=0;
+
+                        CDATA_H5_1[0]=0;
+                        CDATA_H5_2[0]=0;
                  
                   res.forEach((d,i) => {
                       
                       if(rop!=cui)
                       {
-                        ChartROA_H2[i]=res[i].mn_name;
+                        ChartROA_H2[i+1]=res[i].mn_name;
 
-                        CDATA_H4_1[i]=res[i].now_per_roa;
-                        CDATA_H4_2[i]=res[i].compare_per_roa;
+                        CDATA_H4_1[i+1]=res[i].now_per_roa;
+                        CDATA_H4_2[i+1]=res[i].compare_per_roa;
 
-                        CDATA_H5_1[i]=res[i].now_per_margin;
-                        CDATA_H5_2[i]=res[i].compare_per_margin;
+                        CDATA_H5_1[i+1]=res[i].now_per_margin;
+                        CDATA_H5_2[i+1]=res[i].compare_per_margin;
                       }
                      
                       rop++;
@@ -739,8 +777,10 @@ export default {
 
     this.txtSearch = date.getFullYear();
     this.QueryData();
+   
   }
 };
+
 </script>
 
 
