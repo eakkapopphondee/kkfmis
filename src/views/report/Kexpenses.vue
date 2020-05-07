@@ -41,12 +41,19 @@
                     <b-row>
                       <b-col md="12">
                         <b-card style="border: 0px solid;">
+                           <div class="knob_data"  style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
+                              background-size: contain; background-position: left;  color:#1A5276; text-align: center; ">
+                            <span  
+                            > 
+                            ค่าใช้จ่ายสะสม (ลบ.)
+                            </span>
+                             </div>
                           <div
-                            class="knob_data"
-                            style="background-image: url('img/brand/dollar_coin_hand-512.PNG'); background-repeat: no-repeat;
-                              background-size: contain; background-position: left;  color:#1A5276; text-align: center; "
+                            class="knob_data"  style=" background-repeat: no-repeat;
+                              background-size: contain; background-position: left;  color:#1A5276; text-align: center;"
+                             
                           >
-                               {{this.dataDrawingexpenValue.total_cost}} (ลบ.)
+                               {{this.dataDrawingexpenValue.total_cost}} 
                             <span
                               class="knob_data"
                             > 
@@ -55,16 +62,11 @@
                             
                           </div>
                           <hr>
-                          <div class="card-title text-title"  style="text-align: center; ">
-                            <span  
-                            > 
-                            ค่าใช้จ่ายสะสม
-                            </span>
-                             </div>
+                         
                           <b-row>
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">วัตถุดิบใช้ไป (ลบ.)</small>
+                                <small class="card-title text-title"><h3>วัตถุดิบใช้ไป</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -73,11 +75,12 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.material_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.material_per| number(2)}}%</h2></span>
                                 </div>
+                                
                                 <div class="progress-group-bars">
                                   <b-progress
                                     height="{}"
@@ -86,12 +89,13 @@
                                     variant="success"
                                   ></b-progress>
                                 </div>
+                                
                               </div>
                             </b-col>
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">เกี่ยวกับพนักงาน (ลบ.)</small>
+                                <small class="card-title text-title"><h3>เกี่ยวกับพนักงาน</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -100,10 +104,10 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.employee_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -118,17 +122,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">ปะอวน (ลบ.)</small>
+                                <small class="card-title text-title"><h3>ปะอวน</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.paoun_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.paoun_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -143,7 +147,7 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การผลิต (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การผลิต</h3></small>
                                 <br />
                                 <strong
                                   class="h2"
@@ -152,10 +156,10 @@
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.production_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.production_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -170,17 +174,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การขาย (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การขาย</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.sale_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                  
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.sale_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -195,17 +199,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">การบริหาร (ลบ.)</small>
+                                <small class="card-title text-title"><h3>การบริหาร</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.manage_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                  
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.manage_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -220,17 +224,17 @@
 
                             <b-col sm="3">
                               <div class="callout callout-warning">
-                                <small class="card-title text-title">ตัดจ่าย/เสื่อมราคา (ลบ.)</small>
+                                <small class="card-title text-title"><h3>ตัดจ่าย/เสื่อมราคา</h3></small>
                                 <br />
                                 <strong class="h2">{{this.dataDrawingexpenValue.dp_cost| number(2)}}</strong>
                                 <div class="chart-wrapper" :style="{ top: '-10px'}"></div>
                               </div>
                               <div class="progress-group">
                                 <div class="progress-group-header">
-                                  <span class="title">%</span>
+                                   
                                   <span
                                     class="ml-auto font-weight-bold"
-                                  >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</span>
+                                  ><h2 class="card-text text-amount"  style="color:	#0000FF" >{{this.dataDrawingexpenValue.dp_per| number(2)}}%</h2></span>
                                 </div>
                                 <div class="progress-group-bars">
                                   <b-progress
@@ -257,8 +261,8 @@
       <b-card border-variant="secondary"  bg-variant="light" header="กราฟสรุปต้นทุน และค่าใช้จ่ายในการดำเนินงาน" align="center"
       >
         <b-card-text>
-          <div style>
-                    <canvas id="graph1"></canvas>
+          <div v-resize:throttle.100="onResize">
+                    <canvas id="graph1"   ref="CDG1"  v-bind:height="height" ></canvas>
                     </div>
 
         </b-card-text>
@@ -309,57 +313,57 @@
           </transition>
         </b-col>
          <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn1" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn1" ref="CDG1" v-bind:height="height" ></canvas>
 
 
              </div>
            </b-col> 
             <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn2" width="400" height="400"></canvas>
+             <div  v-resize:throttle.100="onResize">
+               <canvas id="graphBymn2" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
             </b-col>  
              <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn3" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn3" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
 </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn4" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn4" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn5" width="400" height="400"></canvas>
-
-
-             </div>
-             </b-col>  
-              <b-col sm="4">
-             <div style="width:350px;">
-               <canvas id="graphBymn6" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn5" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn7" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn6" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
              </b-col>  
               <b-col sm="6">
-             <div style="width:350px;">
-               <canvas id="graphBymn8" width="400" height="400"></canvas>
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn7" ref="CDG1" v-bind:height="height"></canvas>
+
+
+             </div>
+             </b-col>  
+              <b-col sm="6">
+             <div v-resize:throttle.100="onResize">
+               <canvas id="graphBymn8" ref="CDG1" v-bind:height="height"></canvas>
 
 
              </div>
@@ -380,9 +384,9 @@
 
 <script>
 import Vue from "vue";
-
+import resize from "vue-resize-directive";
 import Chart from "chart.js";
-
+require('chartjs-plugin-labels')
 import { API } from "@/shared/core";
 import {
   GetDateView,
@@ -410,7 +414,8 @@ export default {
     },
     sharedMessages: dic
   },
-
+   directives:{resize},
+  
   name: "rptDrawing",
 
   created: function() {
@@ -465,7 +470,7 @@ export default {
       name: "rptDrawing",
       drawingCd: "",
       perPage: 25,
-
+      height:200,
       startRow: 0,
       stopRow: 25,
       
@@ -613,6 +618,21 @@ export default {
   methods: {
     Search(e) {
       this.QueryData();
+    },onResize(el)
+    {
+          
+          if(el.offsetWidth < 300)
+          {
+              //  console.log(el.offsetWidth, el.offsetHeight);
+               this.height = 500;
+             
+              
+          }else
+          {
+               this.height = 200;
+              
+              
+          }
     },
 
     QueryData() {
@@ -705,7 +725,30 @@ export default {
                             }]
                           },
                           options: {
-                            responsive: true
+                             legend: {
+                             display: false
+                               }, // responsive: true,
+    plugins: { //setup chartjs-plugin-labels plug in 
+        labels: [
+          
+            {
+               // labels: ['วัตถุดิบใช้ไป', 'เกี่ยวกับพนักงาน', 'ปะอวน','การผลิต','การขาย','การบริหาร','ตัดจ่าย/เสื่อมราคา'],
+                render: 'label',
+                position: 'outside',
+                outsidePadding: 6,
+            },
+            {
+                render: 'percentage',
+               //arc: true,
+                 precision: 2,// font size, default is defaultFontSize
+                fontSize: 10,
+                fontStyle: 'bold',
+                // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                fontColor: '#fff',
+            },
+        ],
+    }
+
                           }
                         });
                          
@@ -841,10 +884,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "วัตถุดิบใช้ไป (ลบ.)",
-                          //display: true
-                      }
-
-
+                           display: true
+                      },  
+                        legend: {
+                             display: false
+                               },
+                              
 
                 },
                     data: {
@@ -853,14 +898,14 @@ this.dataDrawingYYLabel.push(0);
                         {
                 backgroundColor: 'rgba(55, 173, 221, 0.1)',
                     borderColor: 'rgba(55, 173, 221, 1.0)',
-                          label: 'วัตถุดิบใช้ไป (ลบ.)',
-                      
+                         // label: 'วัตถุดิบใช้ไป (ลบ.)',
+                        
                           data: this.dataDrawingGraph//['',71.27,75.77,75.77]
 
                         } 
 
                         ]
-                    }
+                    },
                     
                   }); 
              
@@ -874,10 +919,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "เกี่ยวกับพนักงานสายผลิต (ลบ.)",
-                          //display: true
-                      }
+                           display: true
+                      },
 
-
+                        legend: {
+                             display: false
+                               }
 
                 },
                     data: {
@@ -907,9 +954,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "ค่าปะอวน (ลบ.)",
-                          //display: true
+                           display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -940,9 +990,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การผลิต (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -973,9 +1026,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การขาย (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1006,9 +1062,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "การบริหาร (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1039,9 +1098,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "ตัดจ่าย และเสื่อมราคา (ลบ.)",
-                          //display: true
+                          display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
@@ -1072,9 +1134,12 @@ this.dataDrawingYYLabel.push(0);
 
                     title: { // ข้อความที่อยู่ด้านบนของแผนภูมิ
                           text: "รวม (ลบ.)",
-                          //display: true
+                           display: true
                       }
-
+,  
+                        legend: {
+                             display: false
+                               },
 
 
                 },
