@@ -317,7 +317,7 @@ import {
 import { status, configMode } from "@/shared/define";
 import { required, minLength } from "vuelidate/lib/validators";
 import dic from "@/shared/dic";
-
+require('chartjs-plugin-labels');
 import "webrtc-adapter";
 import Chart from "chart.js";
 
@@ -629,7 +629,21 @@ export default {
                                         }]
                                       },
                                       options: {
-                                        responsive: true
+                                        responsive: true,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
+                                        
                                       }
                                     });
             
@@ -665,6 +679,20 @@ export default {
                                       },
                                       options: {
                                         responsive: true
+                                        ,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
                                       }
                                     });
             
@@ -715,6 +743,20 @@ export default {
                                       },
                                       options: {
                                         responsive: true
+                                        ,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
                                       }
                                     });
             
