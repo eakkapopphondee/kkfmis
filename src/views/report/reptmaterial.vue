@@ -958,7 +958,7 @@ export default {
     //   console.log("555555");
   //   H1 = [];
     ///console.log(date.getMonth());
-    this.txtSearch_mn =4;
+    this.txtSearch_mn =date.getMonth()+1;
     this.txtSearch = date.getFullYear();
  myChart1 = null;
  myChart2= null;
