@@ -4,12 +4,12 @@ import { GetObjVal, AlertMessage } from "@/shared/utils";
 
 //Vue.use(axios)
 
-const url = () => {  
+const url = () => {
     if (mode) return "https://kkfmisapi.kkfnets.com/"; /*prod   http://kkfmisdevapi.kkfnets.com/   */
-    else return "https://localhost:44312/"; /*dev*/  
+    else return "https://localhost:44312/"; /*dev*/
 }
 
-export function Call(o) {   
+export function Call(o) {
     let urlx = !o.url ? url() : o.url;
     urlx = urlx + (!o.path ? '' : o.path);
 
@@ -31,20 +31,20 @@ export function Call(o) {
             }
         }
     }
-    
+
     axios({
-        headers: {
-            'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            AccessToken: Vue.localStorage.get('AccessToken'),
-            Token: Vue.localStorage.get('Token'),
-            RecaptchaResponse: o.recaptcha
-        },
-        method: o.method.toUpperCase(),
-        url: urlx,
-        data: o.data ? o.data : {},
-        withCredentials: true
-    })
+            headers: {
+                'content-type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                AccessToken: Vue.localStorage.get('AccessToken'),
+                Token: Vue.localStorage.get('Token'),
+                RecaptchaResponse: o.recaptcha
+            },
+            method: o.method.toUpperCase(),
+            url: urlx,
+            data: o.data ? o.data : {},
+            withCredentials: true
+        })
         .then(res => {
             if (o.callblack) {
                 o.callblack(res.data);
@@ -164,56 +164,84 @@ export const API = {
         Call(o);
     },
 
-    MsDrawingPathGetData : (o) => {
+    MsDrawingPathGetData: (o) => {
         Object.assign(o, { method: 'Post', path: 'v1/MsDrawingPath/GetData/' });
         Call(o);
     },
 
-    MsDrawingPathSearch : (o) => {
+    MsDrawingPathSearch: (o) => {
         Object.assign(o, { method: 'Post', path: 'v1/MsDrawingPath/Search/' });
         Call(o);
     },
 
-    zValueGetData : (o) => {
+    zValueGetData: (o) => {
         Object.assign(o, { method: 'Post', path: 'v1/zValue/GetData/' });
         Call(o);
     },
 
-    
-    
-    reptsummarysaleGetDataGrid : (o) => {
+
+
+    reptsummarysaleGetDataGrid: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmSalesDetail/SearchDetail/' });
         Call(o);
     },
 
 
-    reptsummarysaleGetDataDashboardAll : (o) => {
+
+
+
+
+
+    reptsummarysaleGetDataDashboardAll: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmSales/SearchSummary/' });
         Call(o);
     },
 
 
-        //--------------------Oauth-----------------------//
-        OauthAccess: (o) => {
-            Object.assign(o, { method: 'get', path: 'api/Oauth/Access' });
-            Call(o);
-        },
-        OauthLogin: (o) => {
-            Object.assign(o, { method: 'Post', path: 'api/Oauth/Login' });
-            Call(o);
-        },
-        OauthLogout: (o) => {
-            Object.assign(o, { method: 'delete', path: 'api/Oauth/Logout' });
-            Call(o);
-        },
 
-        OauthApprove: (o) => {
-            Object.assign(o, { method: 'Post', path: 'api/Oauth/Approve' });
-            Call(o);
-        },
+    reptmdmWarehouseValueGetDataGrid_1: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmWarehouseValueDetail/SearchDetail/' });
+        Call(o);
+    },
 
 
-            //--------------------User-----------------------//
+    reptmdmWarehouseValueGetDataGrid_2: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmWarehouseValueDetailMonth/SearchDetail/' });
+        Call(o);
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    //--------------------Oauth-----------------------//
+    OauthAccess: (o) => {
+        Object.assign(o, { method: 'get', path: 'api/Oauth/Access' });
+        Call(o);
+    },
+    OauthLogin: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/Oauth/Login' });
+        Call(o);
+    },
+    OauthLogout: (o) => {
+        Object.assign(o, { method: 'delete', path: 'api/Oauth/Logout' });
+        Call(o);
+    },
+
+    OauthApprove: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/Oauth/Approve' });
+        Call(o);
+    },
+
+
+    //--------------------User-----------------------//
     UserRegister: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/User/Register' });
         Call(o);
@@ -226,7 +254,7 @@ export const API = {
         Call(o);
     },
 
-//
+    //
     GetDataARDetail: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmARDetail/SearchDetail' });
         Call(o);
@@ -236,32 +264,32 @@ export const API = {
         Object.assign(o, { method: 'Post', path: 'api/mdmKexpensestotal/SearchKexpensestotal' });
         Call(o);
     },
-    GetDataKexpensesBymn: (o) => {                                     
+    GetDataKexpensesBymn: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmKexpensesbymn/SearchKexpensesBymn' });
         Call(o);
     },
- 
-    GetDataROASummary: (o) => {     
+
+    GetDataROASummary: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchSum' });
         Call(o);
     },
 
-    GetDataRoaPercentBymn: (o) => {     
+    GetDataRoaPercentBymn: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchRoaPercentBymn' });
         Call(o);
     },
 
-    GetDataRoaPercentQuarter: (o) => {     
+    GetDataRoaPercentQuarter: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmROA/SearchRoaPercentQuarter' });
         Call(o);
     },
 
-    GetDataSearchMaterial: (o) => {         
+    GetDataSearchMaterial: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmMaterial/SearchMaterial' });
         Call(o);
     },
 
-    GetDataSearchMaterialPRC: (o) => {         
+    GetDataSearchMaterialPRC: (o) => {
         Object.assign(o, { method: 'Post', path: 'api/mdmMaterial/SearchMaterialPrice' });
         Call(o);
     }

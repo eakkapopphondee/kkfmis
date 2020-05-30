@@ -929,6 +929,9 @@ export default {
   },
 
   mounted() {
+
+
+
      var Selet = new Array();
      let date = new Date();
 
@@ -960,6 +963,10 @@ export default {
     ///console.log(date.getMonth());
     this.txtSearch_mn =4;
     this.txtSearch = date.getFullYear();
+
+
+
+    
  myChart1 = null;
  myChart2= null;
  myChart3= null;

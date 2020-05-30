@@ -15,6 +15,9 @@
         </b-button>
       </div>
     </div>
+
+<!-- 
+    <div v-if="o_nav_visible">
     <div class="navbar navbar-light bg-default pt-3 pb-3" v-if="o_nav_visible">
       <form class="form-inline">
         <button
@@ -69,7 +72,7 @@
         </button>
       </form>
       <div class="pr-3 pr-sm-0">
-        <!-- toggle-class="btn-sm" -->
+     
         <b-dropdown class="btnGrid navbar-toggler" v-if="btnGrid" variant="default" right no-caret>
           <template slot="button-content">
             <span class="icons icon-options-vertical"></span>
@@ -112,6 +115,7 @@
         </b-dropdown>
       </div>
     </div>
+    </div> -->
 
     <table
       class="table table-striped table-bordered table-hover"
@@ -491,6 +495,8 @@ export default {
       { name: "_drag", _width: 30, visible: this.o_row_drag, o_col: true },
       { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: false }
     ];
+
+    
     this.tableFields = this.tableFields.concat(this.fields);
     this.genTitle();
     this.setData(this.data);
@@ -752,6 +758,8 @@ export default {
       //this.setData(this.data);
       
     },
+
+    
     reset(){
 
     this.reset_flag= false;

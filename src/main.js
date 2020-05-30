@@ -19,6 +19,12 @@ import Multiselect from 'vue-multiselect'
 import Datepicker from 'vuejs-datepicker'
 import gridmobile from './components/gridmobile.vue'
 import grid from './components/grid.vue'
+
+import gridv2 from './components/gridv2.vue'
+
+import cellinput from './components/cellinput.vue'
+
+
 import gridmodify from './components/gridmodify.vue'
 import deletedetail from './components/deletedetail'
 
@@ -53,10 +59,17 @@ Vue.component('datepicker', Datepicker)
 Vue.component('draggable', Draggable)
 
 Vue.component("grid", grid)
+
+Vue.component("gridv2", gridv2)
+
+
 Vue.component("gridmobile", gridmobile)
 
+Vue.component("cellinput", cellinput)
 
-Vue.component("gridmodify",gridmodify)
+
+
+Vue.component("gridmodify", gridmodify)
 Vue.component("delete-detail", deletedetail)
 
 Vue.use(Notifications)
@@ -71,79 +84,80 @@ Vue.component("pageheader", pageheader)
 //Vue.use(StreamBarcodeReader);
 
 
-  //import VueQuagga from 'vue-quaggajs';
+//import VueQuagga from 'vue-quaggajs';
 
 // register component 'v-quagga'
- //Vue.use(VueQuagga);
+//Vue.use(VueQuagga);
 
 //Vue.component("dynamic", dynamic);
 //Vue.component("render", render);
 
 const options = {
-  color: '#bffaf3',
-  failedColor: '#874b4b',
-  thickness: '5px',
-  transition: {
-    speed: '0.2s',
-    opacity: '0.6s',
-    termination: 300
-  },
-  autoRevert: true,
-  location: 'top',
-  inverse: false
+    color: '#bffaf3',
+    failedColor: '#874b4b',
+    thickness: '5px',
+    transition: {
+        speed: '0.2s',
+        opacity: '0.6s',
+        termination: 300
+    },
+    autoRevert: true,
+    location: 'top',
+    inverse: false
 }
-Vue.use(VueProgressBar/*, options*/);
+Vue.use(VueProgressBar /*, options*/ );
 
 Vue.mixin({
-  data: () => {
-    return {
-      recapchasite: () => {
-        if (mode) return '6LfMYZwUAAAAACakvKhnLY1fkpTtlDIxlylh7EQ5'; /*prod*/
-        else return '6LcGeZkUAAAAAD92UgobQsljniVJ8Y4NzWiRIzdL'; /*dev*/
-      }
+    data: () => {
+        return {
+            recapchasite: () => {
+                if (mode) return '6LfMYZwUAAAAACakvKhnLY1fkpTtlDIxlylh7EQ5'; /*prod*/
+                else return '6LcGeZkUAAAAAD92UgobQsljniVJ8Y4NzWiRIzdL'; /*dev*/
+            }
+        }
     }
-  }
 })
 
 Vue.directive("upper", { //v-upper
-  bind(el, binding, vnode) {
-    el.addEventListener('keyup', () => {
-      el.value = el.value ? el.value.toUpperCase() : el.value;
-    });
-  }
+    bind(el, binding, vnode) {
+        el.addEventListener('keyup', () => {
+            el.value = el.value ? el.value.toUpperCase() : el.value;
+        });
+    }
 })
 
-Vue.filter('number', function (value, decimal) {
-  if (isNaN(value)) return '0'
-  if (decimal) {
-      value = eval(value).toFixed(decimal);
-  } else {
-      value = value.toString();
-  }
-  return value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+Vue.filter('number', function(value, decimal) {
+    if (isNaN(value)) return '0'
+    if (decimal) {
+        value = eval(value).toFixed(decimal);
+    } else {
+        value = value.toString();
+    }
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 });
 
 
 const i18n = new VueI18n({
-  locale: 'th',
-  messages: dic
+    locale: 'th',
+    messages: dic
 })
 
 export default new Vue({
-  el: '#app',
-  router, /* การสลับหน้าโดยไม่ต้อง Load ใหม่ */
-  template: '<App/>',
-  i18n,
-  components: {
-    App
-    /*Multiselect,*/
-    /*Datepicker,*/
-    /*grid*/
-  },
-  filters: {
-    number: Vue.filter('number')
-},
-  directives: {
-    resize
-  }
+    el: '#app',
+    router,
+    /* การสลับหน้าโดยไม่ต้อง Load ใหม่ */
+    template: '<App/>',
+    i18n,
+    components: {
+        App
+        /*Multiselect,*/
+        /*Datepicker,*/
+        /*grid*/
+    },
+    filters: {
+        number: Vue.filter('number')
+    },
+    directives: {
+        resize
+    }
 }).$mount('#app')
