@@ -590,9 +590,6 @@ export default {
                           
                              sNO_DM = false;
                         }
-
-
-
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
                           ChartDATA_H1_1[i]=res[i].rec_wei_cum.toFixed(2);

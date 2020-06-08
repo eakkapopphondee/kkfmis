@@ -75,8 +75,7 @@ export default {
         },
         {
           name: 'งบประมาณโครงการ',
-      
-          url: '/dashboard'
+          url: '/report/reptbudgetproject'
         },
         {
           name: 'คลังพัสดุ',

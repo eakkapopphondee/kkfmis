@@ -40,6 +40,7 @@ const mdmAR = () =>import('@/views/report/mdmAR/mdmAR')
 const Kexpenses  = () =>import('@/views/report/Kexpenses')
 const Rroapercent = () =>import('@/views/report/roapercent')
 const RMaterial = () =>import('@/views/report/reptmaterial')
+const RBudgetProject = () =>import('@/views/report/reptbudgetproject')
 
 Vue.use(Router)
 
@@ -151,6 +152,19 @@ export default new Router({
         }
       ]
 
+    },
+    {
+      path: '/report',     
+      name: 'งบประมาณงานโครงการ',
+      component: DefaultContainer,
+      children: [      
+
+        {
+          path: '/report/reptbudgetproject',
+          name: 'งบประมาณงานโครงการ',
+          component: RBudgetProject
+        }
+      ]
     }
 
     ,

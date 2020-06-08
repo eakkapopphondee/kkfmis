@@ -264,6 +264,11 @@ export const API = {
     GetDataSearchMaterialPRC: (o) => {         
         Object.assign(o, { method: 'Post', path: 'api/mdmMaterial/SearchMaterialPrice' });
         Call(o);
+    },
+
+    GetDataSearchBudgetProject: (o) => {         
+        Object.assign(o, { method: 'Post', path: 'api/mdmBudgetProject/SearchBudgetProject' });
+        Call(o);
     }
 
 
