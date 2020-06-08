@@ -3,23 +3,7 @@
 
   <div class="animated fadeIn">
 
-<div v-if="show_err">
-<b-row>
-<div>
-  <b-alert show variant="danger">
-    <h4 class="alert-heading">ผิดพลาด!</h4>
-    <p>
-      <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
-    </p>
-    <hr>
-   
-   <div v-html="txt_PB"></div>
 
-   
-  </b-alert>
-</div>
-</b-row>
-</div>
 
     
     <b-row v-if="show">
@@ -28,18 +12,26 @@
           <b-card no-body >
             <div slot="header">
               <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน งบประมาณงานโครงการและค่าใช้จ่ายจริง</h5>
-              <div class="card-header-actions">
-                <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
-                  <i class="icon-arrow-up"></i>
-                </b-link>
-              </div>
+             
             </div>
             <b-collapse id="collapse1" visible>
 
-
               <b-card-body>
+
+                     <b-alert
+                        variant="warning d-flex"
+                        dismissible
+                        fade
+                        :show="show_err"
+                        @dismissed="showDismissibleAlert=false"
+                      >
+                        <b>ไม่พบข้อมูล ประจำเดือน    &nbsp;</b>{{ this.iMun[this.txtSearch_mn-1].text}} {{this.txtSearch}} !
+                      </b-alert>
+
                 <b-card class="text-center bg-light">
                   <b-container fluid>
+
+                   
 
 
 
@@ -91,6 +83,9 @@
                         </b-row>
                       </b-container>
 
+
+                      
+
                   </b-container>
                 </b-card>
 
@@ -99,6 +94,9 @@
             </b-collapse>
           </b-card>
        </transition>
+
+
+
 
 
                 <div class="animated fadeIn" v-if="show">
@@ -352,7 +350,7 @@ export default {
      // name: "rptDrawing",
       drawingCd: "",
       perPage: 25,
-
+      
       startRow: 0,
       stopRow: 25,
 
@@ -467,7 +465,16 @@ export default {
                         visible: true,
                         callback:(v) => {
                             if (this.$root.$options.filters.number(v,2) != 0) {
-                            return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';   
+                            //return '<spen> '+this.$root.$options.filters.number(v,2)+' </span> ';  
+                              if (this.$root.$options.filters.number(v,2) > 100 )
+                              {
+                                  return     ' <div class="task-status"><div class="status-bar"><div class="status-track">   <span class="status-text"> <b>'+this.$root.$options.filters.number(v,2)+'</b></span>  <div class="status-fill-bad" style="width:100%"></div>  </div> </div>  </div> ';
+
+                              }else
+                              {
+                                  return  ' <div class="task-status"><div class="status-bar"><div class="status-track">   <span class="status-text"><b>'+this.$root.$options.filters.number(v,2)+'</b></span>  <div class="status-fill" style="width: '+this.$root.$options.filters.number(v,2)+'%"></div>  </div> </div>  </div> ';
+                              }
+                            
                             } else{
                                 '<spen>/span> '
                             } 
@@ -512,6 +519,7 @@ export default {
 
                   if(res[0].pj_main.length > 0)
                   {
+                    this.show_err = false;
                             this.dataDGV1   =  res[0].pj_main;
                             this.dataDGV1.push(res[0].pj_sum[0]);
                            
@@ -536,10 +544,11 @@ export default {
 
                   }else
                   {
+                            this.show_err = true;
                             this.dataDGV1   =  [];
                             //console.log(res[0].pj_sum[0].project_Budget.toFixed(2));
-                            ChartDATA_H1_1[0] = 0;
-                            ChartDATA_H1_1[1] = 0;
+                            ChartDATA_H1_1[0] = "";
+                            ChartDATA_H1_1[1] = "";
                             this.txtpersen = "";
                             this.txtUpdate= "";
   
@@ -549,8 +558,8 @@ export default {
                           MeSeData ={
                             
                                 labels: [
-                                    "คชจ.ที่เกิดขึ้นจริงสะสม "+ChartDATA_H1_1[0]+" (ลบ.)",
-                                    "งบประมาณ "+ChartDATA_H1_1[1]+" (ลบ.)"
+                                    "คชจ.ที่เกิดขึ้นจริงสะสม ["+ChartDATA_H1_1[0]+" ลบ.]",
+                                    "งบประมาณ ["+ChartDATA_H1_1[1]+" ลบ.]"
                                 ],
                                 datasets: [
                                     {
@@ -562,9 +571,7 @@ export default {
                                     
                             };
 
-
-                             var ctx = document.getElementById("graph1").getContext("2d");
-                             
+                           var ctx = document.getElementById("graph1").getContext("2d");
                                 if(myChart2 !== null)
                                 {
                                         myChart2.data = MeSeData;
