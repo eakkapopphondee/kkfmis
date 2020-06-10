@@ -18,23 +18,19 @@
 
               <b-card-body>
 
-                     <b-alert
-                        variant="warning d-flex"
-                        dismissible
-                        fade
-                        :show="show_err"
-                        @dismissed="showDismissibleAlert=false"
-                      >
-                        <b>ไม่พบข้อมูล ประจำเดือน    &nbsp;</b>{{ this.iMun[this.txtSearch_mn-1].text}} {{this.txtSearch}} !
+                      <b-alert :show="show_err" variant="warning">
+                        <h4 class="alert-heading">ไม่พบข้อมูล งบประมาณงานโครงการและค่าใช้จ่าย ประจำเดือน  &nbsp;</b>{{ this.iMun[this.txtSearch_mn-1].text}} {{this.txtSearch}} !</h4>
+                       
+                        <hr>
+                          <b> เนื่องจากทางบัญชียังไม่ Import ข้อมูลเข้าระบบ กรุณาติดต่อฝ่ายบัญชี ! </b>
+                      
+                      <div v-html="txt_PB"></div>
                       </b-alert>
 
                 <b-card class="text-center bg-light">
                   <b-container fluid>
 
                    
-
-
-
                       <b-container class="bv-example-row">
                         <b-row>
                           <b-col sm="4">
@@ -136,7 +132,7 @@
                                    </b-row>  
                                     <b-list-group-item class="d-flex align-items-center" style="backgroundColor:rgba(178, 206, 215, 0.32);position:relative;bottom:35px;">
 
-                                         <canvas height = 80; id="graph1">
+                                         <canvas v-bind:height="height2" id="graph1">
                                          </canvas>
                                     </b-list-group-item>
                                 </b-col>      
@@ -163,7 +159,7 @@
                                 <b-card-body>
 
                                      <b-row >
-                                        <b-col lg="12">
+                                        <b-col lg="12" v-resize:throttle.100="onResize">
                                             <b-row >
                                                     <b-col lg="12" style="position:relative;z-index: 1;">
                                                         <b-list-group-item style="backgroundColor:#e3e8e8"  class="d-flex align-items-center">
@@ -173,9 +169,11 @@
                                                     </b-col>     
                                             </b-row>  
                                             <b-list-group-item class="d-flex align-items-center" style="backgroundColor:rgba(178, 206, 215, 0.32);position:relative;bottom:35px;">
-
-                                                <canvas height = 100; id="graph2">
-                                                 </canvas>
+           
+                                             
+                                                    <canvas v-bind:height="height" id="graph2">
+                                                    </canvas>
+                                          
 
                                             </b-list-group-item>
                                         </b-col>     
@@ -209,7 +207,7 @@
                                 <b-card-body>
                                 
                                 <b-row>
-                                       <grid
+                                       <gridmobile
                                         ref="DGV1"
                                         :fields="F_DGV1"
                                         :name="name"
@@ -223,7 +221,7 @@
                                         :trackBy="'rowID'"
                                         :data="dataDGV1"
                                         :o_navfooter_visible="false"
-                                      ></grid>
+                                      ></gridmobile>
                                 </b-row>
                             
                             
@@ -255,7 +253,7 @@
 
 <script>
 import Vue from "vue";
-
+import resize from "vue-resize-directive";
 import { API } from "@/shared/core";
 import {
   GetDateView,
@@ -299,6 +297,7 @@ export default {
     },
     sharedMessages: dic
   },
+  directives:{resize},
 
   name: "rptDrawing",
 
@@ -353,7 +352,8 @@ export default {
       
       startRow: 0,
       stopRow: 25,
-
+      height:80,
+      height2:80,
       iframe: {
         src: "", //DIV HERE #EDITOR
         loaded: false
@@ -365,7 +365,10 @@ export default {
                         title: "ประเภทโครงการ",
                         sortField: "",
                         class: "text-left",
-                        visible: true
+                        visible: true,
+                        //color:back
+                        //color:'#ecedee' 
+                        //background-color: "#2382c3"
                       },
                       {
                         name: "project_Qty",
@@ -429,7 +432,7 @@ export default {
                       },
                       {
                         name: "project_CostYear",
-                        title: "ที่เกิดจริง ปี (ลบ.)",
+                        title: "คชจ.ที่เกิดจริง ปี (ลบ.)",
                         sortField: "",
                         class: "text-right",
                         visible: true,
@@ -497,9 +500,20 @@ export default {
       
       this.QueryData();
 
-    },
-
-           QueryData() {
+    },onResize(el)
+    {
+        //  console.log(el.offsetWidth);
+          if(el.offsetWidth < 400)
+          {
+               this.height = 500;
+               this.height2 = 200;
+               
+          }else
+          {
+               this.height2 = 80;
+               this.height = 80;
+          }
+    }, QueryData() {
 
                
                
@@ -514,7 +528,7 @@ export default {
                   ChartDATA_H1_2 = new Array();
                   ChartDATA_H1_3 = new Array();
 
-                  this.F_DGV1[5].title = "ที่เกิดจริง ปี "+this.txtSearch+" (ลบ.) ";
+                  this.F_DGV1[5].title = "คชจ.ที่เกิดจริง ปี "+this.txtSearch+" (ลบ.) ";
                   this.$refs.DGV1.reset();
 
                   if(res[0].pj_main.length > 0)
@@ -566,7 +580,7 @@ export default {
                                         label: true,
                                         data: ChartDATA_H1_1,
                                         backgroundColor: ["#66c2ff", "#007acc" ]
-                                        
+                                     
                                     }]
                                     
                             };
@@ -585,6 +599,14 @@ export default {
                                         data: MeSeData,
                                         
                                         options: {
+                                                 scales: {
+                                                        yAxes: [{
+                                                            ticks: {
+                                                              fontSize: 17
+                                                            }
+                                                               
+                                                        }] 
+                                                    },
                                                   /*  scales: {
                                                         xAxes: [{
                                                             ticks: {
@@ -592,9 +614,7 @@ export default {
                                                                 max:100
                                                             }
                                                         }],
-                                                        yAxes: [{
-                                                            stacked: true
-                                                        }]
+                                                       
                                                     },*/
                                                     responsive: true,
                                                    plugins: { //setup chartjs-plugin-labels plug in 
