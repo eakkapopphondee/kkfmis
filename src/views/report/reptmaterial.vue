@@ -317,7 +317,7 @@ import {
 import { status, configMode } from "@/shared/define";
 import { required, minLength } from "vuelidate/lib/validators";
 import dic from "@/shared/dic";
-
+require('chartjs-plugin-labels');
 import "webrtc-adapter";
 import Chart from "chart.js";
 
@@ -590,9 +590,6 @@ export default {
                           
                              sNO_DM = false;
                         }
-
-
-
                           Charttxt_H1[i]   =res[i].matgrprpname;
 
                           ChartDATA_H1_1[i]=res[i].rec_wei_cum.toFixed(2);
@@ -629,7 +626,21 @@ export default {
                                         }]
                                       },
                                       options: {
-                                        responsive: true
+                                        responsive: true,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
+                                        
                                       }
                                     });
             
@@ -665,6 +676,20 @@ export default {
                                       },
                                       options: {
                                         responsive: true
+                                        ,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
                                       }
                                     });
             
@@ -715,6 +740,20 @@ export default {
                                       },
                                       options: {
                                         responsive: true
+                                        ,
+                                           plugins: { //setup chartjs-plugin-labels plug in 
+                                                  labels: [
+                                                      {
+                                                          render: 'percentage',
+                                                        //arc: true,
+                                                          precision: 2,// font size, default is defaultFontSize
+                                                          fontSize: 18,
+                                                          fontStyle: 'bold',
+                                                          // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
+                                                          fontColor: '#fff',
+                                                      }
+                                                  ]
+                                              }
                                       }
                                     });
             
@@ -961,7 +1000,7 @@ export default {
     //   console.log("555555");
   //   H1 = [];
     ///console.log(date.getMonth());
-    this.txtSearch_mn =4;
+    this.txtSearch_mn =date.getMonth()+1;
     this.txtSearch = date.getFullYear();
 
 

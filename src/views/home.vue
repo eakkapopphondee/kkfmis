@@ -110,9 +110,9 @@
 
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2" @click="to_BudgetProject">
       <a class="pointer" style="text-decoration: none;" data-bind="click: viewArchives">
-        <div class="thumbnail_dis">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-wallet fa-5x"></i>
@@ -436,6 +436,10 @@ export default {
       evt.preventDefault();
        window.location.href = "/member/signin";
 
+    },
+    to_BudgetProject()
+    {
+      this.$router.push("/report/reptbudgetproject")
     }
   }
 }
