@@ -44,7 +44,7 @@
 
                              <b-col md="12">
                                  <br>
-                                 <h3 style="color:#145A32"><i class="fa fa-shopping-cart"></i> ปริมาณ:PC (1,000ผืน)</h3><br>
+                                 <h3 style="color:#145A32"><i class="fa fa-shopping-cart"></i> ปริมาณ:PC (พันผืน)</h3><br>
 
 
            
@@ -653,7 +653,7 @@
               </div>
             </div>
             <b-collapse id="collapse3" visible>
-              <b-card-body>
+              <b-card-body  style="  zoom: 90%;">
 
 
 
@@ -879,7 +879,7 @@
               </div>
             </div>
             <b-collapse id="collapse4" visible>
-              <b-card-body>
+              <b-card-body style="  zoom: 90%;">
 
 
    
@@ -1442,7 +1442,7 @@ export default {
 
         {
         name: "end_wei",
-        title: "น้ำหนักคงเหลือ (ตัน)",
+        title: "น้ำหนักคงเหลือ (พันตัน)",
         sortField: "end_qty",
         class: "text-right",
         visible: true,
@@ -1509,7 +1509,7 @@ export default {
 
  {
         name: "bal_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "bal_qty",
         class: "text-right",
        
@@ -1528,7 +1528,7 @@ export default {
         
         {
         name: "bal_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "bal_wei",
         class: "text-right",
        
@@ -1585,7 +1585,7 @@ export default {
 
  {
         name: "rec_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "rec_qty",
         class: "text-right",
        
@@ -1604,7 +1604,7 @@ export default {
         
         {
         name: "rec_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "rec_wei",
         class: "text-right",
        
@@ -1663,7 +1663,7 @@ export default {
 
  {
         name: "pay_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "pay_qty",
         class: "text-right",
        
@@ -1682,7 +1682,7 @@ export default {
         
         {
         name: "pay_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "pay_wei",
         class: "text-right",
        
@@ -1745,7 +1745,7 @@ export default {
 
  {
         name: "end_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "end_qty",
         class: "text-right",
        
@@ -1764,7 +1764,7 @@ export default {
         
         {
         name: "end_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "end_wei",
         class: "text-right",
        
@@ -1856,7 +1856,7 @@ fieldDrawingex:[
 
  {
         name: "bal_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "bal_qty",
         class: "text-right",
        
@@ -1875,7 +1875,7 @@ fieldDrawingex:[
         
         {
         name: "bal_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "bal_wei",
         class: "text-right",
        
@@ -1932,7 +1932,7 @@ fieldDrawingex:[
 
  {
         name: "rec_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "rec_qty",
         class: "text-right",
        
@@ -1951,7 +1951,7 @@ fieldDrawingex:[
         
         {
         name: "rec_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "rec_wei",
         class: "text-right",
        
@@ -2010,7 +2010,7 @@ fieldDrawingex:[
 
  {
         name: "pay_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "pay_qty",
         class: "text-right",
        
@@ -2029,7 +2029,7 @@ fieldDrawingex:[
         
         {
         name: "pay_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "pay_wei",
         class: "text-right",
        
@@ -2092,7 +2092,7 @@ fieldDrawingex:[
 
  {
         name: "end_qty",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "end_qty",
         class: "text-right",
        
@@ -2111,7 +2111,7 @@ fieldDrawingex:[
         
         {
         name: "end_wei",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "end_wei",
         class: "text-right",
        
@@ -2199,7 +2199,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_1",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_1",
         class: "text-right",
        
@@ -2218,7 +2218,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_1",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_1",
         class: "text-right",
        
@@ -2270,7 +2270,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_2",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_2",
         class: "text-right",
        
@@ -2289,7 +2289,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_2",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_2",
         class: "text-right",
        
@@ -2343,7 +2343,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_3",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_3",
         class: "text-right",
        
@@ -2362,7 +2362,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_3",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_3",
         class: "text-right",
        
@@ -2419,7 +2419,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_4",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_4",
         class: "text-right",
        
@@ -2438,7 +2438,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_4",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_4",
         class: "text-right",
        
@@ -2500,7 +2500,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_5",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_5",
         class: "text-right",
        
@@ -2519,7 +2519,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_5",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_5",
         class: "text-right",
        
@@ -2576,7 +2576,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_6",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_6",
         class: "text-right",
        
@@ -2595,7 +2595,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_6",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_6",
         class: "text-right",
        
@@ -2652,7 +2652,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_7",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_7",
         class: "text-right",
        
@@ -2671,7 +2671,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_7",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_7",
         class: "text-right",
        
@@ -2734,7 +2734,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_8",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_8",
         class: "text-right",
        
@@ -2753,7 +2753,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_8",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_8",
         class: "text-right",
        
@@ -2812,7 +2812,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_9",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_9",
         class: "text-right",
        
@@ -2831,7 +2831,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_9",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_9",
         class: "text-right",
        
@@ -2892,7 +2892,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_10",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_10",
         class: "text-right",
        
@@ -2911,7 +2911,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_10",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_10",
         class: "text-right",
        
@@ -2974,7 +2974,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_11",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_11",
         class: "text-right",
        
@@ -2993,7 +2993,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_11",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_11",
         class: "text-right",
        
@@ -3055,7 +3055,7 @@ fieldDrawingex_endmonth:[
 
         {
         name: "qty_12",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_12",
         class: "text-right",
        
@@ -3074,7 +3074,7 @@ fieldDrawingex_endmonth:[
         
         {
         name: "wei_12",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_12",
         class: "text-right",
        
@@ -3156,7 +3156,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_1",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_1",
         class: "text-right",
        
@@ -3175,7 +3175,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_1",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_1",
         class: "text-right",
        
@@ -3227,7 +3227,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_2",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_2",
         class: "text-right",
        
@@ -3246,7 +3246,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_2",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_2",
         class: "text-right",
        
@@ -3300,7 +3300,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_3",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_3",
         class: "text-right",
        
@@ -3319,7 +3319,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_3",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_3",
         class: "text-right",
        
@@ -3376,7 +3376,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_4",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_4",
         class: "text-right",
        
@@ -3395,7 +3395,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_4",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_4",
         class: "text-right",
        
@@ -3457,7 +3457,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_5",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_5",
         class: "text-right",
        
@@ -3476,7 +3476,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_5",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_5",
         class: "text-right",
        
@@ -3533,7 +3533,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_6",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_6",
         class: "text-right",
        
@@ -3552,7 +3552,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_6",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_6",
         class: "text-right",
        
@@ -3609,7 +3609,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_7",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_7",
         class: "text-right",
        
@@ -3628,7 +3628,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_7",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_7",
         class: "text-right",
        
@@ -3691,7 +3691,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_8",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_8",
         class: "text-right",
        
@@ -3710,7 +3710,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_8",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_8",
         class: "text-right",
        
@@ -3769,7 +3769,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_9",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_9",
         class: "text-right",
        
@@ -3788,7 +3788,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_9",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_9",
         class: "text-right",
        
@@ -3849,7 +3849,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_10",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_10",
         class: "text-right",
        
@@ -3868,7 +3868,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_10",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_10",
         class: "text-right",
        
@@ -3931,7 +3931,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_11",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_11",
         class: "text-right",
        
@@ -3950,7 +3950,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_11",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_11",
         class: "text-right",
        
@@ -4012,7 +4012,7 @@ fieldDrawing_endmonth:[
 
         {
         name: "qty_12",
-        title: "ปริมาณ(1,000ผืน)",
+        title: "ปริมาณ(พันผืน)",
         sortField: "qty_12",
         class: "text-right",
        
@@ -4031,7 +4031,7 @@ fieldDrawing_endmonth:[
         
         {
         name: "wei_12",
-        title: "นน.(ตัน)",
+        title: "นน.(พันตัน)",
         sortField: "wei_12",
         class: "text-right",
        
@@ -4501,7 +4501,7 @@ fieldDrawing_endmonth:[
 
       API.reptmdmWarehouseValueGetDataGrid_2({
    
-             data:{yr:this.txtSearch,mnt:"12",tsale:"0",con:"<=",rept:"0"},    
+             data:{yr:this.txtSearch,mnt:this.txtSearch_mn,tsale:"0",con:"<=",rept:"0"},    
    
 
             callblack: res => {
@@ -4560,7 +4560,7 @@ fieldDrawing_endmonth:[
 
       API.reptmdmWarehouseValueGetDataGrid_2({
    
-             data:{yr:this.txtSearch,mnt:"12",tsale:"1",con:"<=",rept:"0"},    
+             data:{yr:this.txtSearch,mnt:this.txtSearch_mn,tsale:"1",con:"<=",rept:"0"},    
    
 
             callblack: res => {
@@ -4807,6 +4807,9 @@ export default {
 
 
 <style>
+
+
+
 
 
 .xxx {
@@ -6083,6 +6086,7 @@ font-weight:bold;
 .table 
 {
    max-height: 350px;
+
 
 }
 
