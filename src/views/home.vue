@@ -38,9 +38,9 @@
       </a>
     </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-4">
+    <div class="col-xs-12 col-sm-4 col-md-4" @click="to_kang">
       <a class="pointer" data-bind="click: manageGalleries">
-        <div class="thumbnail_dis">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-basket fa-5x"></i>
@@ -409,6 +409,13 @@ export default {
     {
         this.$router.push("/report/reptsummarysale")
     },
+    to_kang()
+    {
+         this.$router.push("/report/reptmdmWarehouseValue")
+    } ,
+
+
+
     to_arall()
     {
       this.$router.push("/report/mdmAR")

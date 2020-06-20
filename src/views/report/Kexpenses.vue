@@ -798,7 +798,7 @@ this.dataDrawingYYLabel.push(0);
               var ii; 
                
              for (ii = 0; ii < res.length; ii++) {
-               // console.log(res[ii]["mn"]);
+               //  console.log(res[ii]["mn"]);
                 //res[0]["yr"][i].toString(),
                 this.dataDrawingexpenValueByMnQ =[];
                 this.dataDrawingexpenValueByMnQ.mn_ntx =  res[ii]["mn"];
@@ -814,42 +814,43 @@ this.dataDrawingYYLabel.push(0);
                    this.dataDrawingexpenValueByMnQ.mn = " มี.ค";   
                    this.dataDrawingYYLabel.push("มี.ค");
                 }
-                else if (res[ii]["mn"]  = 4) {
+                else if (res[ii]["mn"]  == 4) {
                    this.dataDrawingexpenValueByMnQ.mn = " เม.ย"; 
                    this.dataDrawingYYLabel.push("เม.ย"); 
                 }
-                else if (res[ii]["mn"]  = 5) {
+                else if (res[ii]["mn"]  == 5) {
                    this.dataDrawingexpenValueByMnQ.mn = " พ.ค";   
                    this.dataDrawingYYLabel.push("พ.ค");
                 }
-                else if (res[ii]["mn"]  = 6) {
+                else if (res[ii]["mn"]  == 6) {
                    this.dataDrawingexpenValueByMnQ.mn = " มิ.ย";  
                    this.dataDrawingYYLabel.push("มิ.ย"); 
                 }
-                else if (res[ii]["mn"]  = 7) {
+                else if (res[ii]["mn"]  == 7) {
                    this.dataDrawingexpenValueByMnQ.mn = " ก.ค";  
                    this.dataDrawingYYLabel.push("ก.ค");  
                 }
-                else if (res[ii]["mn"]  = 8) {
+                else if (res[ii]["mn"]  == 8) {
                    this.dataDrawingexpenValueByMnQ.mn = " ส.ค";
                    this.dataDrawingYYLabel.push("ส.ค");     
                 }
-                else if (res[ii]["mn"]  = 9) {
+                else if (res[ii]["mn"]  == 9) {
                    this.dataDrawingexpenValueByMnQ.mn = " ก.ย";
                    this.dataDrawingYYLabel.push("ก.ย");    
                 }
-                else if (res[ii]["mn"]  = 10) {
+                else if (res[ii]["mn"]  == 10) {
                    this.dataDrawingexpenValueByMnQ.mn = " ต.ค";  
                    this.dataDrawingYYLabel.push("ต.ค");  
                 }
-                else if (res[ii]["mn"]  = 11) {
+                else if (res[ii]["mn"]  == 11) {
                    this.dataDrawingexpenValueByMnQ.mn = " พ.ย";
                    this.dataDrawingYYLabel.push("พ.ย");     
                 }
-                else if (res[ii]["mn"]  = 12) {
+                else if (res[ii]["mn"]  == 12) {
                    this.dataDrawingexpenValueByMnQ.mn = " ธ.ค"; 
                    this.dataDrawingYYLabel.push("ธ.ค");   
                 } 
+               // console.log(this.dataDrawingexpenValueByMnQ.mn);
                 //this.dataDrawingexpenValueByMnQ.mn =  res[ii]["mn"];
                 this.dataDrawingexpenValueByMnQ.material_cost = res[ii]["material_cost"];
                 this.dataDrawingexpenValueByMnQ.employee_cost = res[ii]["employee_cost"];

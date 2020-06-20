@@ -1195,8 +1195,8 @@ export default {
   margin-bottom: 0;
 
   	position: relative;
-	/* max-width: 700px; */
-    width: 100%; 
+	max-width: 700px;
+/*   width: 100%; */
 	overflow: hidden;
 	border: 1px solid lightgrey;
 }

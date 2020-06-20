@@ -679,7 +679,7 @@
 
 
             <b-col sm="4">
-             <div style="width:350px;">
+             <div class="XXX" >
                <canvas id="graph1" width="400" height="400"></canvas>
 
 
@@ -687,7 +687,7 @@
              
              </b-col>
             <b-col sm="4">
-             <div style="width:350px;">
+             <div class="XXX" >
                <canvas id="graphEX" width="400" height="400"></canvas>
 
 
@@ -695,7 +695,7 @@
              
              </b-col>
                          <b-col sm="4">
-             <div style="width:350px;">
+             <div class="XXX" >
                <canvas id="graphDM" width="400" height="400"></canvas>
 
 
@@ -1100,8 +1100,8 @@
        >           
       <span class="slider"></span>
     
-      <p class="off">แบบสะสม</p>
-      <p class="on">แบบประจำเดือน</p>
+      <p class="off">ถึงปัจจุบัน</p>
+      <p class="on">แสดงทั้งปี</p>
     </label>
 </div>
   </div> 
@@ -2014,29 +2014,6 @@ dataDrawingYYgraph2:[],
 
 
 
-   
-
-    
-
-
-
-
-        
-
-      
-
-     
-
-
-        
-      
-     
-
-
-
-
-
-
             res.forEach((d,i) => {
 
             if (i<numA ) {
@@ -2819,6 +2796,12 @@ export default {
 <style>
 
 
+.xxx {
+
+   width:350px;
+}
+
+
 .app-body .main {
 
     background-image: linear-gradient(rgba(234, 242, 248  , 0.8), #F2F3F4); 
@@ -3149,6 +3132,8 @@ font-weight:bold;
 .callout-info {
     border-left-color: #63c2de;
 }
+
+
 .callout {
     position: relative;
     padding: 0 1rem;
@@ -3278,9 +3263,18 @@ font-weight:bold;
   }
 }
 @media (max-width: 360px) {
+
+
   .icon-shape {
     display: none !important;
   }
+ 
+.xxx {
+
+   width:250px;
+}
+
+
 }
 
 
@@ -3647,6 +3641,9 @@ font-weight:bold;
 
  .graph_data, .knob_data {
     font-size: 1.3rem;
+
+
+    
 }
 
 
@@ -3765,7 +3762,7 @@ font-weight:bold;
 }
 .on{
     position: absolute;
-    right: -100px;
+    right: -70px;
     top: -5px;
      color: #d3d3d3;
     font-family: 'roboto_light',sans-serif;
@@ -3798,6 +3795,8 @@ font-weight:bold;
 }
 
 
+   
+        
 
 </style>
 
