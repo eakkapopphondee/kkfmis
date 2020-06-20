@@ -24,366 +24,69 @@
 
               <b-card-body>
 
-
+                
 
 <div class="dashboard">
   <div class="all-card">
-
-
-
     <div class="row">
 
-      <div class="col-lg-3 col-md-3">
-        <div class="card" style=" background: rgba(232, 246, 243 , 0.5);">
-
-
-
-                          <b-col md="12">
-
-                           <b-row>
-
-                             <b-col md="12">
-                                 <br>
-                                 <h3 style="color:#145A32"><i class="fa fa-shopping-cart"></i> ปริมาณ:PC (พันผืน)</h3><br>
-
-
-           
-         <div class="box22">
-           
-                <div class="info">
-                  <h1  style="font-size:28px;">{{dataDashboardobj.end_qty_pc| number(0)}}</h1> <span style=" font-size:13px">ภาพรวม</span>
-                </div>
-
-
-
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-body border-left-1">
+            <div class="row">
+              <div class="col">
+                <p class="card-title text-title">ปริมาณ (ผืน)</p>
+                <h2 class="card-text text-amount">
+                  
+                 
+                  
+                 {{dataDashboardobj.end_qty| number(0)}} </h2>
               </div>
-          
-                               
-                                  
-
-
-
-                              </b-col>  
-                          </b-row> 
-
-
-                           <b-row>
-
-
-
-
-
-
-
-                             <b-col md="6" class="card-body">
-                          
-
-         <div class="box222" >
-             
-                <div class="info">
-                  <h3  style=" font-size:28px" >{{dataDashboardobj_ex.end_qty_pc| number(0)}} </h3> <span  style=" font-size:13px">ต่างประเทศ</span>
+              <div class="col-auto">
+                <div class="icon-shape icon-percent">
+                  <i class="fa fa-table" aria-hidden="true"></i>
                 </div>
               </div>
-
-
-                              </b-col>  
-
-                             <b-col md="6" class="card-body">
-                       
-
-
-                                         <div class="box222">
-               
-                <div class="info">
-                  <h3  style=" font-size:28px">{{dataDashboardobj_dm.end_qty_pc| number(0)}} </h3> <span  style=" font-size:13px">ในประเทศ</span>
-                </div>
-              </div>
-                              </b-col>  
-
-
-                          </b-row> 
-
-
-                    </b-col>  
-
-
-
-
-
-
+            </div>
+          </div>
         </div>
       </div>
-
-
-
-
-
-      <div class="col-lg-3 col-md-3">
-        <div class="card" style=" background: rgba(253, 237, 236  , 0.5);">
-
-
-
-                          <b-col md="12">
-
-                           <b-row>
-
-                             <b-col md="12">
-                                 <br>
-                                 <h3 style="color:#641E16"><i class="fa fa-shopping-cart"></i> ปริมาณ:KG (พันตัน) </h3><br>
-
-
-           
-         <div class="box44">
-           
-                <div class="info">
-                  <h1  style=" font-size:28px;">{{dataDashboardobj.end_qty_kg| number(2)}}</h1><span style=" font-size:13px">ภาพรวม</span>
-                </div>
-
-
-
-              </div>
-          
-                               
-                                  
-
-
-
-                              </b-col>  
-                          </b-row> 
-
-
-                           <b-row>
-
-
-
-
-
-
-
-                             <b-col md="6" class="card-body">
-                          
-
-         <div class="box444" >
-             
-                <div class="info">
-                  <h3  style=" font-size:28px" >{{dataDashboardobj_ex.end_qty_kg| number(2)}} </h3> <span  style=" font-size:13px">ต่างประเทศ</span>
-                </div>
-              </div>
-
-
-                              </b-col>  
-
-                             <b-col md="6" class="card-body">
-                       
-
-
-                                         <div class="box444">
-               
-                <div class="info">
-                  <h3  style=" font-size:28px">{{dataDashboardobj_dm.end_qty_kg| number(2)}} </h3> <span  style=" font-size:13px;">ในประเทศ</span>
-                </div>
-              </div>
-                              </b-col>  
-
-
-                          </b-row> 
-
-
-                    </b-col>  
-
-
-
-
-
-
-        </div>
-      </div>
-
-
-
-
-
-
-
-
 
   
-        <div class="col-lg-3 col-md-3">
-        <div class="card" style=" background: rgba(245, 238, 248 , 0.5);">
-
-
-
-
-
-  <b-col md="12">
-
-                           <b-row>
-
-                             <b-col md="12">
-                                 <br>
-                                 <h3 style="color:#4A235A"><i class="fa fa-balance-scale"></i> น้ำหนัก (พันตัน)</h3><br>
-                             
-
-
-         <div class="box11">
-            
-                <div class="info">
-                  <h1 style=" font-size:28px;">{{dataDashboardobj.end_wei| number(2)}} </h1> <span  style=" font-size13px">ภาพรวม</span>
+ <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-body border-left-2">
+            <div class="row">
+              <div class="col">
+                <p class="card-title text-title">น้ำหนัก  (ตัน)</p>
+                <h2 class="card-text text-amount"> {{dataDashboardobj.end_wei| number(0)}} </h2>
+              </div>
+              <div class="col-auto">
+                <div class="icon-shape icon-area">
+                  <i class="fa fa-balance-scale" aria-hidden="true"></i>
                 </div>
               </div>
-          
-                               
-                                  
-
-
-
-                              </b-col>  
-                          </b-row> 
-
-
-                           <b-row>
-
-                             <b-col md="6" class="card-body">
-                          
-
-         <div class="box111">
-         
-                <div class="info">
-                  <h3 style=" font-size:28px">{{dataDashboardobj_ex.end_wei| number(2)}} </h3> <span  style=" font-size:13px">ต่างประเทศ</span>
-                </div>
-              </div>
-
-
-                              </b-col>  
-
-                             <b-col md="6" class="card-body">
-                       
-
-
-                                         <div class="box111">
-         
-                <div class="info">
-                  <h3  style=" font-size:28px">{{dataDashboardobj_dm.end_wei| number(2)}} </h3> <span  style=" font-size:13px">ในประเทศ</span>
-                </div>
-              </div>
-                              </b-col>  
-
-
-                          </b-row> 
-
-
-                    </b-col>  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </div>
+          </div>
         </div>
       </div>
-
-
-
-     <div class="col-lg-3 col-md-3">
-        <div class="card" style=" background: rgba( 253, 242, 233  , 0.5);">
-
-
-
-  <b-col md="12">
-
-                           <b-row>
-
-                             <b-col md="12">
-                                <br>
-                                 <h3 style="color:#6E2C00"><i class="fa fa-diamond"></i> มูลค่า (ลบ.)</h3 > <br>
-
-
-         <div class="box33">
-             
-                <div class="info">
-                  <h1  style=" font-size:28px;" >{{dataDashboardobj.end_cost| number(2)}} </h1> <span  style=" font-size:13px" >ภาพรวม</span>
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-body border-left-3">
+            <div class="row">
+              <div class="col">
+                <p class="card-title text-title">มูลค่า (ลบ.)</p>
+                <h2 class="card-text text-amount">{{dataDashboardobj.end_cost| number(0)}}</h2>
+              </div>
+              <div class="col-auto">
+               <div class="icon-shape icon-sus">
+                  <i class="fa fa-money" aria-hidden="true"></i>
                 </div>
               </div>
-          
-                               
-                                  
-
-
-
-                              </b-col>  
-                          </b-row> 
-
-
-                           <b-row>
-
-                             <b-col md="6" class="card-body">
-                          
-
-         <div class="box333">
-      
-                <div class="info">
-                  <h3   style=" font-size:28px;">{{dataDashboardobj_ex.end_cost| number(2)}} </h3> <span  style=" font-size:13px">ต่างประเทศ</span>
-                </div>
-              </div>
-
-
-                              </b-col>  
-
-                             <b-col md="6" class="card-body">
-                       
-
-
-                                         <div class="box333">
-               
-                <div class="info">
-                  <h3  style=" font-size:28px" >{{dataDashboardobj_dm.end_cost| number(2)}} </h3> <span  style=" font-size:13px">ในประเทศ</span>
-                </div>
-              </div>
-                              </b-col>  
-
-
-                          </b-row> 
-
-
-                    </b-col>  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </div>
+          </div>
         </div>
       </div>
-
-
-
-
-
-
-
 
           </div>
         </div>
@@ -396,11 +99,122 @@
 
 
 
+<b-row>
+      <b-col md="6">
+        <b-card  style="border: 0px solid;">
+       
+            <div class="knob_data" style= "background-image: url('img/brand/Flagex.png'); background-repeat: no-repeat;
+            background-size: contain; background-position: left;  color:#1A5276; text-align: center; " >ขายต่างประเทศ  <span class="txt_smaller"></span></div>
+              <b-row>
+
+
+                
+                <b-col sm="4">
+                  <div class="callout callout-info">
+                    <small class="text-muted">ปริมาณ (ผืน)</small><br>
+                    <strong class="h2">{{dataDashboardobj_ex.end_qty| number(0)}}  </strong>
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+                      <!--<callout-chart-example :data="[35, 23, 56, 22, 97, 23, 64]" variant="#20a8d8" width="80" height="30" />-->
+                    
+                    </div>
+                  </div>
+                </b-col>
+
+                <b-col sm="4">
+                    <div class="callout callout-danger">
+                    <small class="text-muted">น้ำหนัก (ตัน)</small><br>
+                    <strong class="h2">{{dataDashboardobj_ex.end_wei| number(2)}} </strong>
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+                    
+                    </div>
+                 </div>
+                </b-col>
+                <b-col sm="4">
+                  <div class="callout callout-success">
+                    <small class="text-muted">มูลค่า  (ลบ.)</small><br>
+                    <strong class="h2">{{dataDashboardobj_ex.end_cost| number(2)}} 
+
+           
+
+
+
+
+                    </strong>
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+                    </div>
+                  </div>
+                </b-col>
+
+
+              </b-row>
+
+
+                  
+          
+        </b-card>
+      </b-col>
+
+
+      <b-col md="6">
+        <b-card   style="border: 0px solid;">   
+            
+                  <div class="knob_data" style= "background-image: url('img/brand/thai2.png'); background-repeat: no-repeat;
+                  background-size: contain; background-position: left;  color:#1A5276; text-align: center;" >ขายในประเทศ <span class="txt_smaller"></span></div>
+             
+               <b-row>
+                <b-col sm="4">
+                  <div class="callout callout-info">
+                    <small class="text-muted">ปริมาณ (ผืน)</small><br>
+                    <strong class="h2">{{dataDashboardobj_dm.end_qty| number(0)}} </strong>
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+                      <!--<callout-chart-example :data="[35, 23, 56, 22, 97, 23, 64]" variant="#20a8d8" width="80" height="30" />-->
+                      
+                    </div>
+                  </div>
+                </b-col>
+
+                <b-col sm="4">
+                    <div class="callout callout-danger">
+                    <small class="text-muted">น้ำหนัก (ตัน)</small><br>
+                    <strong class="h2">{{dataDashboardobj_dm.end_wei| number(2)}} </strong>
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+               
+                    </div>
+                 </div>
+                </b-col>
+                <b-col sm="4">
+                  <div class="callout callout-success">
+                    <small class="text-muted">มูลค่า  (ลบ.)</small><br>
+               
+<strong class="h2">{{dataDashboardobj_dm.end_cost| number(2)}} 
+</strong>
+
+                    <div class="chart-wrapper" :style="{ top: '-10px'}">
+                     
+                    </div>
+                  </div>
+                </b-col>
+
+
+              </b-row>
+
+                   
+          
+          
+        </b-card>
+      </b-col>
+
+    </b-row>
 
 
 
 
 
+
+
+
+
+ <small class="text-muted">ปริมาณ(ผืน) นับเฉพาะกลุ่มสินค้าอวน , น้ำหนัก(ตัน) นับรวมทุกกลุ่มสินค้า ( อวน/ด้าย/สายเอ็น/เชือก )</small>
 
 
                
@@ -721,7 +535,7 @@
 
                 :data="dataDrawingrecpayEx"
 
-                :o_navfooter_visible="false"
+                :o_navfooter_visible="true"
                 :o_nav_visible="false"
                 :o_col_checkbox="false"
                 
@@ -779,7 +593,7 @@
 
                 :data="dataDrawingrecpayDm"
 
-                :o_navfooter_visible="false"
+                :o_navfooter_visible="true"
                 :o_nav_visible="false"
                 :o_col_checkbox="false"
                 
@@ -927,7 +741,7 @@
 
 
 
-
+     
 
                
                 :trackBy="'rowID'"
@@ -935,7 +749,7 @@
 
                 :data="dataDrawingMonthEx"
 
-                :o_navfooter_visible="false"
+                :o_navfooter_visible="true"
                 :o_nav_visible="false"
                 :o_col_checkbox="false"
               
@@ -990,7 +804,7 @@
 
                 :data="dataDrawingMonthDm"
 
-                :o_navfooter_visible="false"
+                :o_navfooter_visible="true"
                 :o_nav_visible="false"
                 :o_col_checkbox="false"
                 
@@ -1259,7 +1073,7 @@ export default {
     txtSearch: "",
     name:"rptDrawing",
     drawingCd:"",
-    perPage: 25,
+    perPage: 10,
 
       startRow: 0,
       stopRow: 25,
@@ -1841,8 +1655,17 @@ fieldDrawingex:[
         title: "ประเทศ",
         sortField: "data_code",
         class: "text-left",
+        width:15,
         
-        visible: true
+        visible: true,
+
+        callback:(v) => {
+    
+          return '<small> '+v+' </small> ';   
+          
+ 
+        },
+
         },
 
 
@@ -5260,6 +5083,11 @@ font-weight:bold;
 .dashboard .card .icon-percent {
   background: #11cdef;
 }
+
+.dashboard .card .icon-sus {
+  background: #17A589;
+}
+
 .dashboard .chart {
   padding: 30px;
 }
@@ -6081,14 +5909,16 @@ font-weight:bold;
    padding-right:2px ; 
 }
 
-
-
 .table 
 {
    max-height: 350px;
 
 
 }
+
+
+
+
 
 
 </style>

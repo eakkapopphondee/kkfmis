@@ -826,7 +826,7 @@ export default {
       d_btnClone: true,
       d_btnView: true,
       d_btnDelete: true,
-      perPage: 50,
+      perPage: 10,
       currentPage: 1,
       totalPage: [1],
       visibleData: [],
@@ -2382,4 +2382,8 @@ td.handle {
 
   
 } */
+
+
+
+
 </style>

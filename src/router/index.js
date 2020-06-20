@@ -62,19 +62,18 @@ const reptmdmWarehouseValue = () =>
 const mdmAR = () =>
     import ('@/views/report/mdmAR/mdmAR')
 
-<<<<<<< HEAD
+
+
+
 const Kexpenses = () =>
     import ('@/views/report/Kexpenses')
 const Rroapercent = () =>
     import ('@/views/report/roapercent')
 const RMaterial = () =>
     import ('@/views/report/reptmaterial')
-=======
-const Kexpenses  = () =>import('@/views/report/Kexpenses')
-const Rroapercent = () =>import('@/views/report/roapercent')
-const RMaterial = () =>import('@/views/report/reptmaterial')
-const RBudgetProject = () =>import('@/views/report/reptbudgetproject')
->>>>>>> dbedd4cbdc0fb1c2bbbb41fec67f097a5f6b5752
+const RBudgetProject = () =>
+    import ('@/views/report/reptbudgetproject')
+
 
 Vue.use(Router)
 
@@ -197,31 +196,7 @@ export default new Router({
 
         }
 
-<<<<<<< HEAD
         ,
-=======
-    },
-    {
-      path: '/report',     
-      name: 'งบประมาณงานโครงการ',
-      component: DefaultContainer,
-      children: [      
-
-        {
-          path: '/report/reptbudgetproject',
-          name: 'งบประมาณงานโครงการ',
-          component: RBudgetProject
-        }
-      ]
-    }
-
-    ,
-    {
-      path: '/user',
-      name: 'user',
-      component: DefaultContainer,
-      children: [
->>>>>>> dbedd4cbdc0fb1c2bbbb41fec67f097a5f6b5752
         {
             path: '/user',
             name: 'user',

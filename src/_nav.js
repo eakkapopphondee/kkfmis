@@ -9,7 +9,7 @@ export default {
         },
 
         {
-<<<<<<< HEAD
+
             name: 'Dashboard',
             url: '/dashboard',
             icon: 'icon-chart',
@@ -17,111 +17,50 @@ export default {
                 variant: 'secondary'
 
             }
-=======
-          name: 'ลูกหนี้',        
-          
-          url: '/report/mdmAR'
         },
         {
-          name: 'คลังสินค้าสำเร็จรูป',
-         
-          url: '/dashboard'
-        },
-        {
-          name: 'พนักงาน',
-         
-          url: '/dashboard'
-        },
-        {
-          name: 'วัตถุดิบ',
-          url: '/report/reptmaterial'
-        },
-        {
-          name: 'ค่าใช้จ่าย',
-          url: '/report',
-          url: '/report/Kexpenses'
-        },
-        {
-          name: 'งบประมาณโครงการ',
-          url: '/report/reptbudgetproject'
-        },
-        {
-          name: 'คลังพัสดุ',
-          url: '/dashboard'
->>>>>>> dbedd4cbdc0fb1c2bbbb41fec67f097a5f6b5752
-        },
+            name: 'ลูกหนี้',
 
-
-
+            url: '/report/mdmAR'
+        },
         {
-            name: 'Report',
+            name: 'คลังสินค้าสำเร็จรูป',
+
+            url: '/dashboard'
+        },
+        {
+            name: 'พนักงาน',
+
+            url: '/dashboard'
+        },
+        {
+            name: 'วัตถุดิบ',
+            url: '/report/reptmaterial'
+        },
+        {
+            name: 'ค่าใช้จ่าย',
             url: '/report',
-            icon: 'icon-grid',
-            children: [
+            url: '/report/Kexpenses'
+        },
+        {
+            name: 'งบประมาณโครงการ',
+            url: '/report/reptbudgetproject'
+        },
+        {
+            name: 'คลังพัสดุ',
+            url: '/dashboard'
+
+        },
 
 
-                {
-                    name: 'ยอดขาย',
-                    url: '/report',
-
-                    url: '/report/reptsummarysale'
-                        //children: [
-                        //   {
-                        //     name: 'ภาพรวม',
-                        //     url: '/report/reptsummarysale'
-                        //   },
-                        //   {
-                        //     name: 'ขายต่างประเทศ',
-                        //     url: '/dashboard'
-                        //   },
-                        //   {
-                        //     name: 'ขายในประเทศ',
-                        //     url: '/dashboard'
-                        //   }
-                        // ]
-                },
-
-                {
-                    name: 'ลูกหนี้',
-
-                    url: '/report/mdmAR'
-                },
-                {
-                    name: 'คลังสินค้าสำเร็จรูป',
-
-                    url: '/report',
-
-                    url: '/report/reptmdmWarehouseValue'
-                },
-                {
-                    name: 'พนักงาน',
-
-                    url: '/dashboard'
-                },
-                {
-                    name: 'วัตถุดิบ',
-                    url: '/report/reptmaterial'
-                },
-                {
-                    name: 'ค่าใช้จ่าย',
-                    url: '/report',
-                    url: '/report/Kexpenses'
-                },
-                {
-                    name: 'งบประมาณโครงการ',
-
-                    url: '/dashboard'
-                },
-                {
-                    name: 'คลังพัสดุ',
-                    url: '/dashboard'
-                },
-                {
-                    name: 'ROA & % กำไร',
-                    url: '/report/roapercent'
-                }
-            ]
+        {
+            name: 'ROA & % กำไร',
+            url: '/report/roapercent'
         }
+
+
+
+
         // , 
         //     {
         //       name: 'Disabled',
