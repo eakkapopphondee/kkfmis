@@ -187,8 +187,8 @@ export default new Router({
                 }
             ]
 
-        },
-
+       
+    },
     {
       path: '/report',     
       name: 'งบประมาณงานโครงการ',
@@ -203,12 +203,7 @@ export default new Router({
       ]
     }
 
-    ,
-    {
-      path: '/user',
-      name: 'user',
-      component: DefaultContainer,
-      children: [
+    , 
         {
             path: '/user',
             name: 'user',
