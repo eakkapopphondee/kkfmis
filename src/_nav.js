@@ -9,15 +9,6 @@ export default {
         },
 
         {
-<<<<<<< HEAD
-            name: 'Dashboard',
-            url: '/dashboard',
-            icon: 'icon-chart',
-            badge: {
-                variant: 'secondary'
-
-            }
-=======
           name: 'ลูกหนี้',        
           
           url: '/report/mdmAR'
@@ -48,7 +39,6 @@ export default {
         {
           name: 'คลังพัสดุ',
           url: '/dashboard'
->>>>>>> dbedd4cbdc0fb1c2bbbb41fec67f097a5f6b5752
         },
 
 
