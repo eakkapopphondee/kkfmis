@@ -537,8 +537,8 @@ export default {
                             this.dataDGV1   =  res[0].pj_main;
                             this.dataDGV1.push(res[0].pj_sum[0]);
                            
-                            ChartDATA_H1_1[0] = res[0].pj_sum[0].project_CostCul.toFixed(2);
-                            ChartDATA_H1_1[1] = res[0].pj_sum[0].project_Budget.toFixed(2);
+                            ChartDATA_H1_1[0] = res[0].pj_sum[0].project_Budget.toFixed(2);
+                            ChartDATA_H1_1[1] = res[0].pj_sum[0].project_CostCul.toFixed(2);
                             this.txtpersen = res[0].pj_sum[0].project_Costper.toFixed(2)+"%";
 ///
                             this.txtUpdate= res[0].pj_rpt[0].rpt_update.replace("0:00:00", "");
@@ -572,8 +572,8 @@ export default {
                           MeSeData ={
                             
                                 labels: [
-                                    "คชจ.ที่เกิดขึ้นจริงสะสม ["+ChartDATA_H1_1[0]+" ลบ.]",
-                                    "งบประมาณ ["+ChartDATA_H1_1[1]+" ลบ.]"
+                                    "งบประมาณ ["+ChartDATA_H1_1[0]+" ลบ.]",
+                                     "คชจ.ที่เกิดขึ้นจริงสะสม ["+ChartDATA_H1_1[1]+" ลบ.]"
                                 ],
                                 datasets: [
                                     {

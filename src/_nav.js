@@ -8,7 +8,8 @@ export default {
             }
         },
 
-        {
+        { <<
+            << << < HEAD
 
             name: 'Dashboard',
             url: '/dashboard',
@@ -16,7 +17,12 @@ export default {
             badge: {
                 variant: 'secondary'
 
-            }
+            } ===
+            === =
+            name: 'ลูกหนี้',
+
+            url: '/report/mdmAR' >>>
+                >>> > 6 dac3bb88563f3e6e1df116b05cd18666e221150
         },
         {
             name: 'ลูกหนี้',
@@ -43,8 +49,10 @@ export default {
             url: '/report/Kexpenses'
         },
         {
+
             name: 'งบประมาณโครงการ',
             url: '/report/reptbudgetproject'
+
         },
         {
             name: 'คลังพัสดุ',
