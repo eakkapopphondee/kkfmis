@@ -58,9 +58,9 @@
   
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2">
-      <a class="pointer" style="text-decoration: none;" data-bind="click: viewArchives">
-        <div class="thumbnail_dis">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2"  @click="to_users">
+      <a class="pointer" data-bind="click: viewUsers">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-people fa-5x"></i>
@@ -440,7 +440,15 @@ export default {
     to_BudgetProject()
     {
       this.$router.push("/report/reptbudgetproject")
-    }
+    },
+    viewUsers(){
+      this.$router.push("/users")
+
+    },
+    to_users(){
+      this.$router.push("/users")
+
+    },
   }
 }
 </script>

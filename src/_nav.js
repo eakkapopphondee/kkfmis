@@ -21,7 +21,7 @@ export default {
         {
           name: 'พนักงาน',
          
-          url: '/dashboard'
+          url: '/users'
         },
         {
           name: 'วัตถุดิบ',
@@ -86,7 +86,7 @@ export default {
                 {
                     name: 'พนักงาน',
 
-                    url: '/dashboard'
+                    url: '/users'
                 },
                 {
                     name: 'วัตถุดิบ',

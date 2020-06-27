@@ -68,6 +68,9 @@ const Rroapercent = () =>import('@/views/report/roapercent')
 const RMaterial = () =>import('@/views/report/reptmaterial')
 const RBudgetProject = () =>import('@/views/report/reptbudgetproject')
 
+const Users = () =>
+    import ('@/views/users/Users')
+
 Vue.use(Router)
 
 export default new Router({
@@ -101,7 +104,13 @@ export default new Router({
                         name: 'quotation',
                         component: Home
                     }]
-                }
+                },
+
+                {
+                    path: '/users',
+                    name: 'users',
+                    component: Users
+                },
             ]
         },
 
@@ -204,16 +213,7 @@ export default new Router({
     }
 
     , 
-        {
-            path: '/user',
-            name: 'user',
-            component: DefaultContainer,
-            children: [{
-                path: '/user',
-                name: '',
-                component: Home
-            }]
-        },
+       
 
 
         {
