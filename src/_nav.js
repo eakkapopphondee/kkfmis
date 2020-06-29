@@ -17,12 +17,7 @@ export default {
           name: 'คลังสินค้าสำเร็จรูป',
          
           url: '/dashboard'
-        },
-        {
-          name: 'พนักงาน',
-         
-          url: '/users'
-        },
+        },        
         {
           name: 'วัตถุดิบ',
           url: '/report/reptmaterial'
@@ -111,7 +106,19 @@ export default {
                     url: '/report/roapercent'
                 }
             ]
-        }
+        },
+        {
+          name: 'Setting',
+          url: '/setup',
+          icon: 'icon-settings',
+          children: [              
+            {
+              name: 'ผู้ใช้งานระบบ',
+             
+              url: '/users'
+            },
+          ]
+      }
         // , 
         //     {
         //       name: 'Disabled',

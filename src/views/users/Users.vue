@@ -11,7 +11,7 @@
               <h5><i
                   class="icon-people"
                   aria-hidden="true"
-                ></i> พนักงาน</h5>
+                ></i> ผู้ใช้งานระบบ </h5>
               <div class="card-header-actions">
                 <b-link
                   class="card-header-action btn-minimize"
@@ -25,58 +25,58 @@
               id="collapse1"
               visible
             >
-              <b-card-body >
+              <b-card-body>
                 <b-row>
-                      <b-col xl="8">
-                  <b-container fluid>
-                    
-                    <gridv2
-                      ref="DGV1"
-                      :fields="F_DGV1"
-                      :name="name"
-                      :btnGrid="false"
-                      :btnAdd="false"
-                      :btnClone="false"
-                      :btnView="false"
-                      :btnEdit="false"
-                      :btnDelete="false"
-                      :o_col_checkbox="false"
-                      :trackBy="'rowID'"
-                      :data="dataDGV1"
-                      :o_navfooter_visible="true"
-                    >
-                      <template v-slot:status="{item, itemIndex}">
-                        <toggle-button
-                          :value="item.status=='A'?true:false"
-                          :labels="{checked: 'เปิด', unchecked: 'ปิด'}"
-                          @change="onChangeStatus(item, $event)"
-                        />
+                  <b-col xl="8">
+                    <b-container fluid>
 
-                      </template>
-                      <template v-slot:admin="{item, itemIndex}">
-                        <toggle-button
-                          :value="item.admin==1?true:false"
-                          :labels="{checked: 'Admin', unchecked: 'User'}"
-                          @change="onChangeAdmin(item, $event)"
-                        />
+                      <gridv2
+                        ref="DGV1"
+                        :fields="F_DGV1"
+                        :name="name"
+                        :btnGrid="false"
+                        :btnAdd="false"
+                        :btnClone="false"
+                        :btnView="false"
+                        :btnEdit="false"
+                        :btnDelete="false"
+                        :o_col_checkbox="false"
+                        :trackBy="'rowID'"
+                        :data="dataDGV1"
+                        :o_navfooter_visible="true"
+                      >
+                        <template v-slot:status="{item, itemIndex}">
+                          <toggle-button
+                            :value="item.status=='A'?true:false"
+                            :labels="{checked: 'เปิด', unchecked: 'ปิด'}"
+                            @change="onChangeStatus(item, $event)"
+                          />
 
-                      </template>
+                        </template>
+                        <template v-slot:admin="{item, itemIndex}">
+                          <toggle-button
+                            :value="item.admin==1?true:false"
+                            :labels="{checked: 'Admin', unchecked: 'User'}"
+                            @change="onChangeAdmin(item, $event)"
+                          />
 
-                      <template v-slot:softpassword="{item, itemIndex}">
-                        <b-button
-                          variant="outline-warning" size="sm"
-                          v-on:click="onReset(item)"
-                        >Reset</b-button>
+                        </template>
 
-                      </template>
+                        <template v-slot:softpassword="{item, itemIndex}">
+                          <b-button
+                            variant="outline-warning"
+                            size="sm"
+                            v-on:click="onReset(item)"
+                          >Reset</b-button>
 
-                    </gridv2>
-                      
+                        </template>
 
-                  </b-container>
+                      </gridv2>
 
-                </b-col>
-                    </b-row>
+                    </b-container>
+
+                  </b-col>
+                </b-row>
 
               </b-card-body>
 
@@ -112,19 +112,7 @@ import Chart from "chart.js";
 export default {
   name: 'Users',
   mounted () {
-    API.AdminVerify({
-      data: {
-        username: this.$localStorage.get("User")
-      },
-      callblack: res => {
-        //console.log(res);
-        if (!res || res.userid == '') {
-          this.$router.push({ name: 'Home' });
-
-        }
-      }
-    });
-
+    this.AdminVerify();
     this.QueryData();
 
   },
@@ -255,6 +243,24 @@ export default {
           AlertMessage("success", "บันทึกเรียบร้อยแล้ว");
           this.QueryData();
         }
+      });
+
+    },
+
+    AdminVerify () {
+      API.AdminVerify({
+        data: {
+          username: this.$localStorage.get("User")
+        },
+        callblack: res => {
+          console.log(res);
+          if (!res || res.userid == '') {
+            AlertMessage("error", res.apidata.message);
+            this.$router.push('/');
+
+          }
+        }
+
       });
 
     },

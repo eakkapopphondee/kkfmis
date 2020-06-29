@@ -58,9 +58,9 @@
   
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2"  @click="to_users">
-      <a class="pointer" data-bind="click: viewUsers">
-        <div class="thumbnail">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2">
+      <a class="pointer" data-bind="click: viewEmployee">
+        <div class="thumbnail_dis">
           <br>
           <p style="text-align: center">
             <i class="icon-people fa-5x"></i>

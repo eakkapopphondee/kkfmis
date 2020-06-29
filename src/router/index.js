@@ -106,11 +106,7 @@ export default new Router({
                     }]
                 },
 
-                {
-                    path: '/users',
-                    name: 'users',
-                    component: Users
-                },
+                
             ]
         },
 
@@ -227,7 +223,13 @@ export default new Router({
                     component: {
                         render(c) { return c('router-view') }
                     },
-                    children: [{
+                    children: [
+                        {
+                            path: '/users',
+                            name: 'users',
+                            component: Users
+                        },
+                        {
                             path: '/setup/default/country',
                             name: 'country',
                             component: Country
