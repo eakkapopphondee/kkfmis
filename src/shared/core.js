@@ -61,7 +61,7 @@ export function Call(o) {
                 //this.$router.push('/member/signin');
             } else { AlertMessage('error', GetObjVal(error, 'response.data.message')); }
         });
-};
+}
 
 export const API = {
 
@@ -297,7 +297,28 @@ export const API = {
     GetDataSearchBudgetProject: (o) => {         
         Object.assign(o, { method: 'Post', path: 'api/mdmBudgetProject/SearchBudgetProject' });
         Call(o);
-    }
+    },
+
+    //--------Users--------
+    UserList: (o) => {
+        Object.assign(o, { method: 'Get', path: 'api/User/GetUsers/' });
+        Call(o);
+    },
+
+    AdminVerify: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/User/AdminVerify/' });
+        Call(o);
+    },
+
+    UserStatus: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/User/UserStatus/' });
+        Call(o);
+    },
+
+    UserPassword: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/User/UserPassword/' });
+        Call(o);
+    },
 
 
 

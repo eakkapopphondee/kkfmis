@@ -9,15 +9,14 @@
       </b-link>
       
       <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen="false" />
- 
-      <b-navbar-nav class="d-md-down-none">
+       <b-navbar-nav class="d-md-down-none">
         <!-- <b-nav-item class="px-3" to="/users" exact>Home</b-nav-item>
         <b-nav-item class="px-3" to="/dashboard">Dashboard</b-nav-item>
         <b-nav-item class="px-3" to="/Logout">Logout</b-nav-item> -->
         <!-- <b-nav-item class="px-3">Settings</b-nav-item> -->
       </b-navbar-nav>
-      <b-navbar-nav class="ml-auto">
-        <!-- <b-nav-item class="d-md-down-none">
+     <b-navbar-nav class="ml-auto">
+         <!--   <b-nav-item class="d-md-down-none">
           
           <i class="icon-bell"></i>
           <b-badge pill variant="danger">5</b-badge>
@@ -28,7 +27,106 @@
         <b-nav-item class="d-md-down-none">
           <i class="icon-location-pin"></i>
         </b-nav-item>
-        <DefaultHeaderDropdownAccnt/> -->
+        <DefaultHeaderDropdownAccnt/>   -->
+        <div class="btninfouser">
+          <b-button v-b-modal.modal-changepassword>{{ user }}</b-button>
+
+          <b-modal
+            id="modal-changepassword"
+            size="sm"
+            :title="user"
+            cancel-only
+            no-stacking
+            :hide-footer="true"
+          >
+            <b-form @submit="onSubmit">
+              <p class="my-2" v-if="user && user != null">เปลี่ยนรหัสผ่าน</p>
+              <b-form-group
+          label-for="password"
+          :invalid-feedback="'password is Incorrect.'"
+          :state="$v.form.password.required ? !$v.form.password.$invalid : null"
+        >
+          <b-input-group>
+            <b-input-group-prepend>
+              <span class="input-group-text">
+                <i class="fa fa-lock"></i>
+              </span>
+            </b-input-group-prepend>
+            <b-form-input
+              id="password"
+              type="password"
+              v-model="form.password"
+              placeholder="Password"
+              @focus="passfocus = true"
+              @blur="passfocus = false"
+              :state="$v.form.password.required ? !$v.form.password.$invalid : null"
+              autocomplete="off"
+              trim
+              required
+            />
+          </b-input-group>
+        </b-form-group>
+        <div class="alert alert-info" v-show="passfocus">
+          <h6>Password must contain the following:</h6>
+          <p>
+            <i
+              class="fa fa-check-circle"
+              :class="{'text-success': lower, 'text-white': !lower}"
+              style="color: rgb(40, 167, 69);"
+            ></i> A lowercase letter (a-z)
+          </p>
+          <p>
+            <i class="fa fa-check-circle" :class="{'text-success': upper, 'text-white': !upper}"></i> A capital letter (A-Z)
+          </p>
+          <p>
+            <i class="fa fa-check-circle" :class="{'text-success': number, 'text-white': !number}"></i> A number (0-9)
+          </p>
+          <!--<p>
+            <i
+              class="fa fa-check-circle"
+              :class="{'text-success': speacial, 'text-white': !speacial}"
+            ></i> A speacial letter (!@#-$%^*;)
+          </p>-->
+          <p>
+            <i class="fa fa-check-circle" :class="{'text-success': length, 'text-white': !length}"></i> Minimum 8 characters
+          </p>
+        </div>
+
+        <b-form-group
+          label-for="confpass"
+          :invalid-feedback="'password does not match.'"
+          :state="$v.form.confpass.required ? !$v.form.confpass.$invalid : null"
+        >
+          <b-input-group>
+            <b-input-group-prepend>
+              <span class="input-group-text">
+                <i class="fa fa-lock"></i>
+              </span>
+            </b-input-group-prepend>
+            <b-form-input
+              id="confpass"
+              type="password"
+              v-model="form.confpass"
+              placeholder="Confirm Password"
+              autocomplete="off"
+              :state="$v.form.confpass.required ? !$v.form.confpass.$invalid : null"
+              trim
+            />
+          </b-input-group>
+        </b-form-group>
+        <b-form-group>
+          <b-button
+            block
+            variant="warning"
+            type="submit"
+            :disabled="$v.form.$invalid"
+          >เปลี่ยนรหัสผ่าน</b-button>
+        </b-form-group>
+        
+            </b-form>
+
+          </b-modal>
+        </div>
       </b-navbar-nav>
 
 <!--          
@@ -89,8 +187,16 @@ import nav from '@/_nav'
 import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
 import DefaultAside from './DefaultAside'
 import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
+import {
+  required,
+  minLength,
+  sameAs,
+  email,
+  integer
+} from "vuelidate/lib/validators";
+import { GetObjVal, AlertMessage } from "@/shared/utils";
 
-
+import { API } from "@/shared/core";
 
 export default {
   name: 'DefaultContainer',
@@ -118,7 +224,46 @@ export default {
     return {
       nav: nav.items,
         boxOne: '',
-        boxTwo: ''
+        boxTwo: '',
+        form: {
+        username: "",
+        email: "",
+        password: "",
+        confpass: ""
+      },
+      passfocus: false,
+      lower: false,
+      upper: false,
+      number: false,
+      /*speacial: false,*/
+      length: false,
+      vsuccess: false
+    }
+  },
+  validations: {
+    form: {
+      password: {
+        required,
+        passvalid(val) {
+          this.lower = /[a-z]+/.test(val);
+          this.upper = /[A-Z]+/.test(val);
+          this.number = /[0-9]+/.test(val);
+          //this.speacial = /[!@#-$%^*;]+/.test(val);
+          this.length = GetObjVal(val, "length") >= 8;
+          return (
+            this.lower &&
+            this.upper &&
+            this.number &&
+            /*this.speacial &&*/
+            this.length
+          );
+        },
+        minLength: minLength(8)
+      },
+      confpass: {
+        required,
+        sameAsPassword: sameAs("password")
+      }
     }
   },
   computed: {
@@ -127,7 +272,10 @@ export default {
     },
     list () {
       return this.$route.matched.filter((route) => route.name || route.meta.label )
-    }
+    },
+    user() {
+      return this.$localStorage.get("User");
+    },
   },
   
     
@@ -209,7 +357,29 @@ export default {
               this.$router.push("/member/signin");
           }
                       
-    }   
+    }  ,onSubmit(evt) {
+      evt.preventDefault();
+
+      API.UserPassword({
+        data: {
+          username: this.$localStorage.get("User"),
+          userid: this.$localStorage.get("User"),
+          password : this.form.password,
+          confpass : this.form.confpass,
+        },
+        callblack: res => {
+          //console.log(res);
+          AlertMessage("success", "บันทึกเรียบร้อยแล้ว");
+          this.$root.$emit('bv::hide::modal','modal-changepassword')
+        }
+      });
+
+
+     
+
+
+
+    }, 
    }
 }
 </script>
@@ -417,7 +587,9 @@ div.fcsText1 a:hover span {display:block; position:absolute; float:left; white-s
 
 }
 
-
+.btninfouser {
+  padding-right: 10px;
+}
 
 
 </style>

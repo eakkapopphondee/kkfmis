@@ -274,6 +274,9 @@ var i;
 var t;
 var  H2 = new Array();
 var ChartDATA_H1_1 = new Array();
+var date = new Date();
+
+var i_ONLOAD = true;
 
 var ChartLebal = new Array();
 var ChartDATA_H1_2 = new Array();
@@ -284,6 +287,7 @@ var myChart2 = null;
 var myChart3 = null;
 var bar= null;
 var MeSeData= null;
+
 
 export default {
   i18n: {
@@ -553,11 +557,20 @@ export default {
                                    
                                         
                              });
+                              i_ONLOAD = false;
 
 
 
                   }else
                   {
+                           if(i_ONLOAD)
+                           {
+                             this.txtSearch_mn = date.getMonth();  ///  ถ้าเดือนล่าสุดไม่มีให้ย่อนหลัง
+                             this.QueryData();
+                             i_ONLOAD = false;
+                           }
+                           
+                              
                             this.show_err = true;
                             this.dataDGV1   =  [];
                             //console.log(res[0].pj_sum[0].project_Budget.toFixed(2));
@@ -708,7 +721,7 @@ export default {
 
   mounted() {
      var Selet = new Array();
-     let date = new Date();
+   //  var date = new Date();
 
      Selet[0] = date.getFullYear();
      for (i = 1; i < 5; i++) 
@@ -740,7 +753,8 @@ export default {
    // this.txtSearch_mn =date.getMonth()-1;
     this.txtSearch = date.getFullYear();
     myChart2 = null;
-myChart3 = null;
+    myChart3 = null;
+     i_ONLOAD = true;
     this.QueryData();
   //  chart.update();
   }

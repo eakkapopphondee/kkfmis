@@ -76,6 +76,9 @@ const RBudgetProject = () =>
 
 
 
+const Users = () =>
+    import ('@/views/users/Users')
+
 Vue.use(Router)
 
 export default new Router({
@@ -109,7 +112,9 @@ export default new Router({
                         name: 'quotation',
                         component: Home
                     }]
-                }
+                },
+
+
             ]
         },
 
@@ -213,6 +218,7 @@ export default new Router({
             ]
         }
 
+
         ,
         {
             path: '/user',
@@ -224,6 +230,9 @@ export default new Router({
                 component: Home
             }]
         },
+
+
+
 
 
         {
@@ -238,6 +247,11 @@ export default new Router({
                         render(c) { return c('router-view') }
                     },
                     children: [{
+                            path: '/users',
+                            name: 'users',
+                            component: Users
+                        },
+                        {
                             path: '/setup/default/country',
                             name: 'country',
                             component: Country
