@@ -20,3 +20,15 @@ export const configMode = {
     View: { class: "info" },
     Delete: { class: "danger" }
 };
+
+
+export const aggregationTypes = {
+    sum: 1,
+    count: 2,
+    avg: 3,
+    min: 4,
+    max: 5,
+    currency: 6,
+    percent: 7,
+    distinct: 8,
+};
