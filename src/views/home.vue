@@ -59,7 +59,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2">
-      <a class="pointer" style="text-decoration: none;" data-bind="click: viewArchives">
+      <a class="pointer" data-bind="click: viewEmployee">
         <div class="thumbnail_dis">
           <br>
           <p style="text-align: center">
@@ -440,7 +440,15 @@ export default {
     to_BudgetProject()
     {
       this.$router.push("/report/reptbudgetproject")
-    }
+    },
+    viewUsers(){
+      this.$router.push("/users")
+
+    },
+    to_users(){
+      this.$router.push("/users")
+
+    },
   }
 }
 </script>
