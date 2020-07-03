@@ -273,7 +273,7 @@ import Chart from "chart.js";
 var i;
 var t;
 var  H2 = new Array();
-var ChartDATA_H1_1 = new Array();
+var ChartDATA_H1_1 = new Array();   
 var date = new Date();
 
 var i_ONLOAD = true;
