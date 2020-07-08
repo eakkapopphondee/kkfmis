@@ -63,10 +63,18 @@ const mdmAR = () =>
     import ('@/views/report/mdmAR/mdmAR')
 
 
-const Kexpenses  = () =>import('@/views/report/Kexpenses')
-const Rroapercent = () =>import('@/views/report/roapercent')
-const RMaterial = () =>import('@/views/report/reptmaterial')
-const RBudgetProject = () =>import('@/views/report/reptbudgetproject')
+
+
+const Kexpenses = () =>
+    import ('@/views/report/Kexpenses')
+const Rroapercent = () =>
+    import ('@/views/report/roapercent')
+const RMaterial = () =>
+    import ('@/views/report/reptmaterial')
+const RBudgetProject = () =>
+    import ('@/views/report/reptbudgetproject')
+
+
 
 const Users = () =>
     import ('@/views/users/Users')
@@ -106,7 +114,7 @@ export default new Router({
                     }]
                 },
 
-                
+
             ]
         },
 
@@ -192,24 +200,39 @@ export default new Router({
                 }
             ]
 
-       
-    },
-    {
-      path: '/report',     
-      name: 'งบประมาณงานโครงการ',
-      component: DefaultContainer,
-      children: [      
+        }
+
+        ,
 
         {
-          path: '/report/reptbudgetproject',
-          name: 'งบประมาณงานโครงการ',
-          component: RBudgetProject
-        }
-      ]
-    }
+            path: '/report',
+            name: 'งบประมาณงานโครงการ',
+            component: DefaultContainer,
+            children: [
 
-    , 
-       
+                {
+                    path: '/report/reptbudgetproject',
+                    name: 'งบประมาณงานโครงการ',
+                    component: RBudgetProject
+                }
+            ]
+        }
+
+
+        ,
+        {
+            path: '/user',
+            name: 'user',
+            component: DefaultContainer,
+            children: [{
+                path: '/user',
+                name: '',
+                component: Home
+            }]
+        },
+
+
+
 
 
         {
@@ -223,8 +246,7 @@ export default new Router({
                     component: {
                         render(c) { return c('router-view') }
                     },
-                    children: [
-                        {
+                    children: [{
                             path: '/users',
                             name: 'users',
                             component: Users

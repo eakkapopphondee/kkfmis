@@ -208,7 +208,7 @@
                 </b-col>
 
                 <b-col sm="4">
-                    <div class="callout callout-successdanger">
+                    <div class="callout callout-danger">
                     <small class="text-muted">ยอดขาย (ลบ.)</small><br>
                     <strong class="h2">{{dataDashboardEXobj.cum_sale_value| number(2)}} </strong>
                     <div class="chart-wrapper" :style="{ top: '-10px'}">

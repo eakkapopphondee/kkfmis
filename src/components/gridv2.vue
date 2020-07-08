@@ -176,6 +176,10 @@
               v-cloak
             >
               <template v-for="(field, index) in tableFields">
+
+
+              
+
                 <th
                   class="freeze"
                   v-if="field.name === '_drag'"
@@ -257,7 +261,7 @@
             </draggable>
             <!-- </tr> -->
 
-            <!------------------ Test Header Group -------------------->
+            <!-- Test Header Group -->
             <tr>
               <template v-for="field in tableFields">
                 <template
@@ -294,7 +298,7 @@
                 </template>
               </template>
             </tr>
-            <!------------------ Test Header Group -------------------->
+            <!-- Test Header Group -->
           </thead>
 
           <!-- <tbody v-cloak> -->
@@ -320,7 +324,7 @@
                           v-if="!field2.o_col && !field2._show && (field2.visible || field2.visible === undefined)"
                         >
                           <template v-if="getGroupsLength(field2)">
-                            <!--Group--->
+                            <!--Group -->
                             <template v-for="(field3) in field2.groups">
                               <tr
                                 :key="'_' + field3.name"
@@ -423,7 +427,7 @@
                   <template v-for="(field, fieldIndex) in tableFields">
                     <template v-if="!field.o_col && (field.visible || field.visible === undefined)">
                       <template v-if="getGroupsLength(field)">
-                        <!--Group--->
+                        <!--Group -->
                         <template v-for="(field2) in field.groups">
                           <td
                             @click="onCellClicked(item, field2, $event)"
@@ -499,6 +503,45 @@
               <td :colspan="tableFields.length * 5" class="text-center">{{$t('dic.nodata')}}</td>
             </tr>
           </tbody>
+
+          <tfoot v-if="o_footer_visible && tableData.length > 1"   style="font-size:14px; font-weight: 600;">
+            <tr>
+              <th class="freeze" v-if="o_row_drag">&nbsp;</th>
+              <th class="freeze" v-if="o_col_checkbox">&nbsp;</th>
+              <th class="freeze" v-if="col_viewmore && o_col_viewmore">&nbsp;</th>
+              <template v-for="(field, index) in tableFields">
+                <template v-if="!field.o_col && (field.visible || field.visible === undefined)">
+                  <template v-if="getGroupsLength(field)">
+                    <!--Group-->
+                    <template v-for="(field2) in field.groups">
+                      <th
+                        :key="'_' + field2.name"
+                        :tabindex="index"
+                        :class="!field2.class ? 'text-center' : field2.class"
+                        v-if="field2._show && field._show && (field2.visible || field2.visible === undefined)"
+                      >
+                        <slot :name="field2.name + '_footer'" :field="field2">
+                          <span v-html="getCellFooter(field2)"></span>
+                        </slot>
+                      </th>
+                    </template>
+                  </template>
+                  <template v-else>
+                    <th
+                      :key="'_' + field.name"
+                      :tabindex="index"
+                      :class="!field.class ? 'text-center' : field.class"
+                      v-if="field._show"
+                    >
+                      <slot :name="field.name + '_footer'" :field="field">
+                        <span v-html="getCellFooter(field)"></span>
+                      </slot>
+                    </th>
+                  </template>
+                </template>
+              </template>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -562,38 +605,40 @@
 
 <script>
 import resize from "vue-resize-directive";
-import dic from '@/shared/dic'
+import dic from "@/shared/dic";
 import ExcelJS from "exceljs";
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
-import cellinput from '@/components/cellinput'
+import cellinput from "@/components/cellinput";
+import { aggregationTypes } from "@/shared/define";
+import { GetObjVal, SetObjVal, IsNull, Round } from "@/shared/utils";
 
 export default {
   i18n: {
     messages: {
       en: {
         dic: {
-          rowselect: '{0} row selected',
-          hidefilter: 'Hide Filter',
-          viewsetting: 'View/Setting',
-          columshow: 'Column Visible',
-          scrollh: 'Scroll Horizontal',
-          export1: 'Export Excel File',
-          export2: 'Export Excel Visible',
-          reset: 'Reset',
-          selectedonclick: 'Selected On Click'
+          rowselect: "{0} row selected",
+          hidefilter: "Hide Filter",
+          viewsetting: "View/Setting",
+          columshow: "Column Visible",
+          scrollh: "Scroll Horizontal",
+          export1: "Export Excel File",
+          export2: "Export Excel Visible",
+          reset: "Reset",
+          selectedonclick: "Selected On Click"
         }
       },
       th: {
         dic: {
-          rowselect: '{0} รายการเลือก',
-          hidefilter: 'ปิดตัวกรองข้อมูล',
-          viewsetting: 'ตั้งค่า/การแสดงผล',
-          columshow: 'ซ่อน/แสดงคอลัมน์',
-          scrollh: 'แสดงแถบเลื่อนแนวนอน',
-          export1: 'ส่งออกไฟล์ excel',
-          export2: 'ส่งออกไฟล์ excel เฉพาะที่แสดง',
-          reset: 'รีเซ็ต',
-          selectedonclick: 'เลือกเมื่อคลิก'
+          rowselect: "{0} รายการเลือก",
+          hidefilter: "ปิดตัวกรองข้อมูล",
+          viewsetting: "ตั้งค่า/การแสดงผล",
+          columshow: "ซ่อน/แสดงคอลัมน์",
+          scrollh: "แสดงแถบเลื่อนแนวนอน",
+          export1: "ส่งออกไฟล์ excel",
+          export2: "ส่งออกไฟล์ excel เฉพาะที่แสดง",
+          reset: "รีเซ็ต",
+          selectedonclick: "เลือกเมื่อคลิก"
         }
       }
     },
@@ -613,7 +658,7 @@ export default {
     },
     multiSort: {
       type: Boolean,
-      default: true  
+      default: true
     },
     trackBy: {
       type: String,
@@ -688,12 +733,15 @@ export default {
       default: true
     },
 
-
-      o_navfooter_visible: {
+    o_navfooter_visible: {
       type: Boolean,
       default: true
-    }, 
+    },
 
+    o_footer_visible: {
+      type: Boolean,
+      default: true
+    },
 
     o_row_drag: {
       type: Boolean,
@@ -721,7 +769,9 @@ export default {
     }
   },
   computed: {
-    helpVisible() { return typeof this.HelpClick === "function"; },
+    helpVisible() {
+      return typeof this.HelpClick === "function";
+    },
     locale() {
       return this.$root.$i18n.locale;
     },
@@ -759,7 +809,12 @@ export default {
   mounted() {
     this.tableFields = [
       { name: "_drag", _width: 30, visible: this.o_row_drag, o_col: true },
-      { name: "_checkbox", _width: 33, visible: this.o_col_checkbox, o_col: true },
+      {
+        name: "_checkbox",
+        _width: 33,
+        visible: this.o_col_checkbox,
+        o_col: true
+      },
       { name: "_more", _width: 32, visible: this.col_viewmore, o_col: true }
     ];
     this.fields.forEach(c => {
@@ -780,10 +835,14 @@ export default {
         this.genCustomSetting();
         // this.customSetting = JSON.parse(this.$localStorage.get(this.settingName));
       }
-      this.grid_responsive = this.customSetting.grid_responsive || this.o_grid_responsive;
+      this.grid_responsive =
+        this.customSetting.grid_responsive || this.o_grid_responsive;
       this.perPage = this.customSetting.perPage;
       this.showFilter = this.customSetting.showFilter;
-      this.selectedOnClick = this.customSetting.selectedOnClick === undefined ? true : this.customSetting.selectedOnClick;
+      this.selectedOnClick =
+        this.customSetting.selectedOnClick === undefined
+          ? true
+          : this.customSetting.selectedOnClick;
       this.customSetting.fields.forEach((c, i) => {
         let tmp = this.tableFields.find(x => x.name === c.name);
         if (tmp) {
@@ -793,7 +852,7 @@ export default {
             this.tableFields.splice(i, 0, tmp);
           }
           if (!tmp.o_col) tmp.visible = c.visible;
-          if (tmp.name == '_more') tmp.visible = !this.grid_responsive;
+          if (tmp.name == "_more") tmp.visible = !this.grid_responsive;
           if (Array.isArray(c.groups)) {
             c.groups.forEach(g => {
               let tmp2 = tmp.groups.find(v => v.name === g.name);
@@ -802,7 +861,6 @@ export default {
           }
         }
       });
-
     }
     //this.setFields();
     this.genTitle();
@@ -810,7 +868,7 @@ export default {
     let el = document.getElementById(this.name);
     this.onResize(el);
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", e => {
       this.lastColClick = null;
     });
   },
@@ -826,7 +884,7 @@ export default {
       d_btnClone: true,
       d_btnView: true,
       d_btnDelete: true,
-      perPage: 50,
+      perPage: 10,
       currentPage: 1,
       totalPage: [1],
       visibleData: [],
@@ -845,8 +903,12 @@ export default {
       selectedOnClick: true,
       currCell: null,
       lastWidth: 1,
-       reset_flag: true,
-      scrollLeft: 0
+      reset_flag: true,
+      scrollLeft: 0,
+      getObjectValue: GetObjVal,
+      setObjectValue: SetObjVal,
+
+
     };
   },
   methods: {
@@ -892,7 +954,10 @@ export default {
         selectedOnClick: this.selectedOnClick,
         showFilter: this.showFilter
       };
-      this.$localStorage.set(this.settingName, JSON.stringify(this.customSetting));
+      this.$localStorage.set(
+        this.settingName,
+        JSON.stringify(this.customSetting)
+      );
     },
     getWidth1(c) {
       if (c.width) {
@@ -900,10 +965,10 @@ export default {
       } else {
         let tmpc = c._title;
         if (tmpc) {
-          tmpc = !tmpc ? '' : tmpc + '';
-          tmpc = tmpc.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ''); //ิีืึุู์ฺํ๊๋่้็ัเไใ
+          tmpc = !tmpc ? "" : tmpc + "";
+          tmpc = tmpc.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ""); //ิีืึุู์ฺํ๊๋่้็ัเไใ
         }
-        tmpc = (this.getLength(tmpc) + 5) * 8; //7              
+        tmpc = (this.getLength(tmpc) + 5) * 8; //7
 
         c._width = !c._width ? 0 : c._width;
 
@@ -918,14 +983,14 @@ export default {
       } else {
         let tmpc = c._title;
         if (tmpc) {
-          tmpc = !tmpc ? '' : tmpc + '';
-          tmpc = tmpc.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ''); //ิีืึุู์ฺํ๊๋่้็ัเไใ
+          tmpc = !tmpc ? "" : tmpc + "";
+          tmpc = tmpc.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ""); //ิีืึุู์ฺํ๊๋่้็ัเไใ
         }
         tmpc = (this.getLength(tmpc) + 5) * 8; //7
 
         let tmpr = this.getCellView(c, r);
         if (tmpr) {
-          tmpr = !tmpr ? '' : tmpr + '';
+          tmpr = !tmpr ? "" : tmpr + "";
 
           // if(/<[/]/.test(tmpr)) {
           // let arr = tmpr.split('>');
@@ -934,8 +999,8 @@ export default {
           // console.log(tmpr);
           // }
 
-          tmpr = tmpr.replace(/.+>(.*)<.+/g, '$1');
-          tmpr = tmpr.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ''); //ิีืึุู์ฺํ๊๋่้็ัเไใ
+          tmpr = tmpr.replace(/.+>(.*)<.+/g, "$1");
+          tmpr = tmpr.replace(/[ิีืึุู์ฺํ๊๋่้็ัเไใ]*/g, ""); //ิีืึุู์ฺํ๊๋่้็ัเไใ
         }
         tmpr = (this.getLength(tmpr) + 5) * 8; //7
 
@@ -971,7 +1036,8 @@ export default {
             }
           });
         });
-      } else {  /// no data
+      } else {
+        /// no data
         this.tableFields.forEach(c => {
           if (c.visible || c.visible === undefined) {
             if (!c.o_col) {
@@ -1030,14 +1096,20 @@ export default {
     genTitle() {
       this.tableFields.forEach(c => {
         if (/^dic[.]*/.test(c.title)) {
-          c._title = this.getObjectValue(this.$i18n.messages[this.$i18n.locale], c.title);
+          c._title = this.getObjectValue(
+            this.$i18n.messages[this.$i18n.locale],
+            c.title
+          );
         } else {
           c._title = typeof c.title === "function" ? c.title() : c.title;
         }
         if (Array.isArray(c.groups)) {
           c.groups.forEach(g => {
             if (/^dic[.]*/.test(g.title)) {
-              g._title = this.getObjectValue(this.$i18n.messages[this.$i18n.locale], g.title);
+              g._title = this.getObjectValue(
+                this.$i18n.messages[this.$i18n.locale],
+                g.title
+              );
             } else {
               g._title = typeof g.title === "function" ? g.title() : g.title;
             }
@@ -1056,7 +1128,8 @@ export default {
     },
     //-------------------- view ---------------------//
     getTitle(field) {
-      let title = typeof field.title === "function" ? field.title() : field._title;
+      let title =
+        typeof field.title === "function" ? field.title() : field._title;
       return !title ? "" : title;
     },
     renderTitle(field) {
@@ -1064,7 +1137,7 @@ export default {
       return title;
     },
     renderTitleGroup(field, fieldd) {
-      let title = this.getTitle(field) + ' ' + this.getTitle(fieldd);
+      let title = this.getTitle(field) + " " + this.getTitle(fieldd);
       return title;
     },
     renderIconSort(field) {
@@ -1123,15 +1196,35 @@ export default {
         let str = "";
         this.sortOrder.forEach((x, i) => {
           if (i == this.sortOrder.length - 1) {
-            str += "a." + x.sortField + " " + this.getDirection(x.direction) + " b." + x.sortField + " ? 1 ";
+            str +=
+              "a." +
+              x.sortField +
+              " " +
+              this.getDirection(x.direction) +
+              " b." +
+              x.sortField +
+              " ? 1 ";
             if (this.sortOrder.length == 1) {
-              str += ": a." + x.sortField + " == " + "b." + x.sortField + " ? 0 ";
+              str +=
+                ": a." + x.sortField + " == " + "b." + x.sortField + " ? 0 ";
             }
             for (let j = 0; j < i + 1; j++) {
               str += ": -1 ";
             }
           } else {
-            str += "a." + x.sortField + " " + this.getDirection(x.direction) + " b." + x.sortField + " ? 1 : " + "a." + x.sortField + " === b." + x.sortField + " ? ";
+            str +=
+              "a." +
+              x.sortField +
+              " " +
+              this.getDirection(x.direction) +
+              " b." +
+              x.sortField +
+              " ? 1 : " +
+              "a." +
+              x.sortField +
+              " === b." +
+              x.sortField +
+              " ? ";
           }
         });
         let sort = eval("(a, b) => { return " + str + " }");
@@ -1185,8 +1278,6 @@ export default {
       this.onColChange();
     },
 
-
-    
     render() {
       this.onColChange();
     },
@@ -1197,34 +1288,59 @@ export default {
       this.selectedTo = [];
       this.lastRowClick = {};
       if (Array.isArray(data)) {
-        data.forEach(x => {
+        data.forEach((x,i) => {
           x._selected = false;
           let chk = true;
-          if (this.showFilter) {
+          if (this.showFilter || this.o_footer_visible) {
             this.tableFields.forEach(y => {
               if (Array.isArray(y.groups)) {
                 y.groups.forEach(g => {
                   if (g.filterTerm && g.txtFilter) {
-                    if (!(g.filterTerm.test(this.getObjectValue(x, g.name, '')) || g.txtFilter == this.getObjectValue(x, g.name, ''))) {
+                    if (
+                      !(
+                        g.filterTerm.test(this.getObjectValue(x, g.name, "")) ||
+                        g.txtFilter == this.getObjectValue(x, g.name, "")
+                      )
+                    ) {
                       chk = false;
+                    }
+
+                  }
+
+                  if (this.o_footer_visible) {
+                    if (!IsNull(g.footer)) {
+                      this.setFooter(g, x, !i);
                     }
                   }
                 });
               } else {
                 if (y.filterTerm && y.txtFilter) {
-                  if (!(y.filterTerm.test(this.getObjectValue(x, y.name, '')) || y.txtFilter == this.getObjectValue(x, y.name, ''))) {
+                  if (
+                    !(
+                      y.filterTerm.test(this.getObjectValue(x, y.name, "")) ||
+                      y.txtFilter == this.getObjectValue(x, y.name, "")
+                    )
+                  ) {
                     chk = false;
                   }
-                }
-              }
 
+
+                }
+
+                if (this.o_footer_visible) {
+                  if (!IsNull(y.footer)) {
+                    this.setFooter(y, x, !i);
+                  }
+                }
+
+              }
             });
           }
           if (chk) {
             if (this.statusData.length > 0) {
-              if (this.statusData.find(y => y.value == x.status)) this.tableData.push(x);
-            }
-            else this.tableData.push(x);
+              if (this.statusData.find(y => y.value == x.status))
+                this.tableData.push(x);
+            } else this.tableData.push(x);
           }
         });
         this.sortData(true);
@@ -1254,15 +1370,14 @@ export default {
       if (typeof field.callback == "function") {
         return field.callback(this.getObjectValue(item, field.name));
       }
-      return this.getObjectValue(item, field.callback, '');
+      return this.getObjectValue(item, field.callback, "");
     },
 
     getCellView(field, item) {
       if (field.callback) {
         return this.callCallback(field, item);
-      }
-      else {
-        return this.getObjectValue(item, field.name, '');
+      } else {
+        return this.getObjectValue(item, field.name, "");
       }
     },
     getTooltip(field, item) {
@@ -1272,38 +1387,58 @@ export default {
         return field.tooltip;
       }
     },
-    getObjectValue(object, path, defaultValue) {
-      defaultValue = typeof defaultValue === "undefined" ? null : defaultValue;
-      let obj = object ? object : {};
-      if (typeof obj == "undefined") return defaultValue;
-      if (path.trim() != "") {
-        let keys = path.split(".");
-        keys.forEach(key => {
-          if (
-            obj !== null &&
-            typeof obj[key] !== "undefined" &&
-            obj[key] !== null
-          ) {
-            obj = obj[key];
-          } else {
-            obj = defaultValue;
-            return;
-          }
-        });
+
+    getCellFooter(field) {
+      if (!IsNull(GetObjVal(field, 'footer'))) {
+        if (typeof field.callback == "function") {
+          return field.callback(field.footer.value);
+        }
+        return field.footer.value;
       }
-      return obj;
+      return null;
     },
-    setObjectValue(obj, keys, value) { // set(['a', 'b', 'c'], 1)  =  { a: { b: { c: 1 } } }
-      obj = obj || {};
-      keys = typeof keys === 'string' ? keys.match(/\w+/g) : Array.prototype.slice.apply(keys);
-      keys.reduce((obj, key, index) => {
-        obj[key] = index === keys.length - 1 ? value : typeof obj[key] === 'object' && obj !== null ? obj[key] : {};
-        return obj[key];
-      }, obj);
-      return obj;
+    setFooter(field, item, reset) {
+      if (field.footer.type == aggregationTypes.sum) {
+        if (reset) field.footer.value = 0;
+        if (typeof field.footer.formula == 'function') {
+          field.footer.value += field.footer.formula(item);
+        } else {
+          field.footer.value += Number(GetObjVal(item, field.name, 0));
+        }
+      } else if (field.footer.type == aggregationTypes.percent) {
+        if (reset) {
+          field.footer.multi.value = 0;
+          field.footer.divi.value = 0;
+          field.footer.value = 0;
+        }
+        if (typeof field.footer.formula == 'function') {
+          field.footer.value += field.footer.formula(item, field);
+        } else {
+          field.footer.multi.value += Number(GetObjVal(item, field.footer.multi.field, 0));
+          field.footer.divi.value += Number(GetObjVal(item, field.footer.divi.field, 0));
+          field.footer.value = field.footer.divi.value > 0 ? (field.footer.multi.value / field.footer.divi.value) * 100 : 0;
+        }
+      } else if (field.footer.type == aggregationTypes.avg) {
+        if (reset) {
+          field.footer.multi.value = 0;
+          field.footer.divi.value = 0;
+          field.footer.value = 0;
+        }
+        field.footer.multi.value += Number(GetObjVal(item, field.footer.multi.field, 0));
+        field.footer.divi.value += Number(GetObjVal(item, field.footer.divi.field, 0));
+        if (!IsNull(GetObjVal(field.footer, 'decimal'))) {
+          field.footer.multi.value = Round(field.footer.multi.value, field.footer.decimal);
+          field.footer.divi.value = Round(field.footer.divi.value, field.footer.decimal);
+        }
+        field.footer.value = field.footer.divi.value > 0 ? field.footer.multi.value / field.footer.divi.value : 0;
+      }
+      field.footer.value = IsNull(GetObjVal(field.footer, 'decimal')) ? field.footer.value : Round(field.footer.value, field.footer.decimal);
     },
+
+
+
     normalizeSortOrder() {
-      this.sortOrder.forEach((item) => {
+      this.sortOrder.forEach(item => {
         item.sortField = item.sortField || item.field;
       });
     },
@@ -1317,37 +1452,49 @@ export default {
       this.tableFields.forEach(f => {
         if (Array.isArray(f.groups)) {
           f.groups.forEach(g => {
-            if (this.getObjectValue(f, 'filter') !== false) {
-              g.filterTerm = this.getObjectValue(g, 'txtFilter', '');
-              if (typeof (g.filterTerm) === 'string') {
+            if (this.getObjectValue(f, "filter") !== false) {
+              g.filterTerm = this.getObjectValue(g, "txtFilter", "");
+              if (typeof g.filterTerm === "string") {
                 g.filterTerm = g.filterTerm.trim();
               }
               if (g.filterTerm) {
-                g.filterTerm = g.filterTerm.replace(/[%]/g, '*'); /*SoMRuk*/
-                g.filterTerm = g.filterTerm.replace(/([!@#$%\^&)(+=._-])/g, '[$1]'); /*SoMRuk*/
-                g.filterTerm += '*'; /*SoMRuk*/
-                var reText = g.filterTerm.replace(/(\\)?\*/g, function ($0, $1) { return $1 ? $0 : '[\\s\\S]*?'; });
-                g.filterTerm = new RegExp('^' + reText + '$', 'i');
+                g.filterTerm = g.filterTerm.replace(/[%]/g, "*"); /*SoMRuk*/
+                g.filterTerm = g.filterTerm.replace(
+                  /([!@#$%\^&)(+=._-])/g,
+                  "[$1]"
+                ); /*SoMRuk*/
+                g.filterTerm += "*"; /*SoMRuk*/
+                var reText = g.filterTerm.replace(/(\\)?\*/g, function ($0, $1) {
+                  return $1 ? $0 : "[\\s\\S]*?";
+                });
+                g.filterTerm = new RegExp("^" + reText + "$", "i");
               }
             }
           });
         } else {
-          if (this.getObjectValue(f, 'filter') !== false) {
-            f.filterTerm = this.getObjectValue(f, 'txtFilter', '');
-            if (typeof (f.filterTerm) === 'string') {
+          if (this.getObjectValue(f, "filter") !== false) {
+            f.filterTerm = this.getObjectValue(f, "txtFilter", "");
+            if (typeof f.filterTerm === "string") {
               f.filterTerm = f.filterTerm.trim();
             }
             if (f.filterTerm) {
-              f.filterTerm = f.filterTerm.replace(/[%]/g, '*'); /*SoMRuk*/
-              f.filterTerm = f.filterTerm.replace(/([!@#$%\^&)(+=._-])/g, '[$1]'); /*SoMRuk*/
-              f.filterTerm += '*'; /*SoMRuk*/
-              var reText = f.filterTerm.replace(/(\\)?\*/g, function ($0, $1) { return $1 ? $0 : '[\\s\\S]*?'; });
-              f.filterTerm = new RegExp('^' + reText + '$', 'i');
+              f.filterTerm = f.filterTerm.replace(/[%]/g, "*"); /*SoMRuk*/
+              f.filterTerm = f.filterTerm.replace(
+                /([!@#$%\^&)(+=._-])/g,
+                "[$1]"
+              ); /*SoMRuk*/
+              f.filterTerm += "*"; /*SoMRuk*/
+              var reText = f.filterTerm.replace(/(\\)?\*/g, function ($0, $1) {
+                return $1 ? $0 : "[\\s\\S]*?";
+              });
+              f.filterTerm = new RegExp("^" + reText + "$", "i");
             }
           }
         }
       });
-      setTimeout(() => { this.setData(this.data); }, 1);
+      setTimeout(() => {
+        this.setData(this.data);
+      }, 1);
     },
 
     //------------------------ pagination ------------------------//
@@ -1378,7 +1525,7 @@ export default {
     getNo(index) {
       if (index == 0) this.countIndex = 0;
       this.countIndex++;
-      return this.countIndex + (this.perPage * (this.currentPage - 1))
+      return this.countIndex + this.perPage * (this.currentPage - 1);
     },
 
     //------------------------- view more -------------------------//
@@ -1395,7 +1542,7 @@ export default {
 
     //------------------------- select ----------------------------//
     toggleClick(index, event) {
-      if (event['shiftKey']) {
+      if (event["shiftKey"]) {
         let lastIndex = this.getIndexLastRow();
         if (lastIndex == -1) return;
         if (this.visibleData[lastIndex]._selected) {
@@ -1405,13 +1552,19 @@ export default {
             }
           } else {
             for (let i = index; i <= lastIndex; i++) {
-              this.toggleCheckbox(this.visibleData[i], true)
+              this.toggleCheckbox(this.visibleData[i], true);
             }
           }
         }
-        this.toggleCheckbox(this.visibleData[index], this.visibleData[index]._selected);
+        this.toggleCheckbox(
+          this.visibleData[index],
+          this.visibleData[index]._selected
+        );
       } else {
-        this.toggleCheckbox(this.visibleData[index], !this.visibleData[index]._selected);
+        this.toggleCheckbox(
+          this.visibleData[index],
+          !this.visibleData[index]._selected
+        );
       }
     },
     toggleCheckbox(item, checked) {
@@ -1426,10 +1579,18 @@ export default {
         this.unselectId(key);
         item._selected = false;
       }
-      // set last click      
+      // set last click
       this.onRowClicked(item);
-      this.$emit(this.eventPrefix + "rowToggleSelected", this.rowSelected(item), this.name);
-      this.$emit(this.eventPrefix + "rowSelected", this.rowSelected(item), this.name);
+      this.$emit(
+        this.eventPrefix + "rowToggleSelected",
+        this.rowSelected(item),
+        this.name
+      );
+      this.$emit(
+        this.eventPrefix + "rowSelected",
+        this.rowSelected(item),
+        this.name
+      );
     },
     selectId(key) {
       if (this.o_select_single) {
@@ -1440,7 +1601,7 @@ export default {
       }
     },
     unselectId(key) {
-      this.selectedTo = this.selectedTo.filter((item) => {
+      this.selectedTo = this.selectedTo.filter(item => {
         return item !== key;
       });
     },
@@ -1469,22 +1630,25 @@ export default {
     },
     checkCheckboxesState() {
       if (!this.tableData) return;
-      let selector = "th.grid-th-checkbox-" + this.trackBy + " input[type=checkbox]";
+      let selector =
+        "th.grid-th-checkbox-" + this.trackBy + " input[type=checkbox]";
       let els = document.querySelectorAll(selector);
 
       if (els.forEach === undefined)
-        els.forEach = function (cb) { [].forEach.call(els, cb); };
+        els.forEach = function (cb) {
+          [].forEach.call(els, cb);
+        };
       let selected = this.tableData.filter(item => {
         return this.selectedTo.indexOf(item[this.trackBy]) >= 0;
       });
 
       if (selected.length === this.tableData.length) {
-        els.forEach((el) => {
+        els.forEach(el => {
           el.indeterminate = true;
         });
         return true;
       } else {
-        els.forEach((el) => {
+        els.forEach(el => {
           el.indeterminate = false;
         });
         return false;
@@ -1492,7 +1656,7 @@ export default {
     },
     toggleAllCheckboxes(checked) {
       if (checked) {
-        this.tableData.forEach((dataItem) => {
+        this.tableData.forEach(dataItem => {
           dataItem._selected = true;
           this.selectId(dataItem[this.trackBy]);
         });
@@ -1513,13 +1677,15 @@ export default {
     onSelected() {
       if (this.selectedTo.length) {
         this.d_btnClone = this.d_btnView = this.selectedTo.length > 1;
-        this.d_btnEdit = this.o_mode_multiEdit ? false : this.selectedTo.length > 1;
+        this.d_btnEdit = this.o_mode_multiEdit
+          ? false
+          : this.selectedTo.length > 1;
         this.d_btnDelete = false;
 
-        if (this.getObjectValue(this.data[this.data.length - 1], 'status')) {
+        if (this.getObjectValue(this.data[this.data.length - 1], "status")) {
           this.data.forEach(item => {
             if (this.selectedTo.indexOf(item[this.trackBy]) >= 0) {
-              if (item.status == 'C') {
+              if (item.status == "C") {
                 this.d_btnDelete = this.d_btnEdit = true;
               }
             }
@@ -1542,9 +1708,12 @@ export default {
       this.onRowClicked(item);
     },
     isCellClick(item, field) {
-      if (this.getObjectValue(field, 'cellEdit')) {
-        if (this.getObjectValue(this.lastRowClick, this.trackBy) == item[this.trackBy]) {
-          if (this.getObjectValue(this.lastColClick, 'name') == field.name) {
+      if (this.getObjectValue(field, "cellEdit")) {
+        if (
+          this.getObjectValue(this.lastRowClick, this.trackBy) ==
+          item[this.trackBy]
+        ) {
+          if (this.getObjectValue(this.lastColClick, "name") == field.name) {
             return true;
           }
         }
@@ -1552,23 +1721,36 @@ export default {
       return false;
     },
     isInvalid(item, field) {
-      return this.getObjectValue(item, '_validation.' + field.name + '.$invalid') === true;
+      return (
+        this.getObjectValue(item, "_validation." + field.name + ".$invalid") ===
+        true
+      );
     },
     onCellEdit(item, field, value) {
-      if (this.getObjectValue(field, 'cellEdit') === true) {
+      if (this.getObjectValue(field, "cellEdit") === true) {
         if (this.getObjectValue(item, field.name) !== value) {
           this.setObjectValue(item, field.name, value);
-          //console.log(field.input.value);                 
+          //console.log(field.input.value);
         }
-        //change  
-        this.$emit(this.eventPrefix + "onCellEditChanged", item, field, value, this.name);
+        //change
+        this.$emit(
+          this.eventPrefix + "onCellEditChanged",
+          item,
+          field,
+          value,
+          this.name
+        );
       }
-      if (this.getObjectValue(this.lastColClick, 'name') == field.name && this.getObjectValue(this.lastRowClick, this.trackBy) == item[this.trackBy]) {
+      if (
+        this.getObjectValue(this.lastColClick, "name") == field.name &&
+        this.getObjectValue(this.lastRowClick, this.trackBy) ==
+        item[this.trackBy]
+      ) {
         this.lastColClick = null;
       }
     },
     onCellClicked(item, field, event) {
-      this.currCell = event.path.find(t => t.tagName === 'TD').id;
+      this.currCell = event.path.find(t => t.tagName === "TD").id;
       this.$emit(this.eventPrefix + "onCellClicked", item, field, this.name);
       this.onRowClicked(item, field, event);
     },
@@ -1579,11 +1761,19 @@ export default {
           this.unselectAll();
           this.selectId(item[this.trackBy]);
           item._selected = this.rowSelected(item);
-          this.$emit(this.eventPrefix + "rowSelected", item._selected, this.name);
+          this.$emit(
+            this.eventPrefix + "rowSelected",
+            item._selected,
+            this.name
+          );
         }
       }
-      if (this.getObjectValue(this.lastRowClick, this.trackBy) != item[this.trackBy] ||
-        this.getObjectValue(this.lastColClick, 'name') != this.getObjectValue(field, 'name')) {
+      if (
+        this.getObjectValue(this.lastRowClick, this.trackBy) !=
+        item[this.trackBy] ||
+        this.getObjectValue(this.lastColClick, "name") !=
+        this.getObjectValue(field, "name")
+      ) {
         if (field && item) {
           if (field.cellEdit) {
             field.input.value = this.getObjectValue(item, field.name);
@@ -1591,9 +1781,17 @@ export default {
           this.lastColClick = field;
         }
       }
-      if (this.getObjectValue(this.lastRowClick, this.trackBy) != item[this.trackBy]) {
+      if (
+        this.getObjectValue(this.lastRowClick, this.trackBy) !=
+        item[this.trackBy]
+      ) {
         this.lastRowClick = item;
-        this.$emit(this.eventPrefix + "rowClicked", item, this.rowSelected(item), this.name);
+        this.$emit(
+          this.eventPrefix + "rowClicked",
+          item,
+          this.rowSelected(item),
+          this.name
+        );
       }
     },
     onViewMore(dataItem, index, e) {
@@ -1635,22 +1833,27 @@ export default {
 
     ///////------------------------------------------ text color ---------------------------------------------------//////
     getTextColor(dataItem) {
-      let color = this.getObjectValue(dataItem, 'textColor', '');
-      if (this.getObjectValue(this.tableData[this.tableData.length - 1], 'status')) {
-        if (dataItem.status == 'I') color = 'primary';
-        else if (dataItem.status == 'C') color = 'danger';
+      let color = this.getObjectValue(dataItem, "textColor", "");
+      if (
+        this.getObjectValue(this.tableData[this.tableData.length - 1], "status")
+      ) {
+        if (dataItem.status == "I") color = "primary";
+        else if (dataItem.status == "C") color = "danger";
       }
-      return 'text-' + color;
+      return "text-" + color;
     },
 
     ///////------------------------------------------ export excel ---------------------------------------------------//////
 
     CreateHeader(worksheet) {
-      let head1 = [], head2 = [], colGroup = false;
+      let head1 = [],
+        head2 = [],
+        colGroup = false;
       this.fields.forEach(c => {
         if (c.visible) {
           if (Array.isArray(c.groups)) {
-            let idf = 0, idl = 0;
+            let idf = 0,
+              idl = 0;
             c.groups.forEach((g, i) => {
               if (g.visible) {
                 if (!i) head1.push(c._title);
@@ -1666,7 +1869,7 @@ export default {
         }
       });
 
-      //worksheet.getRow(1).values = head1; 
+      //worksheet.getRow(1).values = head1;
       worksheet.addRows([head1]);
 
       head1 = worksheet.getRow(1);
@@ -1680,7 +1883,8 @@ export default {
       head1.height = 20;
 
       if (colGroup) {
-        let idf = 0, idl = 0;
+        let idf = 0,
+          idl = 0;
         worksheet.addRows([head2]);
         this.fields.forEach(c => {
           if (c.visible) {
@@ -1688,9 +1892,9 @@ export default {
               c.groups.forEach((g, i) => {
                 if (g.visible) {
                   if (i) {
-                    idf++; idl++;
-                  }
-                  else idl++;
+                    idf++;
+                    idl++;
+                  } else idl++;
                   head2.push(g._title);
                   colGroup = true;
                 }
@@ -1698,7 +1902,8 @@ export default {
               worksheet.mergeCells(1, idf, 1, idl);
               idf = idl;
             } else {
-              idf++; idl++;
+              idf++;
+              idl++;
               worksheet.mergeCells(1, idf, 2, idl);
             }
           }
@@ -1722,17 +1927,17 @@ export default {
             c.groups.forEach(g => {
               if (g.visible) {
                 let tmpr = this.getCellView(g, r);
-                tmpr = !tmpr ? '' : tmpr + '';
-                tmpr = tmpr.replace(/.+>(.*)<.+/g, '$1');
-                if (!tmpr) tmpr = this.getObjectValue(r, g.name, '');
+                tmpr = !tmpr ? "" : tmpr + "";
+                tmpr = tmpr.replace(/.+>(.*)<.+/g, "$1");
+                if (!tmpr) tmpr = this.getObjectValue(r, g.name, "");
                 row.push(tmpr);
               }
             });
           } else {
             let tmpr = this.getCellView(c, r);
-            tmpr = !tmpr ? '' : tmpr + '';
-            tmpr = tmpr.replace(/.+>(.*)<.+/g, '$1');
-            if (!tmpr) tmpr = this.getObjectValue(r, c.name, '');
+            tmpr = !tmpr ? "" : tmpr + "";
+            tmpr = tmpr.replace(/.+>(.*)<.+/g, "$1");
+            if (!tmpr) tmpr = this.getObjectValue(r, c.name, "");
             row.push(tmpr);
           }
         }
@@ -1756,10 +1961,10 @@ export default {
       this.SaveExcel();
     },
     SaveExcel() {
-      this.workbook.xlsx.writeBuffer().then((csvContent) => {
+      this.workbook.xlsx.writeBuffer().then(csvContent => {
         let D = document;
-        let a = D.createElement('a');
-        let strMimeType = 'application/octet-stream;charset=utf-8'; //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        let a = D.createElement("a");
+        let strMimeType = "application/octet-stream;charset=utf-8"; //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
         let rawFile;
         let fileName = this.name + ".xlsx";
 
@@ -1769,7 +1974,8 @@ export default {
           rawFile = URL.createObjectURL(blob);
           a.setAttribute("download", fileName);
         } else {
-          rawFile = "data:" + strMimeType + "," + encodeURIComponent(csvContent);
+          rawFile =
+            "data:" + strMimeType + "," + encodeURIComponent(csvContent);
           a.setAttribute("target", "_blank");
         }
         a.href = rawFile;
@@ -1833,24 +2039,28 @@ export default {
       }
       let c = document.getElementById(this.currCell);
       if (e.which >= 37 && e.which <= 40) {
-        let t = this.currCell.split('-');
-        if (e.which == 39) { // Right Arrow        
+        let t = this.currCell.split("-");
+        if (e.which == 39) {
+          // Right Arrow
           c = c.nextElementSibling;
-        } else if (e.which == 37) { // previous Arrow
+        } else if (e.which == 37) {
+          // previous Arrow
           c = c.previousElementSibling;
-        } else if (e.which == 38) { // Up Arrow                
+        } else if (e.which == 38) {
+          // Up Arrow
           t[t.length - 1] = parseInt(t[t.length - 1]) - 1;
-          c = document.getElementById(t.join('-'));
+          c = document.getElementById(t.join("-"));
           if (!c) {
             t[t.length - 1] = parseInt(t[t.length - 1]) - 1;
-            c = document.getElementById(t.join('-'));
+            c = document.getElementById(t.join("-"));
           }
-        } else if (e.which == 40) { // Down Arrow  
+        } else if (e.which == 40) {
+          // Down Arrow
           t[t.length - 1] = parseInt(t[t.length - 1]) + 1;
-          c = document.getElementById(t.join('-'));
+          c = document.getElementById(t.join("-"));
           if (!c) {
             t[t.length - 1] = parseInt(t[t.length - 1]) + 1;
-            c = document.getElementById(t.join('-'));
+            c = document.getElementById(t.join("-"));
           }
         }
         if (c && c.tabIndex != -1) {
@@ -1885,14 +2095,14 @@ export default {
     },
     selectedTo(newVal, oldVal) {
       if (newVal.length === 0) {
-        this.indeterminate = false
-        this.allSelected = false
+        this.indeterminate = false;
+        this.allSelected = false;
       } else if (newVal.length === this.tableData.length) {
-        this.indeterminate = false
-        this.allSelected = true
+        this.indeterminate = false;
+        this.allSelected = true;
       } else {
-        this.indeterminate = true
-        this.allSelected = false
+        this.indeterminate = true;
+        this.allSelected = false;
       }
       if (this.btnDefault) {
         this.onSelected();
@@ -1903,7 +2113,7 @@ export default {
     },
     o_grid_responsive(v) {
       this.grid_responsive = v;
-    },
+    }
     /*tableFields(newVal, oldVal) {
       console.log(this.tableFields);
     }*/
@@ -2222,87 +2432,71 @@ td.handle {
   width: 100%;
 } */
 
+table {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: float 5s infinite;
+}
 
+table {
+  border-collapse: collapse;
+  border: 1px solid #5499c7;
 
+  background: white;
+}
+th {
+  background: #7fb3d5;
 
-  Table {
+  background: #a9cce3;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: float 5s infinite;
-  }
+  font-weight: lighter;
+  /* text-shadow: 0 1px 0 #5499C7; */
+  color: #424949;
+  border: 1px solid #7fb3d5;
+  box-shadow: inset 0px 1px 2px #d6eaf8;
+  transition: all 0.2s;
+}
+tr {
+  border-bottom: 1px solid #cccccc;
+}
+tr:last-child {
+  border-bottom: 0px;
+}
+td {
+  border-right: 1px solid #cccccc;
+  padding: 10px;
+  transition: all 0.2s;
+}
+td:last-child {
+  border-right: 0px;
+}
+td.selected {
+  background: #d7e4ef;
+}
+td input {
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border: 0;
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+}
+td input:focus {
+  box-shadow: 0 1px 0 steelblue;
+  color: steelblue;
+}
+::-moz-selection {
+  background: steelblue;
+  color: white;
+}
+::selection {
+  background: steelblue;
+  color: white;
+}
 
-  table {
-
-
-    border-collapse: collapse;
-    border: 1px solid #5499C7;   
- 
-    background: white;
-   
-
-  }
-  th {
-    background: #7FB3D5;
-
-    background: #A9CCE3;
-    
-
-    font-weight: lighter;
-    /* text-shadow: 0 1px 0 #5499C7; */
-    color: #424949 ;
-    border: 1px solid #7FB3D5 ;
-    box-shadow: inset 0px 1px 2px #D6EAF8     ;
-    transition: all 0.2s;
-    
-  }
-  tr {
-    border-bottom: 1px solid #cccccc;
-
-  }
-  tr:last-child {
-    border-bottom: 0px;
-  }
-  td {
-    border-right: 1px solid #cccccc;
-    padding: 10px;
-    transition: all 0.2s;
-    
-  }
-  td:last-child {
-    border-right: 0px;
-  }
-  td.selected {
-    background: #d7e4ef;
-   
-  }
-  td input {
-    font-size: 14px;
-    background: none;
-    outline: none;
-    border: 0;
-    display: table-cell;
-    height: 100%;
-    width: 100%;
-  }
-  td input:focus {
-    box-shadow: 0 1px 0 steelblue;
-    color: steelblue;
-  }
-  ::-moz-selection {
-    background: steelblue;
-    color: white;
-  }
-  ::selection {
-    background: steelblue;
-    color: white;
-  }
-  
-
-  .table-hover tbody tr:not(:hover) {
-
-    background-color: #fff;
-  
-  }
+.table-hover tbody tr:not(:hover) {
+  background-color: #fff;
+}
 
 /* 
 

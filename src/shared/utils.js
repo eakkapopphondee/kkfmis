@@ -12,71 +12,71 @@ import swal from 'sweetalert'
 }; */
 
 export function AlertMessage(type, msg = '') {
-  let time = 5000;
-  if (type == 'S' || type.toLowerCase() == 'success') {
-    type = 'success';
-  } else if (type == 'F' || type.toLowerCase() == 'error') {
-    type = 'error';
-    time = 60000;
-  }
-  Vue.notify({
-    type: type,
-    title: type.toUpperCase(),
-    duration: time,
-    text: msg
-  })
+    let time = 5000;
+    if (type == 'S' || type.toLowerCase() == 'success') {
+        type = 'success';
+    } else if (type == 'F' || type.toLowerCase() == 'error') {
+        type = 'error';
+        time = 60000;
+    }
+    Vue.notify({
+        type: type,
+        title: type.toUpperCase(),
+        duration: time,
+        text: msg
+    })
 };
 
 export function ConfirmDialog(title, msg, dangerMode) {
-  return new Promise((resolve, reject) => {
-    swal({
-      title: title,
-      text: msg,
-      icon: "warning",
-      buttons: true,
-      dangerMode: dangerMode
+    return new Promise((resolve, reject) => {
+        swal({
+                title: title,
+                text: msg,
+                icon: "warning",
+                buttons: true,
+                dangerMode: dangerMode
+            })
+            .then((ok) => {
+                resolve(ok);
+            });
     })
-      .then((ok) => {
-        resolve(ok);
-      });
-  })
 };
 
 //------- Object -------//
 export function Copy(src) {
-  return JSON.parse(JSON.stringify(src));
+    return JSON.parse(JSON.stringify(src));
 }
 
 export function ObjCopy(src) {
-  return JSON.parse(JSON.stringify(src));
+    return JSON.parse(JSON.stringify(src));
 };
 
 export function ObjArrDel(obj, indexDel) {
-  for (var i = indexDel.length - 1; i >= 0; i--) {
-    obj.splice(indexDel[i], 1);
-  }
+    for (var i = indexDel.length - 1; i >= 0; i--) {
+        obj.splice(indexDel[i], 1);
+    }
 };
 
 export function ObjResetValue(obj) {
-  Object.keys(obj).forEach(key => {
-    if (typeof obj[key] === 'object' && obj[key] !== null) {
-      obj[key] = {};
-    } else {
-      obj[key] = null;
-    }
-  });
+    Object.keys(obj).forEach(key => {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            obj[key] = {};
+        } else {
+            obj[key] = null;
+        }
+    });
 };
 
 export function ObjClearValue(obj) {
-  if (typeof obj === 'object' && obj !== null) {
-    Object.keys(obj).forEach(key => {
-      if (!ObjClearValue(obj[key])) {
-        obj[key] = null;
-      }
-    });
-    return true;
-  }
-  return false;
+    if (typeof obj === 'object' && obj !== null) {
+        Object.keys(obj).forEach(key => {
+            if (!ObjClearValue(obj[key])) {
+                obj[key] = null;
+            }
+        });
+        return true;
+    }
+    return false;
 };
 
 /*export function GetObjVal(keys, obj) { //keys ex : 'a.b.c'
@@ -90,172 +90,165 @@ export function ObjClearValue(obj) {
 }*/
 
 export function GetObjVal(object, path, defaultValue) {
-  /* path = path + ''; */
-  defaultValue = typeof defaultValue === "undefined" ? null : defaultValue;
-  let obj = object ? object : {};
-  if (path.trim() != "") {
-    let keys = path.split(".");
-    keys.forEach(function (key) {
-      if (
-        obj !== null &&
-        typeof obj[key] !== "undefined" &&
-        obj[key] !== null
-      ) {
-        obj = obj[key];
-      } else {
-        obj = defaultValue;
-        return;
-      }
-    });
-  }
-  return obj;
+    /* path = path + ''; */
+    defaultValue = typeof defaultValue === "undefined" ? null : defaultValue;
+    let obj = object ? object : {};
+    if (path.trim() != "") {
+        let keys = path.split(".");
+        keys.forEach(function(key) {
+            if (
+                obj !== null &&
+                typeof obj[key] !== "undefined" &&
+                obj[key] !== null
+            ) {
+                obj = obj[key];
+            } else {
+                obj = defaultValue;
+                return;
+            }
+        });
+    }
+    return obj;
 }
 
 export function SetObjVal(obj, keys, value) { // set(['a', 'b', 'c'], 1)  =  { a: { b: { c: 1 } } }
-  obj = obj || {};
-  keys = typeof keys === 'string' ? keys.match(/\w+/g) : Array.prototype.slice.apply(keys);
-  keys.reduce((obj, key, index) => {
-    obj[key] = index === keys.length - 1 ? value : typeof obj[key] === 'object' && obj !== null ? obj[key] : {};
-    return obj[key];
-  }, obj);
-  return obj;
+    obj = obj || {};
+    keys = typeof keys === 'string' ? keys.match(/\w+/g) : Array.prototype.slice.apply(keys);
+    keys.reduce((obj, key, index) => {
+        obj[key] = index === keys.length - 1 ? value : typeof obj[key] === 'object' && obj !== null ? obj[key] : {};
+        return obj[key];
+    }, obj);
+    return obj;
 }
 
 //------- date time -------//
 export function addZero(i) {
-  if (i < 10) {
-    i = "0" + i;
-  }
-  return i;
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
 };
 
 export function CreateDateTime(str) {
-  if (!str) {
-    return null;
-  } else {
-    return new Date(str);
-  }
+    if (!str) {
+        return null;
+    } else {
+        return new Date(str);
+    }
 };
 
 export function GetDateView(str) {
-  let d = CreateDateTime(str);
-  if (d !== null) {
-    return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
-  }
-  return "";
+    let d = CreateDateTime(str);
+    if (d !== null) {
+        return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+    }
+    return "";
 }
 
-export function GetDateTimeFormat(str,_format) {
-  let d;
-  
-  
-  //console.log(str);
-
-  if (str ==null){
-    d = new Date();
-  }else{
-   d = CreateDateTime(str);
-  }
-  
-  
-  if (d !== null) {
-
-    let yyyy =  d.getFullYear();
-    let VALUES =  yyyy.toString();
-    let yy =  VALUES.substring(2,4) ;
-    
-      
-    let mm = addZero((d.getMonth()+ 1));
-    let dd = addZero(d.getDate());
-
-    let h = addZero(d.getHours());
-    let m = addZero(d.getMinutes());
-    let s = addZero(d.getSeconds());
-    //var n = d.getMilliseconds();
-   
+export function GetDateTimeFormat(str, _format) {
+    let d;
 
 
+    //console.log(str);
 
-    if(_format =="DDMMYYYY")
-    {//DD/MM/YYYY hh:mm:ss
-      return dd + '/' + mm + '/' + yyyy+' '+h+':'+m+':'+s;
-    }
-    else if(_format =="DDMMYYHHMM")
-    {//DD/MM/YYYY hh:mm:ss
-      return dd + '/' + mm + '/' + yy+' '+h+':'+m;
+    if (str == null) {
+        d = new Date();
+    } else {
+        d = CreateDateTime(str);
     }
 
-    else if(_format =="YYYY")
-    {//DD/MM/YYYY hh:mm:ss
-      return  yyyy;
-    }
-    else if(_format =="MM")
-    {//DD/MM/YYYY hh:mm:ss
-      return  mm;
-    }
-    
-    else{
-      //YYYY-MM-DD hh:mm:ss    
 
-      return   yyyy+ '-' + mm + '-' +dd+' '+h+':'+m+':'+s;
+    if (d !== null) {
+
+        let yyyy = d.getFullYear();
+        let VALUES = yyyy.toString();
+        let yy = VALUES.substring(2, 4);
+
+
+        let mm = addZero((d.getMonth() + 1));
+        let dd = addZero(d.getDate());
+
+        let h = addZero(d.getHours());
+        let m = addZero(d.getMinutes());
+        let s = addZero(d.getSeconds());
+        //var n = d.getMilliseconds();
+
+
+
+
+        if (_format == "DDMMYYYY") { //DD/MM/YYYY hh:mm:ss
+            return dd + '/' + mm + '/' + yyyy + ' ' + h + ':' + m + ':' + s;
+        } else if (_format == "DDMMYYHHMM") { //DD/MM/YYYY hh:mm:ss
+            return dd + '/' + mm + '/' + yy + ' ' + h + ':' + m;
+        } else if (_format == "YYYY") { //DD/MM/YYYY hh:mm:ss
+            return yyyy;
+        } else if (_format == "MM") { //DD/MM/YYYY hh:mm:ss
+            return mm;
+        } else {
+            //YYYY-MM-DD hh:mm:ss    
+
+            return yyyy + '-' + mm + '-' + dd + ' ' + h + ':' + m + ':' + s;
+        }
     }
-  }
-  return "";
+    return "";
 }
 
 export function GetDateTime(d) {
-  /*if (angular.isDate(d)) { return d.getTime(); }
-  else return null;*/
+    /*if (angular.isDate(d)) { return d.getTime(); }
+    else return null;*/
 };
 
 export function GetCodeDes(value) {
-  if (value) {
-    if (value.code != null && value.description != null) {
-      return value.code.trim() + " : " + value.description.trim();
+    if (value) {
+        if (value.code != null && value.description != null) {
+            return value.code.trim() + " : " + value.description.trim();
+        } else if (value.code != null) {
+            return value.code.trim();
+        } else if (value.description != null) {
+            return value.description.trim();
+        }
     }
-    else if (value.code != null) {
-      return value.code.trim();
-    }
-    else if (value.description != null) {
-      return value.description.trim();
-    }
-  }
-  return "";
+    return "";
 };
 
 export function GetIdDes(value) {
-  if (value) {
-    if (value.id != null && value.description != null) {
-      return value.id.trim() + " : " + value.description.trim();
+    if (value) {
+        if (value.id != null && value.description != null) {
+            return value.id.trim() + " : " + value.description.trim();
+        } else if (value.id != null) {
+            return value.id.trim();
+        } else if (value.description != null) {
+            return value.description.trim();
+        }
     }
-    else if (value.id != null) {
-      return value.id.trim();
-    }
-    else if (value.description != null) {
-      return value.description.trim();
-    }
-  }
-  return "";
+    return "";
 };
 
 export function GetObjArr(obj, keys) {
-  if (Array.isArray(obj)) {
-    if (keys) return obj.map(x => GetObjVal(x, keys));
-    else return obj;
-  }
-  if (keys) return GetObjVal(obj, keys) ? [GetObjVal(obj, keys)] : [];
-  return [obj];
+    if (Array.isArray(obj)) {
+        if (keys) return obj.map(x => GetObjVal(x, keys));
+        else return obj;
+    }
+    if (keys) return GetObjVal(obj, keys) ? [GetObjVal(obj, keys)] : [];
+    return [obj];
 };
 
 export function GetArrObj(arr, keys) {
-  if (Array.isArray(arr)) {
-    if (keys) return arr.map(x => GetObjVal(x, keys));
-    else return arr[arr.length - 1];
-  }
-  if (keys) return GetObjVal(arr, keys);
-  return arr;
+    if (Array.isArray(arr)) {
+        if (keys) return arr.map(x => GetObjVal(x, keys));
+        else return arr[arr.length - 1];
+    }
+    if (keys) return GetObjVal(arr, keys);
+    return arr;
 };
 
 export function GetLastUpdate(obj) {
-  return GetDateView(obj.timestamp) + " - " + obj.updateBy;
+    return GetDateView(obj.timestamp) + " - " + obj.updateBy;
+};
+export function IsNull(val) {
+    return val === undefined || val === '' || ''.concat(val).trim() === '' || val === null;
+}
+
+export function Round(num, places = 0) {
+    return +(Math.round(num + "e+" + places) + "e-" + places);
 };
