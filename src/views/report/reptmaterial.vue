@@ -3,23 +3,7 @@
 
   <div class="animated fadeIn">
 
-<div v-if="show_err">
-<b-row>
-<div>
-  <b-alert show variant="danger">
-    <h4 class="alert-heading">ผิดพลาด!</h4>
-    <p>
-      <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
-    </p>
-    <hr>
-   
-   <div v-html="txt_PB"></div>
 
-   
-  </b-alert>
-</div>
-</b-row>
-</div>
 
     
     <b-row v-if="show">
@@ -128,6 +112,50 @@
        </transition>
       </b-col>
     </b-row>
+
+
+     <b-row v-if="show">
+      <b-col lg="12">
+        <transition name="fade">
+          <b-card no-body >
+            <div slot="header">
+              <h5><i class="fa fa-television" aria-hidden="true"></i> รายการวัตถุดิบที่ไม่พบกลุ่มวัตถุดิบ</h5>
+              <div class="card-header-actions">
+                <b-link class="card-header-action btn-minimize" v-b-toggle.collapse4>
+                  <i class="icon-arrow-up"></i>
+                </b-link>
+              </div>
+            </div>
+            <b-collapse id="collapse4" >
+              <b-card-body>
+               <div v-if="show_err">
+                            <b-row>
+                            <div>
+                              <b-alert show variant="danger">
+                              <!--  <h4 class="alert-heading">ผิดพลาด!</h4>  -->
+                                <p>
+                                  <b> ตรวจพบข้อมูลเม็ดวัตุดิบที่ไม่มีรหัสกลุ่มวัตถุดิบ โปรแกรมไม่สามารถแสดงรายงาน สรุปปริมาณและมูลค่าคงเหลือได้ กรุณาติดต่อฝ่ายบัญชี ! </b>
+                                </p>
+                                <hr>
+                              
+                              <div v-html="txt_PB"></div>
+
+                              
+                              </b-alert>
+                            </div>
+                            </b-row>
+                            </div>
+
+              </b-card-body>
+
+            </b-collapse>
+          </b-card>
+       </transition>
+      </b-col>
+    </b-row>
+
+
+
 
 
      <div class="animated fadeIn" v-if="show">
@@ -585,9 +613,8 @@ export default {
                           this.show_err = false;
                           this.show = true;
                         }*/
-                       if(res[i].matgrprpcd.toString() === "NO_DM")
+                       if(res[i].matgrprpcd.toString() === "zNO_DM")
                         {
-                          
                              sNO_DM = false;
                         }
                           Charttxt_H1[i]   =res[i].matgrprpname;
@@ -806,8 +833,6 @@ export default {
 
 
 
-
-
                       H1[0] = {
                           name: "mn_name",
                           title: "เดือน/ปี",
@@ -942,14 +967,15 @@ export default {
 
                          if(sNO_DM)
                          {
-                            this.show_err = false;
-                           this.show = true;
+                        //    this.show_err = false;
+                          // this.show = true;
                          }else
                          {
-                           this.show_err = true;
-                           this.show = false;
+                         //  this.show_err = true;
+                         //  this.show = false;
                          }
-                        
+                           this.show_err = true;
+                           this.show = true;
                         
                         
 
