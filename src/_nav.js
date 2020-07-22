@@ -40,8 +40,7 @@ export default {
 
         {
             name: 'พนักงาน',
-
-            url: '/dashboard'
+            url: '/report/reptmdmkemployee'
         },
         {
             name: 'วัตถุดิบ',

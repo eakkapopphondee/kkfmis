@@ -73,7 +73,8 @@ const RMaterial = () =>
     import ('@/views/report/reptmaterial')
 const RBudgetProject = () =>
     import ('@/views/report/reptbudgetproject')
-
+const REmploy = () =>
+    import ('@/views/report/reptmdmkemployee')
 
 
 const Users = () =>
@@ -203,7 +204,6 @@ export default new Router({
         }
 
         ,
-
         {
             path: '/report',
             name: 'งบประมาณงานโครงการ',
@@ -217,7 +217,20 @@ export default new Router({
                 }
             ]
         }
+        ,
+        {
+            path: '/report',
+            name: 'พนักงาน',
+            component: DefaultContainer,
+            children: [
 
+                {
+                    path: '/report/reptmdmkemployee',
+                    name: 'พนักงาน',
+                    component: REmploy
+                }
+            ]
+        }
 
         ,
         {

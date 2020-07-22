@@ -58,9 +58,9 @@
   
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-md-offset-2" @click="to_employee">
       <a class="pointer" data-bind="click: viewEmployee">
-        <div class="thumbnail_dis">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-people fa-5x"></i>
@@ -431,6 +431,9 @@ export default {
     },to_Material()
     {
       this.$router.push("/report/reptmaterial")
+    },to_employee()
+    {
+      this.$router.push("/report/reptmdmkemployee")
     },
     onSubmit(evt) {
       evt.preventDefault();

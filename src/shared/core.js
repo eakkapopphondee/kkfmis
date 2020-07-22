@@ -294,6 +294,22 @@ export const API = {
         Call(o);
     },
 
+    GetDataSearchKemployeetotal: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmKemployee/SearchKemployeetotal' });
+        Call(o);
+    },
+
+    GetDataSearchKemployeelist: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmKemployee/SearchKemployeelist' });
+        Call(o);
+    },
+
+    GetDataSearchKemployeelistsum: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmKemployee/SearchKemployeelistsum' });
+        Call(o);
+    },
+
+
     GetDataSearchBudgetProject: (o) => {         
         Object.assign(o, { method: 'Post', path: 'api/mdmBudgetProject/SearchBudgetProject' });
         Call(o);
