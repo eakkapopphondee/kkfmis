@@ -173,43 +173,44 @@
               </div>
               <b-collapse id="collapse3" visible>
                 <b-card-body>
+                  
                  
-                <b-row>
+                <b-row  >
 
-      <b-col xs="4">
-          <b-card border-variant="secondary" bg-variant="light" header="ปริมาณรับเข้าสะสม" align="center">
-            
-        <b-card-text>
-          
-          <div class="chart-container" id = "DVg1" >
-                      <canvas height="250" id="graph1" ></canvas>
-                    </div>
+                  <b-col xs="4">
+                      <b-card border-variant="secondary" bg-variant="light" header="ปริมาณรับเข้าสะสม" align="center">
+                        
+                    <b-card-text>
+                      
+                      <div class="chart-container" id = "DVg1" >
+                                  <canvas height="300" id="graph1" ></canvas>
+                                </div>
 
-        </b-card-text>
-      </b-card>
-      </b-col>
+                    </b-card-text>
+                  </b-card>
+                  </b-col>
 
- <b-col xs="4">
-          <b-card border-variant="secondary"  bg-variant="light" header="ปริมาณจ่ายออกสะสม" align="center">
-        <b-card-text>
-          <div style>
-                      <canvas height="250" id="graph2"></canvas>
-                    </div>
+                    <b-col xs="4">
+                      <b-card border-variant="secondary"  bg-variant="light" header="ปริมาณจ่ายออกสะสม" align="center">
+                    <b-card-text>
+                      <div style>
+                                  <canvas height="300"   id="graph2"></canvas>
+                                </div>
 
-        </b-card-text>
-      </b-card>
-      </b-col>
+                    </b-card-text>
+                  </b-card>
+                  </b-col>
 
- <b-col  xs="4">
-          <b-card border-variant="secondary" bg-variant="light" header="ปริมาณคงเหลือ" align="center">
-        <b-card-text>
-          <div style>
-                      <canvas height="250" id="graph3"></canvas>
-                    </div>
+                    <b-col  xs="4">
+                      <b-card border-variant="secondary" bg-variant="light" header="ปริมาณคงเหลือ" align="center">
+                    <b-card-text>
+                      <div style>
+                                  <canvas height="300" id="graph3"></canvas>
+                                </div>
 
-        </b-card-text>
-      </b-card>
-      </b-col>
+                    </b-card-text>
+                  </b-card>
+                  </b-col>
                   
                   
                 </b-row>
@@ -653,14 +654,14 @@ export default {
                                         }]
                                       },
                                       options: {
-                                        responsive: true,
+                                        responsive: false,
                                            plugins: { //setup chartjs-plugin-labels plug in 
                                                   labels: [
                                                       {
                                                           render: 'percentage',
                                                         //arc: true,
                                                           precision: 2,// font size, default is defaultFontSize
-                                                          fontSize: 18,
+                                                          fontSize: 16,
                                                           fontStyle: 'bold',
                                                           // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
                                                           fontColor: '#fff',
@@ -702,7 +703,7 @@ export default {
                                         }]
                                       },
                                       options: {
-                                        responsive: true
+                                        responsive: false
                                         ,
                                            plugins: { //setup chartjs-plugin-labels plug in 
                                                   labels: [
@@ -710,7 +711,7 @@ export default {
                                                           render: 'percentage',
                                                         //arc: true,
                                                           precision: 2,// font size, default is defaultFontSize
-                                                          fontSize: 18,
+                                                          fontSize: 16,
                                                           fontStyle: 'bold',
                                                           // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
                                                           fontColor: '#fff',
@@ -766,7 +767,7 @@ export default {
                                         }]
                                       },
                                       options: {
-                                        responsive: true
+                                        responsive: false
                                         ,
                                            plugins: { //setup chartjs-plugin-labels plug in 
                                                   labels: [
@@ -774,7 +775,7 @@ export default {
                                                           render: 'percentage',
                                                         //arc: true,
                                                           precision: 2,// font size, default is defaultFontSize
-                                                          fontSize: 18,
+                                                          fontSize: 16,
                                                           fontStyle: 'bold',
                                                           // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
                                                           fontColor: '#fff',
@@ -816,7 +817,7 @@ export default {
               API.GetDataSearchMaterialPRC({
               data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
               callblack: res => {
-
+ console.log(res);
 
                         if(sNO_DM)
                          {
@@ -865,7 +866,7 @@ export default {
                         for (i = 0; i < res[0]["c_data"].length; i++) {
                                  ChartCul_H1[i] = (res[0]["c_data"][i]["mn_name"].toString()+" "+ res[0]["c_data"][i]["iYear"].toString().substring(2, 4));
 
-                                            ///console.log(res[0]["c_data"][i]["iYear"].toString());
+                                         
                               
                                         const expr = res[0]["c_herder"].length;
                                         switch (expr) {                          
@@ -900,14 +901,34 @@ export default {
                                                      CUL4: res[0]["c_data"][i]["cuL_4"].toString(),
                                                      CUL5: res[0]["c_data"][i]["cuL_5"].toString()
                                                   }
+                                          case 6: dataH1[i] = {
+                                                     mn_name:  res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString(),
+                                                     CUL3: res[0]["c_data"][i]["cuL_3"].toString(),
+                                                     CUL4: res[0]["c_data"][i]["cuL_4"].toString(),
+                                                     CUL5: res[0]["c_data"][i]["cuL_5"].toString(),
+                                                     CUL6: res[0]["c_data"][i]["cuL_6"].toString()
+                                                  }
+                                          case 7: dataH1[i] = {
+                                                     mn_name:  res[0]["c_data"][i]["mn_name"].toString()+" "+res[0]["c_data"][i]["iYear"].toString().substring(2, 4),
+                                                     CUL1: res[0]["c_data"][i]["cuL_1"].toString(),
+                                                     CUL2: res[0]["c_data"][i]["cuL_2"].toString(),
+                                                     CUL3: res[0]["c_data"][i]["cuL_3"].toString(),
+                                                     CUL4: res[0]["c_data"][i]["cuL_4"].toString(),
+                                                     CUL5: res[0]["c_data"][i]["cuL_5"].toString(),
+                                                     CUL6: res[0]["c_data"][i]["cuL_6"].toString(),
+                                                     CUL7: res[0]["c_data"][i]["cuL_7"].toString()
+                                                  }        
                                         } 
                           }
 
                          
                             //  console.log(C_NAME_C);
-                            C_COLOR = ["rgba(54, 193, 161, 1.0)","rgba(51, 157, 249, 1.0)","rgba(226, 161, 30, 1.0)","rgba(226, 144, 229, 1.0)","rgba(249, 101, 101, 1.0)"];
+                            C_COLOR = ["rgba(54, 193, 161, 1.0)","rgba(51, 157, 249, 1.0)","rgba(226, 161, 30, 1.0)"
+                            ,"rgba(226, 144, 229, 1.0)","rgba(249, 101, 101, 1.0)","rgba(0, 46, 108, 1)","rgba(112, 132, 0, 1)"];
                            // C_NAME_C = ["copo","copo","copo"];
-                            CharDATA_H2 = [[0],[0],[0],[0],[0]];
+                            CharDATA_H2 = [[0],[0],[0],[0],[0],[0],[0]];
                           
                                          
                               for (i = 0; i < res[0]["c_herder"].length; i++) {
