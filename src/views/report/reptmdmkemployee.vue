@@ -10,7 +10,7 @@
         <transition name="fade">
           <b-card no-body >
             <div slot="header">
-              <h5><i class="fa fa-television" aria-hidden="true"></i> สรุปข้อมูลพนักงาน</h5>
+              <h5><i class="fa fa-television" aria-hidden="true"></i> สรุปข้อมูล</h5>
              
             </div>
             <b-collapse id="collapse1" visible>
@@ -82,7 +82,7 @@
                                <b-row>
                                    <b-container class="bv-example-row " >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060" >จน.พนักงานตามโครงสร้าง</b-col>
+                                      <b-col style="backgroundColor:#1f4060" >จน.ตามโครงสร้าง</b-col>
 
                                       <div class="w-100"></div>
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_11| number(0)}}</b></h3></b-col>
@@ -92,13 +92,13 @@
                               </b-row>
                                 <b-row>
                                 
-                                   <b-container class="bv-example-row" >
+                                   <b-container class="bv-example-row " >
                                   <b-row>
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100" ></div>
-                                    <b-col style="backgroundColor:#3873ad" ><h3><b>{{this.DS_12| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_13| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad" ><h5><b>{{this.DS_12| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_13| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -113,7 +113,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060">จน.พนักงานปัจจุบัน</b-col>
+                                      <b-col style="backgroundColor:#1f4060">จน.ปัจจุบัน</b-col>
 
                                       <div class="w-100"></div>  
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_14| number(0)}}</b></h3></b-col>
@@ -128,8 +128,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_15| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_16| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_15| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_16| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -165,7 +165,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060" >จน.พนักงานตามโครงสร้าง</b-col>
+                                      <b-col style="backgroundColor:#1f4060" >จน.ตามโครงสร้าง</b-col>
 
                                       <div class="w-100"></div>
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_21| number(0)}}</b></h3></b-col>
@@ -180,8 +180,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad" ><h3><b>{{this.DS_22| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_23| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad" ><h5><b>{{this.DS_22| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_23| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -196,7 +196,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060">จน.พนักงานปัจจุบัน</b-col>
+                                      <b-col style="backgroundColor:#1f4060">จน.ปัจจุบัน</b-col>
 
                                       <div class="w-100"></div>  
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_24| number(0)}}</b></h3></b-col>
@@ -211,8 +211,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_25| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_26| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_25| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_26| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -243,7 +243,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060" >จน.พนักงานตามโครงสร้าง</b-col>
+                                      <b-col style="backgroundColor:#1f4060" >จน.ตามโครงสร้าง</b-col>
 
                                       <div class="w-100"></div>
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_31| number(0)}}</b></h3></b-col>
@@ -258,8 +258,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad" ><h3><b>{{this.DS_32| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_33| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad" ><h5><b>{{this.DS_32| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_33| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -274,7 +274,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060">จน.พนักงานปัจจุบัน</b-col>
+                                      <b-col style="backgroundColor:#1f4060">จน.ปัจจุบัน</b-col>
 
                                       <div class="w-100"></div>  
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_34| number(0)}}</b></h3></b-col>
@@ -289,8 +289,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_35| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_36| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_35| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_36| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -342,7 +342,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060" >จน.พนักงานตามโครงสร้าง</b-col>
+                                      <b-col style="backgroundColor:#1f4060" >จน.ตามโครงสร้าง</b-col>
 
                                       <div class="w-100"></div>
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_41| number(0)}}</b></h3></b-col>
@@ -357,8 +357,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad" ><h3><b>{{this.DS_42| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_43| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad" ><h5><b>{{this.DS_42| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_43| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -373,7 +373,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" > 
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060">จน.พนักงานปัจจุบัน</b-col>
+                                      <b-col style="backgroundColor:#1f4060">จน.ปัจจุบัน</b-col>
 
                                       <div class="w-100"></div>  
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_44| number(0)}}</b></h3></b-col>
@@ -388,8 +388,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_45| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_46| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_45| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_46| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -421,7 +421,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060" >จน.พนักงานตามโครงสร้าง</b-col>
+                                      <b-col style="backgroundColor:#1f4060" >จน.ตามโครงสร้าง</b-col>
 
                                       <div class="w-100"></div>
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_51| number(0)}}</b></h3></b-col>
@@ -436,8 +436,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad" ><h3><b>{{this.DS_52| number()}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_53| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad" ><h5><b>{{this.DS_52| number()}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_53| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -452,7 +452,7 @@
                           <b-row>
                                    <b-container class="bv-example-row" >
                                     <b-row>
-                                      <b-col style="backgroundColor:#1f4060">จน.พนักงานปัจจุบัน</b-col>
+                                      <b-col style="backgroundColor:#1f4060">จน.ปัจจุบัน</b-col>
 
                                       <div class="w-100"></div>  
                                       <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_54| number(0)}}</b></h3></b-col>
@@ -467,8 +467,8 @@
                                     <b-col style="backgroundColor:#1f4060">รายเดือน</b-col>
                                     <b-col style="backgroundColor:#1f4060">รายวัน</b-col>
                                     <div class="w-100"></div>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_55| number(0)}}</b></h3></b-col>
-                                    <b-col style="backgroundColor:#3873ad"><h3><b>{{this.DS_56| number(0)}}</b></h3></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_55| number(0)}}</b></h5></b-col>
+                                    <b-col style="backgroundColor:#3873ad"><h5><b>{{this.DS_56| number(0)}}</b></h5></b-col>
                                   </b-row>
                                 </b-container> 
 
@@ -530,7 +530,7 @@
                         <b-thead  style="background-color: #000000;font-weight: bold;color:#ffffff">
                          							
                           <b-tr class="text-center">
-                            <b-th>บริษัท/หน่วยงาน</b-th>
+                            <b-th >บริษัท/หน่วยงาน</b-th>
                             <b-th>ม.ค.</b-th>
                             <b-th>ก.พ.</b-th>
                             <b-th>มี.ค.</b-th>
@@ -547,8 +547,8 @@
                         </b-thead>
                         <b-tbody v-for="item in itemData" :key="item.code_id">  
                           <b-tr  v-bind:id="item.code_id" class="text-right">
-                            <b-td class="text-left">
-                              <i v-bind:id="item.code_id+'B'" style="font-size:18px;" class="fa fa-plus-circle" v-on:click="showshild(item.code_id)"></i> 
+                            <b-td class="text-left ">
+                              <i   v-bind:id="item.code_id+'B'" style="font-size:18px;" class="fa fa-plus-circle" v-on:click="showshild(item.code_id)"></i> 
                                    {{item.stocode}}</b-td> 
                             <b-td >{{item.d1}}</b-td>
                             <b-td>{{item.d2}}</b-td>
@@ -777,7 +777,7 @@ export default {
 
     },showshild(el_id)
     {   
-      
+         var s_SUB_OLD = "";
          var s_SUB = "";
          var s_SUB_TEX = "";
          var id_OLD = "";
@@ -787,10 +787,10 @@ export default {
 
          const result = this.itemData.find( ({ code_id }) => code_id === el_id);
          s_SUB = result.code_Sub.substring(0, 1);
-         
+         s_SUB_OLD = result.code_Sub.substring(0, 1);
          if(s_SUB==="M"){ s_SUB = "S"; }else
          if(s_SUB==="S"){ s_SUB = "L"; };
-         
+         console.log(s_SUB_OLD);
          s_SUB_TEX = s_SUB+result.code_id;
           
         for(let key in this.itemData) 
@@ -806,13 +806,30 @@ export default {
               { 
                  id_OLD_class  = 'visible';
                  e.style.visibility = 'visible';
-                 document.getElementById(idB).className = "fa fa-minus-circle"; 
+                 if(s_SUB_OLD ==="S")
+                 {
+                       document.getElementById(idB).className = "fa fa-minus-circle pl-3";  
+                 }else
+                 {
+                       document.getElementById(idB).className = "fa fa-minus-circle";  
+                 }
+                 
+                
               }
               else
               {
                 id_OLD_class  = 'collapse';
                 e.style.visibility = 'collapse'; 
-                document.getElementById(idB).className = "fa fa-plus-circle"; 
+
+               
+                 if(s_SUB_OLD ==="S")
+                 {
+                       document.getElementById(idB).className = "fa fa-plus-circle pl-3";  
+                 }else
+                 {
+                       document.getElementById(idB).className = "fa fa-plus-circle";  
+                 }
+                
               }
               
           }
@@ -826,7 +843,7 @@ export default {
                       {
                          e = document.getElementById(this.itemData[key].code_id);
                          e.style.visibility = 'collapse';
-                         document.getElementById(id_OLD+'B').className = "fa fa-plus-circle"; 
+                         document.getElementById(id_OLD+'B').className = "fa fa-plus-circle pl-3"; 
                       }
                        
                   }
@@ -856,13 +873,14 @@ export default {
 
                         if (this.itemData[key].code_Sub.substring(0, 1) === "L")
                         {
-                            document.getElementById(idB).className = "fa fa-chevron-right";  ////fas fa-minus 
+                            document.getElementById(idB).className = "fa fa-chevron-right  pl-5";  ////fas fa-minus 
                             e.style.backgroundColor = "#f2f2f2";
-                             
+                            
                         }
 
                         if (this.itemData[key].code_Sub.substring(0, 1) === "S")
                         {
+                            document.getElementById(idB).className = "fa fa-plus-circle pl-3";  ////fas fa-minus 
                             e.style.backgroundColor = "#f4f4d7";
                         }
                       };
