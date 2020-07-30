@@ -613,6 +613,12 @@ export default {
                                         
                                         options: {
                                                  scales: {
+                                                       xAxes: [{
+                                                            ticks: {
+                                                                min: 12 ,// Edit the value according to what you need
+                                                                max:342
+                                                            }
+                                                        }],
                                                         yAxes: [{
                                                             ticks: {
                                                               fontSize: 17
