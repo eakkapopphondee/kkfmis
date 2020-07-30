@@ -618,7 +618,7 @@ export default {
                             }else
                             {
                               imax = imax;
-                              imin = imin;
+                              imin = 0;
                             }
 
                             console.log(imin);
