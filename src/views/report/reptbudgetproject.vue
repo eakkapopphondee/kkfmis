@@ -597,11 +597,67 @@ export default {
                                     }]
                                     
                             };
+                            var imin =0;
+                            var imax =0;
+
+                            if(ChartDATA_H1_1[0] > ChartDATA_H1_1[1])
+                            {
+                                  imin = parseInt((ChartDATA_H1_1[1]*10)/100);
+                                  imax  = parseInt(ChartDATA_H1_1[0]) + parseInt((ChartDATA_H1_1[0]*20)/100)+10;
+
+                            }else
+                            {
+                                  imin = parseInt((ChartDATA_H1_1[0]*10)/100);
+                                  imax  = parseInt(ChartDATA_H1_1[1]) + parseInt((ChartDATA_H1_1[1]*20)/100) +10;
+                            }
+                            
+                            if(isNaN(imax) || isNaN(imin))
+                            {
+                              imax = 0;
+                              imin = 0;
+                            }else
+                            {
+                              imax = imax;
+                              imin = 0;
+                            }
+
+                            console.log(imin);
+                            console.log(imax);
+
 
                            var ctx = document.getElementById("graph1").getContext("2d");
                                 if(myChart2 !== null)
                                 {
                                         myChart2.data = MeSeData;
+                                        myChart2.options ={
+                                                 scales: {
+                                                       xAxes: [{
+                                                            ticks: {
+                                                              stepSize: 20,
+                                                                min: imin ,// Edit the value according to what you need
+                                                                max: imax
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            ticks: {
+                                                              fontSize: 17
+                                                            }
+                                                               
+                                                        }] 
+                                                    },
+                                                  
+                                                    responsive: true,
+                                                   plugins: { //setup chartjs-plugin-labels plug in 
+                                                  
+                                                            labels: [
+                                                                {
+                                                                    render: 'value',
+                                                                    position: 'outside'
+                                                                }
+                                                            ]
+                                                        }
+                                                   
+                                                };
                                         myChart2.update();
                                         
                                 }else
@@ -613,6 +669,14 @@ export default {
                                         
                                         options: {
                                                  scales: {
+                                                       xAxes: [{
+                                                            ticks: {
+                                                                stepSize: 10,
+                                                                min: imin ,// Edit the value according to what you need
+                                                                max: imax 
+                                                                
+                                                            }
+                                                        }],
                                                         yAxes: [{
                                                             ticks: {
                                                               fontSize: 17
@@ -620,15 +684,7 @@ export default {
                                                                
                                                         }] 
                                                     },
-                                                  /*  scales: {
-                                                        xAxes: [{
-                                                            ticks: {
-                                                                min: 0 ,// Edit the value according to what you need
-                                                                max:100
-                                                            }
-                                                        }],
-                                                       
-                                                    },*/
+                                                  
                                                     responsive: true,
                                                    plugins: { //setup chartjs-plugin-labels plug in 
                                                   
