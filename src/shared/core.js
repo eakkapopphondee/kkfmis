@@ -336,6 +336,17 @@ export const API = {
         Call(o);
     },
 
-
-
+    //---- รายงานคลังพัสดุ ------//
+    GetDatamdmStock: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmStock/SearchmdmStock' });
+        Call(o);
+    },
+    GetDatamdmStockBymn: (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmStockBymn/SearchmdmStockBymn' });
+        Call(o);
+    },
+    GetDatamdmStockgraph : (o) => {
+        Object.assign(o, { method: 'Post', path: 'api/mdmStockgraph/SearchmdmStockgraph' });
+        Call(o);
+    },
 };

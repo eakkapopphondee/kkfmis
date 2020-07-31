@@ -75,7 +75,8 @@ const RBudgetProject = () =>
     import ('@/views/report/reptbudgetproject')
 const REmploy = () =>
     import ('@/views/report/reptmdmkemployee')
-
+ const RmdmStock = () =>
+    import ('@/views/report/mdmStock')   
 
 const Users = () =>
     import ('@/views/users/Users')
@@ -231,7 +232,20 @@ export default new Router({
                 }
             ]
         }
+        ,
+        {
+            path: '/report',
+            name: 'คลังพัสดุ',
+            component: DefaultContainer,
+            children: [
 
+                {
+                    path: '/report/mdmStock',
+                    name: 'คลังพัสดุ',
+                    component: RmdmStock
+                }
+            ]
+        }
         ,
         {
             path: '/user',

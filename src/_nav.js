@@ -59,7 +59,7 @@ export default {
         },
         {
             name: 'คลังพัสดุ',
-            url: '/dashboard'
+            url: '/report/mdmStock'
 
         },
 

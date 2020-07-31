@@ -124,9 +124,9 @@
       </a>
     </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-4">
+    <div class="col-xs-12 col-sm-4 col-md-4" @click="to_mdmStock">
       <a class="pointer" style="text-decoration: none;" data-bind="click: viewAnalytics">
-        <div class="thumbnail_dis">
+        <div class="thumbnail">
           <br>
           <p style="text-align: center">
             <i class="icon-social-dropbox fa-5x"></i>
@@ -451,6 +451,10 @@ export default {
     to_users(){
       this.$router.push("/users")
 
+    },
+    to_mdmStock()
+    {
+      this.$router.push("/report/mdmStock")
     },
   }
 }
