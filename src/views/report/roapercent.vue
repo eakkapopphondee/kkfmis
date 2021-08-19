@@ -599,13 +599,13 @@ export default {
                         {
                           backgroundColor: "rgba(55, 173, 221, 0.1)",
                           borderColor: "rgba(95, 190, 238, 1.0)",
-                          label: "2020",
+                          label: (this.txtSearch).toString(),
                           data: CDATA_H2_1
                         },
                         {
                           backgroundColor: "rgba(255, 226, 226   , 0.3)",
                   borderColor: "rgba(243, 126, 126  , 1.0)",
-                          label: "2019",
+                          label: (this.txtSearch-1).toString(),
                           data: CDATA_H2_2
                         }
                       ]
@@ -631,13 +631,13 @@ export default {
                       {
                           backgroundColor: "rgba(55, 173, 221, 0.1)",
                           borderColor: "rgba(95, 190, 238, 1.0)",
-                          label: "2020",
+                          label: (this.txtSearch).toString(),
                           data: CDATA_H3_1
                         },
                         {
                           backgroundColor: "rgba(255, 226, 226   , 0.3)",
                   borderColor: "rgba(243, 126, 126  , 1.0)",
-                          label: "2019",
+                          label: (this.txtSearch-1).toString(),
                           data: CDATA_H3_2
                         }
                     ]
@@ -709,13 +709,13 @@ export default {
                         {
                           backgroundColor: "rgba(55, 173, 221, 0.1)",
                           borderColor: "rgba(55, 173, 221, 1.0)",
-                          label: "2020",
+                          label: (this.txtSearch).toString(),
                           data: CDATA_H4_1
                         },
                         {
                           backgroundColor: "rgba(255, 226, 226   , 0.3)",
                   borderColor: "rgba(243, 126, 126  , 1.0)",
-                          label: "2019",
+                          label: (this.txtSearch-1).toString(),
                           data: CDATA_H4_2
                         }
                       ]
@@ -741,13 +741,13 @@ export default {
                       {
                           backgroundColor: "rgba(55, 173, 221, 0.1)",
                           borderColor: "rgba(55, 173, 221, 1.0)",
-                          label: "2020",
+                          label: (this.txtSearch).toString(),
                           data: CDATA_H5_1
                         },
                         {
                          backgroundColor: "rgba(255, 226, 226   , 0.3)",
                   borderColor: "rgba(243, 126, 126  , 1.0)",
-                          label: "2019",
+                          label: (this.txtSearch-1).toString(),
                           data: CDATA_H5_2
                         }
                     ]

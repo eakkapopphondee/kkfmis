@@ -367,7 +367,7 @@ fieldDrawinmonth: [
           name: "storeName",
           title: " คลัง",
           sortField: "storeName",
-          class: "text-left",
+          class: "text-left freeze" ,//
 
           visible: true,
            footer: { type: null, value: 'Total' },
@@ -1401,7 +1401,7 @@ fieldDrawinmonth: [
       API.GetDatamdmStock({
         data: { yr: this.txtSearch },
         callblack: res => {
-          console.log(res);
+         // console.log(res);
            this.itemData = res;
  
  if (res.length > 0)
@@ -1411,7 +1411,7 @@ fieldDrawinmonth: [
       API.GetDatamdmStockBymn({   
          data:{yr:this.txtSearch},              
               callblack: res => {
-//console.log(res);
+ console.log(res);
                   this.dataDrawingMonth = [];
 
                      res.forEach((d, i) => {
@@ -1472,7 +1472,7 @@ this.dataDrawingYYLabel.push(0);
               var ii; 
                
              for (ii = 0; ii < res.length; ii++) {
-                 console.log(res[ii]["mn"]);
+                 //console.log(res[ii]["mn"]);
                 //res[0]["yr"][i].toString(),
                 this.dataDrawingexpenValueByMnQ =[];
                 this.dataDrawingexpenValueByMnQ.mn_ntx =  res[ii]["mn"];
@@ -1527,6 +1527,7 @@ this.dataDrawingYYLabel.push(0);
                // console.log(this.dataDrawingexpenValueByMnQ.mn);
                 //this.dataDrawingexpenValueByMnQ.mn =  res[ii]["mn"];
                 this.dataDrawingexpenValueByMnQ.bal_Amt = res[ii]["bal_Amt"]; 
+                //console.log(res[ii]["storeCode"]+':'+this.dataDrawingexpenValueByMnQ.mn+':'+this.dataDrawingexpenValueByMnQ.bal_Amt);
                 this.dataDrawingexpenValueByMn.push(this.dataDrawingexpenValueByMnQ);
 
                if (res[ii]["storeCode"]  == "A") {
