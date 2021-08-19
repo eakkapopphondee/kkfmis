@@ -949,7 +949,7 @@ export default {
                        */
                        switch(this.itemDatatot[key].company_code) {
                                 case "KKF": 
-                                  this.DS_21= ((this.itemDatatot[key].emp_Struct_Mn + this.itemDatatot[key].emp_Struct_Day)).toLocaleString('en-IN');
+                                  this.DS_21= this.itemDatatot[key].emp_Struct_Mn + this.itemDatatot[key].emp_Struct_Day;
                                   this.DS_22= this.itemDatatot[key].emp_Struct_Mn;
                                   this.DS_23= this.itemDatatot[key].emp_Struct_Day;
                                   this.DS_24= this.itemDatatot[key].emp_Act_Mn + this.itemDatatot[key].emp_Act_Day;
