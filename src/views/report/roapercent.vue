@@ -434,7 +434,8 @@ export default {
 
 
      
-     
+     // ทดสอบ แก้ไข
+     // ทดสอบ
 
       API.GetDataROASummary({
         data: { iYear: this.txtSearch.toString() },
