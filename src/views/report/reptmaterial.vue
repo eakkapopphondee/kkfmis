@@ -4,14 +4,25 @@
   <div class="animated fadeIn">
 
 
-
+<div>
+  <b-list-group horizontal>
+    <b-list-group-item variant="primary " type="button" > รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ</b-list-group-item>
+    <b-list-group-item type="button" @click="to_Material2" >รายงาน สรุปปริมาณ มูลค่าคงเหลือ และประมาณการการใช้วัตถุดิบ</b-list-group-item>
+  </b-list-group>
+</div>
+ 
     
     <b-row v-if="show">
       <b-col lg="12">
         <transition name="fade">
           <b-card no-body >
             <div slot="header">
-              <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ</h5>
+              <h5><i class="fa fa-television" aria-hidden="true"></i> รายงาน สรุปปริมาณและมูลค่าคงเหลือวัตถุดิบแยกตามกลุ่มวัตถุดิบ  
+                  <!---  <b-badge  variant="info" style="position:relative;left:15px" rounded>New version Click!!</b-badge> -->
+             </h5>
+
+             
+
               <div class="card-header-actions">
                 <b-link class="card-header-action btn-minimize" v-b-toggle.collapse1>
                   <i class="icon-arrow-up"></i>
@@ -42,7 +53,7 @@
                                         v-model="txtSearch_mn" 
                                        
                                         :plain="true"
-                                        :options="iMun"  value-field="valuei"
+                                        :options="iMun"  value-field="valuei" 
                                        
                                         >
                                       </b-form-select>
@@ -564,6 +575,10 @@ export default {
        
       this.QueryData();
     },
+    to_Material2()
+    {
+      this.$router.push("/report/reptmaterial2")
+    },
 
     QueryData() {
       
@@ -600,7 +615,7 @@ export default {
           API.GetDataSearchMaterial({
               data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
               callblack: res => {
-                 /// console.log(res);
+                  console.log(res);
                    this.dataDGV1   =  res ;
                    
                   var cui = res.length;
@@ -817,7 +832,7 @@ export default {
               API.GetDataSearchMaterialPRC({
               data:{zyear:this.txtSearch,zmonth:this.txtSearch_mn},              
               callblack: res => {
- console.log(res);
+             ///console.log(res);
 
                         if(sNO_DM)
                          {

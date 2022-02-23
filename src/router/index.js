@@ -71,6 +71,10 @@ const Rroapercent = () =>
     import ('@/views/report/roapercent')
 const RMaterial = () =>
     import ('@/views/report/reptmaterial')
+
+const RMaterial2 = () =>
+    import ('@/views/report/reptmaterial2')
+    
 const RBudgetProject = () =>
     import ('@/views/report/reptbudgetproject')
 const REmploy = () =>
@@ -189,6 +193,20 @@ export default new Router({
                 }
             ]
         },
+        {
+            path: '/report',
+            name: 'วัตถุดิบ',
+            component: DefaultContainer,
+            children: [
+
+                {
+                    path: '/report/reptmaterial2',
+                    name: 'วัตถุดิบ',
+                    component: RMaterial2
+                }
+            ]
+        },
+        
         {
             path: '/report',
             name: 'ค่าใช้จ่ายในการดำเนินงาน',
